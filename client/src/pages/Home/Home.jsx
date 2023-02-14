@@ -1,4 +1,5 @@
 import React from "react";
+import Goal from "./Goal";
 
 import TEST_ID from "./Home.testid";
 
@@ -7,6 +8,7 @@ const Home = () => {
     <div data-testid={TEST_ID.container}>
       <h1>Find Museum (temp)</h1>
       <p>Good luck with the project!</p>
+      <Goal />
     </div>
   );
 };
