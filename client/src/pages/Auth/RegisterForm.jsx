@@ -60,8 +60,7 @@ const RegisterForm = () => {
       .oneOf([Yup.ref("password")], "Password fields don't match"),
   });
 
-  const onSubmit = (e) => {
-    console.log("formik.values : ", formik.values);
+  const onSubmit = () => {
     const { firstName, lastName, email, password } = formik.values;
 
     performFetch({
@@ -72,8 +71,6 @@ const RegisterForm = () => {
       body: JSON.stringify({ user: { firstName, lastName, email, password } }),
     });
   };
-
-  console.log("error from registerform: ", error);
 
   // Tostifiy Notification: When the email already exists
   useEffect(() => {
