@@ -2,22 +2,10 @@ import User, { validateUser } from "../models/User.js";
 import { logError } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 
-export const getUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.status(200).json({ success: true, result: users });
-  } catch (error) {
-    logError(error);
-    res
-      .status(500)
-      .json({ success: false, msg: "Unable to get users, try again later" });
-  }
-};
-
 export const createUser = async (req, res) => {
+  console.log("req.body from controller: ", req.body);
   try {
     const { user } = req.body;
-
     if (typeof user !== "object") {
       res.status(400).json({
         success: false,
@@ -42,8 +30,14 @@ export const createUser = async (req, res) => {
     }
   } catch (error) {
     logError(error);
-    res
-      .status(500)
-      .json({ success: false, msg: "Unable to create user, try again later" });
+    console.log("error: ", error);
+    if (error.name === "MongoServerError" && error.code === 11000) {
+      res.status(400).json({ success: false, msg: "Email already exists" });
+    } else {
+      res.status(500).json({
+        success: false,
+        msg: "Unable to create user, try again later",
+      });
+    }
   }
 };
