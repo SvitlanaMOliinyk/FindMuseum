@@ -3,7 +3,6 @@ import { logError } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 
 export const createUser = async (req, res) => {
-  console.log("req.body from controller: ", req.body);
   try {
     const { user } = req.body;
     if (typeof user !== "object") {
@@ -30,7 +29,6 @@ export const createUser = async (req, res) => {
     }
   } catch (error) {
     logError(error);
-    console.log("error: ", error);
     if (error.name === "MongoServerError" && error.code === 11000) {
       res.status(400).json({ success: false, msg: "Email already exists" });
     } else {
