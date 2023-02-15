@@ -4,36 +4,28 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import "./nav.css";
 
-import TEST_ID from "./Nav.testid";
-
 const Nav = () => {
-  const [toggle, setToggle] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  const handleClick = () => setToggle(!toggle);
-  const shutMenu = () => setToggle(false);
+  const handleClick = () => setMenuIsOpen(!menuIsOpen);
+  const onClose = () => setMenuIsOpen(false);
 
   return (
     <header className="logoAndNavbar">
       <nav className="nav">
-        <div className="logo-navbar-container">
-          <Link to="/" onClick={shutMenu}>
+        <div className="logo-navbar-container container">
+          <Link to="/" onClick={onClose}>
             <img className="logo" src={logo} alt="Logo" width={100} />
           </Link>
           <div className="burger-menu-icon" onClick={handleClick}>
-            {toggle ? <FaTimes /> : <FaBars />}
+            {menuIsOpen ? <FaTimes /> : <FaBars />}
           </div>
-          <ul className={toggle ? "navbar active" : "navbar"}>
+          <ul className={menuIsOpen ? "navbar active" : "navbar"}>
             <li className="navbar-item">
               <NavLink
                 to="/"
-                data-testid={TEST_ID.linkToHome}
-                style={({ isActive }) => {
-                  return {
-                    backgroundColor: isActive ? "var(--active-navlink-color)" : "",
-                    borderRadius: isActive ? "4px" : ""
-                  };
-                }}
-                onClick={shutMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={onClose}
               >
                 Home
               </NavLink>
@@ -41,13 +33,8 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="museums"
-                style={({ isActive }) => {
-                  return {
-                    backgroundColor: isActive ? "var(--active-navlink-color)" : "",
-                    borderRadius: isActive ? "4px" : ""
-                  };
-                }}
-                onClick={shutMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={onClose}
               >
                 Museums
               </NavLink>
@@ -55,13 +42,8 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="favorites"
-                style={({ isActive }) => {
-                  return {
-                    backgroundColor: isActive ? "var(--active-navlink-color)" : "",
-                    borderRadius: isActive ? "4px" : ""
-                  };
-                }}
-                onClick={shutMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={onClose}
               >
                 Favorites
               </NavLink>
@@ -69,13 +51,8 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="offers"
-                style={({ isActive }) => {
-                  return {
-                    backgroundColor: isActive ? "var(--active-navlink-color)" : "",
-                    borderRadius: isActive ? "4px" : ""
-                  };
-                }}
-                onClick={shutMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={onClose}
               >
                 Offers
               </NavLink>
@@ -83,14 +60,8 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="/user"
-                data-testid={TEST_ID.linkToUsers}
-                style={({ isActive }) => {
-                  return {
-                    backgroundColor: isActive ? "var(--active-navlink-color)" : "",
-                    borderRadius: isActive ? "4px" : ""
-                  };
-                }}
-                onClick={shutMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={onClose}
               >
                 Log in
               </NavLink>
