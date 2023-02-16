@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-transparent.png";
 import "./nav.css";
 
 const Nav = () => {
@@ -24,7 +24,7 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "activeBar" : "")}
                 onClick={onClose}
               >
                 Home
@@ -33,7 +33,7 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="museums"
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "activeBar" : "")}
                 onClick={onClose}
               >
                 Museums
@@ -42,7 +42,7 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="favorites"
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "activeBar" : "")}
                 onClick={onClose}
               >
                 Favorites
@@ -51,7 +51,7 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="offers"
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "activeBar" : "")}
                 onClick={onClose}
               >
                 Offers
@@ -60,7 +60,7 @@ const Nav = () => {
             <li className="navbar-item">
               <NavLink
                 to="/user"
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "activeBar" : "")}
                 onClick={onClose}
               >
                 Log in

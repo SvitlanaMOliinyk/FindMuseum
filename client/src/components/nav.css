@@ -6,9 +6,9 @@
 
 :root {
   --main-bg-color: #dcd7c9;
-  --active-navlink-color: #a27b5c;
-  --navbar-color: #2c3639;
-  --mobile-navbar-color: #3f4e4f;
+  --active-navlink-color: #3f4e4f;
+  --navbar-color: #a27b5c;
+  --mobile-navbar-color: #2c3639;
 }
 
 body {
@@ -43,6 +43,7 @@ body {
 .logo {
   border-radius: 4px;
   display: flex;
+  color: white;
 }
 
 .burger-menu-icon {
@@ -60,17 +61,18 @@ ul {
 .navbar-item a {
   text-decoration: none;
   color: white;
+  font-family: monospace;
   align-items: center;
   text-decoration: none;
   padding: 0.5rem;
 }
 
 .navbar-item a:hover {
-  background-color: var(--mobile-navbar-color);
+  border: 2px solid var(--mobile-navbar-color);
   border-radius: 4px;
 }
 
-.active {
+.activeBar {
   background-color: var(--active-navlink-color);
   border-radius: 4px;
 }
@@ -81,7 +83,7 @@ ul {
   }
 
   .navbar {
-    position: absolute;
+    position: fixed;
     right: 0px;
     height: 80vh;
     width: 100vw;
