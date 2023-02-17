@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logo from "../assets/logo-transparent.png";
+import logo from "../../assets/logo-transparent.png";
 import "./nav.css";
 
 const Nav = () => {
