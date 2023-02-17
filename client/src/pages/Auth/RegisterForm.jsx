@@ -11,8 +11,9 @@ import { RxEyeClosed } from "react-icons/rx";
 import { Oval } from "react-loading-icons";
 
 const RegisterForm = () => {
-  const [passwordEye, setPasswordEye] = useState(true);
-  const [confirmPasswordEye, setConfirmPasswordEye] = useState(true);
+  const [passwordIsVisible, setPasswordIsVisible] = useState(true);
+  const [confirmPasswordIsVisible, setConfirmPasswordIsVisible] =
+    useState(true);
   // ******************** Required codes for useFetch; START *****************************
 
   const onSuccess = () => {
@@ -81,14 +82,6 @@ const RegisterForm = () => {
     }
   }, [error]);
 
-  const handleEyePassword = () => {
-    setPasswordEye(!passwordEye);
-  };
-
-  const handleEyeConfirmPassword = () => {
-    setConfirmPasswordEye(!confirmPasswordEye);
-  };
-
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   return (
@@ -106,13 +99,15 @@ const RegisterForm = () => {
           noValidate
           onSubmit={formik.handleSubmit}
         >
-          <div>
-            <input
-              type="text"
-              {...formik.getFieldProps("firstName")}
-              placeholder="Name"
-              className="register-input"
-            ></input>
+          <div className="container-field">
+            <div className="container-input">
+              <input
+                type="text"
+                {...formik.getFieldProps("firstName")}
+                placeholder="Name"
+                className="register-input"
+              ></input>
+            </div>
 
             <div className="message-container">
               {formik.touched.firstName && formik.errors.firstName ? (
@@ -123,13 +118,16 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          <div>
-            <input
-              type="text"
-              {...formik.getFieldProps("lastName")}
-              placeholder="Surname"
-              className="register-input"
-            ></input>
+          <div className="container-field">
+            <div className="container-input">
+              <input
+                type="text"
+                {...formik.getFieldProps("lastName")}
+                placeholder="Surname"
+                className="register-input"
+              ></input>
+            </div>
+
             <div className="message-container">
               {formik.touched.lastName && formik.errors.lastName ? (
                 <>{formik.errors.lastName}</>
@@ -139,13 +137,16 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          <div>
-            <input
-              type="text"
-              {...formik.getFieldProps("email")}
-              placeholder="Email"
-              className="register-input"
-            ></input>
+          <div className="container-field">
+            <div className="container-input">
+              <input
+                type="text"
+                {...formik.getFieldProps("email")}
+                placeholder="Email"
+                className="register-input"
+              ></input>
+            </div>
+
             <div className="message-container">
               {formik.touched.email && formik.errors.email ? (
                 <>{formik.errors.email}</>
@@ -155,21 +156,31 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          <div className="container--input-password">
-            <input
-              type={passwordEye ? "password" : "text"}
-              {...formik.getFieldProps("password")}
-              placeholder="Password"
-              className="register-input"
-            ></input>
-            {passwordEye ? (
-              <RxEyeClosed className="eyes" onClick={handleEyePassword} />
-            ) : (
-              <MdOutlineRemoveRedEye
-                className="eyes"
-                onClick={handleEyePassword}
-              />
-            )}
+          <div className="container-field">
+            <div className="container-input">
+              <input
+                type={passwordIsVisible ? "password" : "text"}
+                {...formik.getFieldProps("password")}
+                placeholder="Password"
+                className="register-input"
+              ></input>
+              {passwordIsVisible ? (
+                <RxEyeClosed
+                  className="eyes"
+                  onClick={() => {
+                    setPasswordIsVisible(!passwordIsVisible);
+                  }}
+                />
+              ) : (
+                <MdOutlineRemoveRedEye
+                  className="eyes"
+                  onClick={() => {
+                    setPasswordIsVisible(!passwordIsVisible);
+                  }}
+                />
+              )}
+            </div>
+
             <div className="message-container">
               {formik.touched.password && formik.errors.password ? (
                 <>{formik.errors.password}</>
@@ -179,24 +190,31 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          <div className="container--input-password">
-            <input
-              type={confirmPasswordEye ? "password" : "text"}
-              {...formik.getFieldProps("confirmPassword")}
-              placeholder="Confirm Password"
-              className="register-input"
-            ></input>
-            {confirmPasswordEye ? (
-              <RxEyeClosed
-                className="eyes"
-                onClick={handleEyeConfirmPassword}
-              />
-            ) : (
-              <MdOutlineRemoveRedEye
-                className="eyes"
-                onClick={handleEyeConfirmPassword}
-              />
-            )}
+          <div className="container-field">
+            <div className="container-input">
+              <input
+                type={confirmPasswordIsVisible ? "password" : "text"}
+                {...formik.getFieldProps("confirmPassword")}
+                placeholder="Confirm Password"
+                className="register-input"
+              ></input>
+              {confirmPasswordIsVisible ? (
+                <RxEyeClosed
+                  className="eyes"
+                  onClick={() => {
+                    setConfirmPasswordIsVisible(!confirmPasswordIsVisible);
+                  }}
+                />
+              ) : (
+                <MdOutlineRemoveRedEye
+                  className="eyes"
+                  onClick={() => {
+                    setConfirmPasswordIsVisible(!confirmPasswordIsVisible);
+                  }}
+                />
+              )}
+            </div>
+
             <div className="message-container">
               {formik.touched.confirmPassword &&
               formik.errors.confirmPassword ? (
@@ -208,8 +226,11 @@ const RegisterForm = () => {
           </div>
 
           <button className="submit-button" type="submit" disabled={isLoading}>
-            {isLoading ? <Oval className="spinner" stroke="white" /> : null}
-            Register
+            {isLoading ? (
+              <Oval className="spinner" stroke="white" />
+            ) : (
+              "Register"
+            )}
           </button>
 
           <ToastContainer />

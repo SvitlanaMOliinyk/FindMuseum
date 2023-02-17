@@ -5,6 +5,7 @@
   align-items: center;
   text-align: center;
   margin: 50px auto;
+  background-color: white;
 }
 
 .message-container {
@@ -17,10 +18,11 @@
 .header h1 {
   margin: 5px auto;
   font-size: 3rem;
+  color: #3f4e4f;
 }
 
 .login-link {
-  color: rgb(104, 104, 104);
+  color: #3f4e4f;
   font-size: 1.3rem;
 }
 
@@ -36,16 +38,33 @@
   margin: 20px auto;
 }
 
-.register-input {
+.container-input {
   border-radius: 4px;
   background-color: #dcd7c9;
-  padding: 5px 3rem 5px 15px;
-  box-shadow: 0 1px 3px 1px #dcd7c9;
+  padding: 5px 15px;
+  box-shadow: 0 1px 10px 1px #6c7070;
   border: none;
   width: 300px;
   height: 30px;
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: 2px solid #a27b5c;
+  margin: 0 auto;
+}
+
+.register-input {
+  background-color: #dcd7c9;
+  border: none;
+  height: 28px;
+  outline: none;
+  font-size: 1.4rem;
   font-family: "Hubballi", cursive;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
 }
 
 .submit-button {
@@ -58,7 +77,6 @@
   height: 40px;
   font-size: 1.2rem;
   color: #dcd7c9;
-  position: relative;
 }
 
 .submit-button:hover {
@@ -68,20 +86,38 @@
 }
 
 .container--input-password {
-  position: relative;
+  display: flex;
 }
 
 .eyes {
-  position: absolute;
-  top: 0.7rem;
-  right: 1rem;
   cursor: pointer;
 }
 
 .spinner {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  display: table;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 420px) {
+  .header {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .header {
+    width: 250px;
+  }
+
+  .container-input {
+    width: 240px;
+  }
+
+  .register-input {
+    font-size: 1.1rem;
+  }
 }
