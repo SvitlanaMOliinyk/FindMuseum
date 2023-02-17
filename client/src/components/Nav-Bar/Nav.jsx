@@ -66,6 +66,15 @@ const Nav = () => {
                 Log in
               </NavLink>
             </li>
+            <li className="navbar-item">
+              <NavLink
+                to="/register"
+                className={({ isActive }) => (isActive ? "activeBar" : "")}
+                onClick={onClose}
+              >
+                Register
+              </NavLink>
+            </li>
           </ul>
         </div>
       </nav>

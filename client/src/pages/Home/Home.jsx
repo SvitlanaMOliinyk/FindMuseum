@@ -1,5 +1,5 @@
 import React from "react";
-import Goal from "./Goal";
+import Goal from "../../components/Home-Page/Goal-Section/Goal";
 
 import TEST_ID from "./Home.testid";
 
