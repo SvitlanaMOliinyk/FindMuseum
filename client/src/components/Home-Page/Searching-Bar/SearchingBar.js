@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./searching-bar.css";
 
 const SearchingBar = () => {
   const [name, setName] = useState("");
-
-  useEffect(() => {}, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
