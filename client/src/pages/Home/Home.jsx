@@ -1,15 +1,13 @@
 import React from "react";
 import Goal from "../../components/Home-Page/Goal-Section/Goal";
-
-import TEST_ID from "./Home.testid";
+import SearchingBar from "../../components/Home-Page/Searching-Bar/SearchingBar";
 
 const Home = () => {
   return (
-    <div data-testid={TEST_ID.container}>
-      <h1>Find Museum (temp)</h1>
-      <p>Good luck with the project!</p>
+    <main>
       <Goal />
-    </div>
+      <SearchingBar />
+    </main>
   );
 };
 

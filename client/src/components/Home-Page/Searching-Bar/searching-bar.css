@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --textarea-color: #dcd7c9;
+  --background-color: #3f4e4f;
+  --border-color: #a27b5c;
+  --icon-color: #2c3639;
+}
+
+.searching-bar {
+  width: 100vw;
+  display: flex;
+  height: 15vh;
+  background-color: var(--background-color);
+}
+
+.search-form {
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  border: 2px solid var(--border-color);
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control {
+  width: inherit;
+  height: 60%;
+  border: 2px solid var(--border-color);
+  background-color: var(--textarea-color);
+  text-align: center;
+}

@@ -13,7 +13,7 @@ const Nav = () => {
   return (
     <header className="logoAndNavbar">
       <nav className="nav">
-        <div className="logo-navbar-container container">
+        <div className="logo-navbar-container container-nav">
           <Link to="/" onClick={onClose}>
             <img className="logo" src={logo} alt="Logo" width={100} />
           </Link>
