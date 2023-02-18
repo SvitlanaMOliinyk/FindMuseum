@@ -51,6 +51,9 @@
     "husky": "^7.0.0"
   },
   "dependencies": {
-    "concurrently": "^6.4.0"
+    "caniuse-lite": "^1.0.30001453",
+    "concurrently": "^6.4.0",
+    "prop-types": "^15.8.1",
+    "react-icons": "^4.7.1"
   }
 }
