@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RxEyeClosed } from "react-icons/rx";
 import { Oval } from "react-loading-icons";
+import Background from "../../components/registerLoginBackground/Background";
 
 const RegisterForm = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);
@@ -18,9 +19,10 @@ const RegisterForm = () => {
 
   const onSuccess = () => {
     formik.resetForm();
-    // Tostifiy Notification: When the user registered and saved in the database successfully
+    //Tostifiy Notification: When the user registered and saved in the database successfully
     toast.success("You are registered successfully", {
       position: toast.POSITION.TOP_CENTER,
+      className: "toast-position",
     });
   };
 
@@ -78,6 +80,7 @@ const RegisterForm = () => {
     if (error == "Email already exists") {
       toast.error(error, {
         position: toast.POSITION.TOP_CENTER,
+        className: "toast-position",
       });
     }
   }, [error]);
@@ -86,6 +89,7 @@ const RegisterForm = () => {
 
   return (
     <>
+      <Background />
       <div className="register-form">
         <div className="header">
           <h1>Create New Account</h1>

@@ -84,6 +84,7 @@ ul {
 
   .navbar {
     position: fixed;
+    z-index: 9999;
     right: 0px;
     height: 80vh;
     width: 100vw;
