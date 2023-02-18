@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import PropTypes from "prop-types";
-import "./museum.css";
 
 const Museum = ({ museum }) => {
   const { name, image, _id, address } = museum;
