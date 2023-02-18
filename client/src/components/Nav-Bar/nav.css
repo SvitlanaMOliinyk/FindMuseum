@@ -20,7 +20,7 @@ body {
   color: white;
   display: flex;
   height: 20vh;
-  position: relative;
+  position: sticky;
   top: 0;
   font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: 600;
@@ -33,7 +33,7 @@ body {
   justify-content: space-between;
 }
 
-.container {
+.container-nav {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
