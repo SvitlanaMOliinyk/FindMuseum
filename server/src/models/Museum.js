@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
-const { SchemaTypes } = mongoose;
-const museumSchema = new mongoose.Schema({
+const { Schema, SchemaTypes, model } = mongoose;
+
+const museumSchema = new Schema({
   name: { type: String, required: true },
-  category: { type: String, required: true },
+  category: [{ type: String, required: true }],
   description: { type: String, required: true },
   address: {
     city: { type: String, required: true },
@@ -12,6 +13,7 @@ const museumSchema = new mongoose.Schema({
   phone: { type: Number, required: true },
   website: { type: String, required: true },
   price: {
+    toddlers: Number,
     children: Number,
     students: Number,
     adults: { type: Number, required: true },
@@ -27,5 +29,6 @@ const museumSchema = new mongoose.Schema({
     ref: "Comment",
   },
 });
-const Museum = mongoose.model("museums", museumSchema);
+
+const Museum = model("Museum", museumSchema);
 export default Museum;

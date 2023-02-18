@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bg-color: #dcd7c9;
+  --active-navlink-color: #3f4e4f;
+  --navbar-color: #a27b5c;
+  --mobile-navbar-color: #2c3639;
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
+
+.nav {
+  background-color: var(--navbar-color);
+  color: white;
+  display: flex;
+  height: 20vh;
+  position: sticky;
+  top: 0;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 600;
+  width: 100%;
+}
+
+.logo-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container-nav {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.logo {
+  border-radius: 4px;
+  display: flex;
+  color: white;
+}
+
+.burger-menu-icon {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-item a {
+  text-decoration: none;
+  color: white;
+  font-family: monospace;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.navbar-item a:hover {
+  border: 2px solid var(--mobile-navbar-color);
+  border-radius: 4px;
+}
+
+.activeBar {
+  background-color: var(--active-navlink-color);
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    position: fixed;
+    z-index: 9999;
+    right: 0px;
+    height: 80vh;
+    width: 100vw;
+    top: 20vh;
+    display: flex;
+    flex-direction: column;
+    transform: translate(100%);
+    transition: all 0.5s ease-in;
+    justify-content: space-around;
+  }
+
+  .navbar-item {
+    opacity: 0;
+  }
+
+  .navbar.active {
+    background: var(--mobile-navbar-color);
+    transition: all 0.6s ease-in;
+    transform: translate(0%);
+  }
+
+  .navbar.active .navbar-item {
+    opacity: 1;
+  }
+
+  .navbar.active .navbar-item a:hover {
+    background: var(--navbar-color);
+  }
+
+  .burger-menu-icon {
+    display: block;
+    right: 2rem;
+    font-size: clamp(1.5rem, 2.5vw, 4rem);
+    cursor: pointer;
+  }
+}
