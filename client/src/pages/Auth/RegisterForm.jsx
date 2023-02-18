@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./register-form.css";
 import { Link } from "react-router-dom";
@@ -236,8 +236,6 @@ const RegisterForm = () => {
               "Register"
             )}
           </button>
-
-          <ToastContainer />
         </form>
       </div>
     </>

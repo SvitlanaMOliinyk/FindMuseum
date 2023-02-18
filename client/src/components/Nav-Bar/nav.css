@@ -24,6 +24,7 @@ body {
   top: 0;
   font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: 600;
+  width: 100%;
 }
 
 .logo-navbar-container {

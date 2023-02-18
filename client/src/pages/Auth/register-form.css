@@ -10,10 +10,7 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-
-.toast-position {
-  top: -280px;
+  padding-top: 20vh;
 }
 
 .message-container {
