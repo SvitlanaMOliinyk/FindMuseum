@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./museum.css";
 import useFetch from "../../../hooks/useFetch";
-import TEST_ID from "./MuseumList.testid";
 import ViewMuseums from "./ViewMuseums";
+import "./museum.css";
 
 const MuseumList = () => {
   const [museums, setMuseums] = useState(null);
@@ -22,21 +21,16 @@ const MuseumList = () => {
   let content = null;
 
   if (isLoading) {
-    content = <div data-testid={TEST_ID.loadingContainer}>loading...</div>;
+    content = <div>loading...</div>;
   } else if (error != null) {
-    content = (
-      <div data-testid={TEST_ID.errorContainer}>Error: {error.toString()}</div>
-    );
+    content = <div>Error: {error.toString()}</div>;
   } else {
     content = (
       <>
-        <div
-          className="museumsContainer"
-          data-testid={TEST_ID.museumList}
-          data-loaded={museums != null}
-        >
+        <div className="museumsContainer">
           {museums &&
             museums.slice(0, 4).map((museum) => {
+              <h1>Hello</h1>;
               return <ViewMuseums key={museum._id} museum={museum} />;
             })}
         </div>
@@ -44,7 +38,7 @@ const MuseumList = () => {
     );
   }
 
-  return <div data-testid={TEST_ID.container}>{content}</div>;
+  return <div>{content}</div>;
 };
 
 export default MuseumList;

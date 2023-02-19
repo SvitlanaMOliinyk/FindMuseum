@@ -1,21 +1,15 @@
 * {
   box-sizing: border-box;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-body {
   margin: 0;
+  padding: 0;
 }
-
 .museumsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
   text-align: center;
+  margin-top: 30px;
 }
 
 .museum {
