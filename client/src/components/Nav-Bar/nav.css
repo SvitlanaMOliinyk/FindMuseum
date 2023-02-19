@@ -19,10 +19,11 @@ body {
   background-color: var(--navbar-color);
   color: white;
   display: flex;
-  height: 20vh;
-  /* position: sticky; */
+  height: 10vh;
+  position: fixed;
+  z-index: 7;
   top: 0;
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(1.5rem, 2vw, 1rem);
   font-weight: 600;
   width: 100%;
 }
@@ -43,8 +44,11 @@ body {
 
 .logo {
   border-radius: 4px;
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
   display: flex;
   color: white;
+  width: 25%;
 }
 
 .burger-menu-icon {
@@ -87,9 +91,9 @@ ul {
     position: fixed;
     z-index: 99999;
     right: 0px;
-    height: 80vh;
+    height: 90vh;
     width: 100vw;
-    top: 20vh;
+    top: 10vh;
     display: flex;
     flex-direction: column;
     transform: translate(100%);
@@ -118,7 +122,9 @@ ul {
   .burger-menu-icon {
     display: block;
     right: 2rem;
-    font-size: clamp(1.5rem, 2.5vw, 4rem);
+    font-size: clamp(2.3rem, 2.5vw, 4rem);
     cursor: pointer;
+    /* yeni ekledik */
+    margin-top: 0.7rem;
   }
 }
