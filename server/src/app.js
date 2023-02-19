@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import userRouter from "./routes/user.js";
+import museumRouter from "./routes/museum.js";
 
 // Create an express server
 const app = express();
@@ -16,6 +17,8 @@ app.use(cors());
  * We use /api/ at the start of every route!
  * As we also host our client code on heroku we want to separate the API endpoints.
  */
+
 app.use("/api/user", userRouter);
+app.use("/api/museum", museumRouter);
 
 export default app;
