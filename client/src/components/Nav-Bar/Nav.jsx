@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { ToastContainer } from "react-toastify";
 import logo from "../../assets/img/logo-transparent.png";
 import "./nav.css";
 
@@ -12,6 +13,7 @@ const Nav = () => {
 
   return (
     <header className="logoAndNavbar">
+      <ToastContainer />
       <nav className="nav">
         <div className="logo-navbar-container container-nav">
           <Link to="/" onClick={onClose}>
