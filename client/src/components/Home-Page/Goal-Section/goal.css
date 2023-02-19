@@ -13,12 +13,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   height: auto;
-  /* background-color: #2c3639; */
   background: rgba(0, 0, 0, 0.7)
     url("https://res.cloudinary.com/diyopzdxb/image/upload/v1676304771/cars-images/68592_fullimage_frans_hals_rendezvous_1360x430_0_m6jwb4.jpg");
   background-size: cover;
-  /* filter: brightness(40%); */
   background-blend-mode: darken;
+  margin-top: 10vh;
 }
 
 .goal {

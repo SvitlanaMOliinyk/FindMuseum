@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RxEyeClosed } from "react-icons/rx";
 import { Oval } from "react-loading-icons";
-import Background from "../../components/registerLoginBackground/Background";
+import background from "../../assets/img/register-background.jpeg";
 
 const RegisterForm = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);
@@ -88,8 +88,15 @@ const RegisterForm = () => {
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   return (
-    <>
-      <Background />
+    <div
+      style={{
+        background: `lisnear-gradient(rgba(255, 255, 255, 0.7), rgba(255,255,255,0.7)), url(${background}) no-repeat`,
+        backgroundSize: "cover",
+        width: "100%",
+        height: "100vh",
+        position: "fixed",
+      }}
+    >
       <div className="register-form">
         <div className="header">
           <h1>Create New Account</h1>
@@ -238,7 +245,7 @@ const RegisterForm = () => {
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
