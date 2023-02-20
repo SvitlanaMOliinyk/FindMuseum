@@ -4,6 +4,7 @@ import Nav from "./components/Nav-Bar/Nav";
 import LoginForm from "./pages/Auth/LoginForm";
 import RegisterForm from "./pages/Auth/RegisterForm";
 import Home from "./pages/Home/Home";
+import Footer from "./components/Footer/footer";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
       </Routes>
+      <Footer />
     </>
   );
 };
