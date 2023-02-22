@@ -13,6 +13,7 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/museums/:key" element={<Museums />} />
         <Route path="/museums" element={<Museums />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />

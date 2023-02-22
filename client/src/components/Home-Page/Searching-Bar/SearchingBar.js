@@ -4,14 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 
 const SearchingBar = () => {
-  const [name, setName] = useState("");
+  const [key, setKey] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (name.length > 0) {
-      navigate("/museums", { state: { query: name } });
-    }
+    navigate(`/museums/${key}`);
   };
 
   return (
@@ -25,8 +23,8 @@ const SearchingBar = () => {
           className="form-control"
           placeholder="Enter the city or the name of the museum"
           id="search-name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={key}
+          onChange={(e) => setKey(e.target.value)}
         />
       </form>
     </div>

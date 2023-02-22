@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import useFetch from "../../hooks/useFetch";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
 
 const Museums = () => {
-  const location = useLocation();
+  const { key } = useParams();
   const [museums, setMuseums] = useState([]);
-  const { isLoading, error, performFetch, cancelFetch } = useFetch(
-    `/museum/museumName/${location.state.query}`,
+  const { isLoading, error, performFetch } = useFetch(
+    `/museum/${key}`,
     (response) => {
-      cancelFetch();
       setMuseums(response.result);
     }
   );
 
   useEffect(() => {
     performFetch();
-
-    if (museums.length > 0) {
-      cancelFetch();
-    }
   }, []);
 
   return (
