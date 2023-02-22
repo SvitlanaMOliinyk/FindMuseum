@@ -11,3 +11,21 @@ export const getMuseums = async (req, res) => {
     });
   }
 };
+
+export const getMuseumNamePlace = async (req, res) => {
+  const { key } = req.params;
+  try {
+    let museumNamePlaceResult = await Museum.find({
+      $or: [
+        { name: { $regex: key, $options: "i" } },
+        { "address.city": { $regex: key, $options: "i" } },
+      ],
+    }).exec();
+    res.status(200).json({ success: true, result: museumNamePlaceResult });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      msg: `Museum with the name ${key} was not found`,
+    });
+  }
+};
