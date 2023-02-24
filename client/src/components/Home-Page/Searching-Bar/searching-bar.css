@@ -8,15 +8,16 @@
 .searching-bar {
   width: 100%;
   display: flex;
-  height: 15vh;
+  height: 10vh;
   background-color: var(--background-color);
 }
 
 .search-form {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   margin: auto;
   display: flex;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
   border: 2px solid var(--border-color);
   align-items: center;
   justify-content: center;
@@ -24,8 +25,22 @@
 
 .form-control {
   width: inherit;
-  height: 60%;
+  height: 70%;
   border: 2px solid var(--border-color);
   background-color: var(--textarea-color);
   text-align: center;
+}
+.search-icon {
+  position: absolute;
+  left: 10%;
+  padding: 0.3rem;
+  color: var(--border-color);
+}
+
+.search-bar-button {
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--border-color);
+  position: absolute;
+  right: 10%;
 }
