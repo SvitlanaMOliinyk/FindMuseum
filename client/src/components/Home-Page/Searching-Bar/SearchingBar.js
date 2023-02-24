@@ -26,6 +26,9 @@ const SearchingBar = () => {
           value={key}
           onChange={(e) => setKey(e.target.value)}
         />
+        <button className="search-bar-button" type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

@@ -36,3 +36,11 @@
   padding: 0.3rem;
   color: var(--border-color);
 }
+
+.search-bar-button {
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--border-color);
+  position: absolute;
+  right: 10%;
+}

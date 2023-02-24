@@ -22,12 +22,14 @@ const Museums = () => {
     <>
       {isLoading ? (
         <p>Loading...</p>
-      ) : !error ? (
+      ) : !error && museums.length > 0 ? (
         museums.map((museum) => (
           <ViewMuseums key={museum._id} museum={museum} />
         ))
+      ) : !error && !museums.length ? (
+        <p>Such museum is not found!</p>
       ) : (
-        error
+        <p>{error}</p>
       )}
     </>
   );
