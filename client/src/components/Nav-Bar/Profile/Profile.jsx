@@ -24,7 +24,7 @@ const Profile = ({ onClose }) => {
         <Link
           to={props.link}
           onClick={() => {
-            props.logout;
+            props.logout();
             onClose();
           }}
         >
