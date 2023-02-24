@@ -23,7 +23,7 @@ const LoginForm = () => {
     //success notification
     toast.success(
       <div>
-        Hi {firstName}!
+        Welcome {firstName}!
         <br /> You logged in successfully.
       </div>,
       {
