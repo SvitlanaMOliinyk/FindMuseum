@@ -8,7 +8,7 @@ const Museums = () => {
   const { key } = useParams();
   const [museums, setMuseums] = useState([]);
   const { isLoading, error, performFetch } = useFetch(
-    `/museum/${key}`,
+    `/museum/search/${key}`,
     (response) => {
       setMuseums(response.result);
     }
