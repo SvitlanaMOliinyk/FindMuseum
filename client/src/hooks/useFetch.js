@@ -52,6 +52,8 @@ const useFetch = (route, onReceived) => {
     const fetchData = async () => {
       // We add the /api subsection here to make it a single point of change if our configuration changes
       const url = `${process.env.BASE_SERVER_URL}/api${route}`;
+      console.log("url:", url);
+      console.log("options: ", options);
 
       const res = await fetch(url, { ...baseOptions, ...options, signal });
 
@@ -64,6 +66,7 @@ const useFetch = (route, onReceived) => {
       }
 
       const jsonResult = await res.json();
+      console.log("jsonResult usefetch:", jsonResult);
 
       if (jsonResult.success === true) {
         onReceived(jsonResult);
@@ -78,7 +81,7 @@ const useFetch = (route, onReceived) => {
       // Gokhan: I added setTimeout to simulate the spinner icons like loading in register button
       setTimeout(() => {
         setIsLoading(false);
-      }, 7000);
+      }, 5000);
     };
 
     fetchData().catch((error) => {

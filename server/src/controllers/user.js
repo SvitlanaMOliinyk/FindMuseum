@@ -39,3 +39,8 @@ export const createUser = async (req, res) => {
     }
   }
 };
+
+// I will fill this code later
+// export const getUserById = (req, res) => {
+
+// }

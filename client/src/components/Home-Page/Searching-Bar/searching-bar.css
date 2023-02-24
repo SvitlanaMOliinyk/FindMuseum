@@ -3,12 +3,6 @@
   margin: 0;
   padding: 0;
 }
-:root {
-  --textarea-color: #dcd7c9;
-  --background-color: #3f4e4f;
-  --border-color: #a27b5c;
-  --icon-color: #2c3639;
-}
 
 .searching-bar {
   width: 100vw;

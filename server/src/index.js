@@ -19,7 +19,7 @@ if (port == null) {
 const startServer = async () => {
   try {
     await connectDB();
-    app.listen(port, () => {
+    app.listen(port, "localhost", () => {
       logInfo(`Server started on port ${port}`);
     });
   } catch (error) {
