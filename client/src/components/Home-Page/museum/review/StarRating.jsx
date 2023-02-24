@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaStar } from "react-icons/fa";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StarRating = ({ formData, setFormData }) => {
   const colors = {
@@ -35,6 +36,11 @@ const StarRating = ({ formData, setFormData }) => {
       </Stars>
     </>
   );
+};
+
+StarRating.propTypes = {
+  formData: PropTypes.object,
+  setFormData: PropTypes.func,
 };
 
 const Rating = styled.div`

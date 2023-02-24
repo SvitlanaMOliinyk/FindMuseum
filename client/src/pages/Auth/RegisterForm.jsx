@@ -89,13 +89,11 @@ const RegisterForm = () => {
 
   return (
     <div
+      className="container--register-form"
       style={{
         background: `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255,255,255,0.7)), url(${background}) no-repeat`,
         backgroundSize: "cover",
         backgroundPosition: "50%",
-        width: "100%",
-        height: "100vh",
-        position: "fixed",
       }}
     >
       <div className="register-form">

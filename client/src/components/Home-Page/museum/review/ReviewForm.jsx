@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import styled from "styled-components";
-import * as Yup from "yup";
+import PropTypes from "prop-types";
+
 // import { useFormik } from "formik";
 import useFetch from "../../../../hooks/useFetch";
 import { toast } from "react-toastify";
@@ -16,9 +17,11 @@ const ReviewForm = ({ museumId }) => {
     review: "",
   });
 
-  const onSuccess = (response) => {
-    console.log("onSuccess :", response);
+  ReviewForm.propTypes = {
+    museumId: PropTypes.string,
+  };
 
+  const onSuccess = () => {
     toast.success("Thanks for your review", {
       position: "top-center",
       autoClose: 3000,
@@ -47,7 +50,6 @@ const ReviewForm = ({ museumId }) => {
   const handleFormData = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData);
   };
 
   const handleSubmit = (e) => {
@@ -63,7 +65,6 @@ const ReviewForm = ({ museumId }) => {
       });
     } catch (error) {
       toast.error(error);
-      console.log(error);
     }
   };
 

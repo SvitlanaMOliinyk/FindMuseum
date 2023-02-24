@@ -9,9 +9,9 @@ const museumSchema = new mongoose.Schema({
     postcode: { type: String, required: true },
     street: { type: String, required: true },
   },
-  location:{
-    map: { type: String, required: true},
-    iframe: { type: String, required: true},
+  location: {
+    map: { type: String, required: true },
+    iframe: { type: String, required: true },
   },
   phone: { type: Number, required: true },
   website: { type: String, required: true },
@@ -27,10 +27,12 @@ const museumSchema = new mongoose.Schema({
     url: { type: String, required: true },
   },
   openingHours: [{ day: String, hours: String }],
-  comments: [{
-    type: SchemaTypes.ObjectId,
-    ref: "Comment"
-}],
+  comments: [
+    {
+      type: SchemaTypes.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 const Museum = mongoose.model("museums", museumSchema);
 export default Museum;

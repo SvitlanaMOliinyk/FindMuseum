@@ -12,18 +12,16 @@ const MuseumDetails = () => {
   // I will get the info below to set userId to the comments
   // const {_id } = JSON.parse(localStorage.getItem("authUser"));
   const [museum, setMuseum] = useState({});
-  const { isLoading, error, performFetch, cancelFetch } = useFetch(
+  const { performFetch, cancelFetch } = useFetch(
     `/museum/${museumId}`,
     (response) => {
-      console.log("Museum1", response.result[0]);
-      console.log("category", response.result[0].category);
       setMuseum(response.result[0]);
     }
   );
 
   useEffect(() => {
     performFetch();
-    console.log("Museum", museum);
+
     return cancelFetch;
   }, [museumId]);
 
