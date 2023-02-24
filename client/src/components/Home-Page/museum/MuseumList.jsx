@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../../../hooks/useFetch";
 import ViewMuseums from "./ViewMuseums";
 import "./museum.css";
+import Loading from "../../common/loading/Loading";
 
 const MuseumList = () => {
   const [museums, setMuseums] = useState(null);
@@ -21,7 +22,7 @@ const MuseumList = () => {
   let content = null;
 
   if (isLoading) {
-    content = <div>loading...</div>;
+    content = <Loading />;
   } else if (error != null) {
     content = <div>Error: {error.toString()}</div>;
   } else {
