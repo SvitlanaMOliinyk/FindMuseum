@@ -5,7 +5,6 @@ import validationErrorMessage from "../util/validationErrorMessage.js";
 export const createComment = async (req, res) => {
   try {
     const { comment } = req.body;
-    console.log("req.body from controller: ", JSON.stringify(req.body));
     if (typeof comment !== "object") {
       res.status(400).json({
         success: false,
@@ -25,7 +24,6 @@ export const createComment = async (req, res) => {
         .json({ success: false, msg: validationErrorMessage(errorList) });
     } else {
       const newComment = await Comment.create(comment);
-      console.log("newComment: ", newComment);
 
       res.status(201).json({ success: true, comment: newComment });
     }
