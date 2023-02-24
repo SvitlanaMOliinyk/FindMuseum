@@ -7,20 +7,25 @@ import RegisterForm from "./pages/Auth/RegisterForm";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/footer";
 import Museums from "./pages/Museums/Museums";
+import { AuthProvider } from "./context/authContext";
+import MyProfile from "./pages/MyProfile/MyProfile";
 
 const App = () => {
   return (
     <>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/museums/:key" element={<Museums />} />
-        <Route path="/museums" element={<Museums />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/museum/:museumId" element={<MuseumDetails />} />
-      </Routes>
-      <Footer />
+      <AuthProvider>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/museums/:key" element={<Museums />} />
+          <Route path="/museums" element={<Museums />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/museum/:museumId" element={<MuseumDetails />} />
+          <Route path="/profile/:id" element={<MyProfile />} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </>
   );
 };
