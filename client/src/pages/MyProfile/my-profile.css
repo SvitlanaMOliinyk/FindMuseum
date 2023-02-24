@@ -1,0 +1,83 @@
+.my-profile-container {
+  margin-top: 10vh;
+  display: flex;
+}
+
+.my-profile {
+  padding: 20px;
+}
+
+.my-profile-settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.my-profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-picture-settings {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.profile-picture-settings img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+.pp-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: blueviolet;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.profile-picture-settings label {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.profile-picture-settings input {
+  color: gray;
+  margin: 10px 0;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+}
+
+.profile-update-btn {
+  border-radius: 4px;
+  background-color: #3f4e4f;
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: #dcd7c9;
+  align-items: center;
+  cursor: pointer;
+}
+
+.update-profile {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.profile-p {
+  height: 40px;
+  width: 40px;
+}

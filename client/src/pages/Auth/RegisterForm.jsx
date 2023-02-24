@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./register-form.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RxEyeClosed } from "react-icons/rx";
 import { Oval } from "react-loading-icons";
@@ -15,6 +15,7 @@ const RegisterForm = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);
   const [confirmPasswordIsVisible, setConfirmPasswordIsVisible] =
     useState(true);
+  const navigate = useNavigate();
   // ******************** Required codes for useFetch; START *****************************
 
   const onSuccess = () => {
@@ -22,8 +23,11 @@ const RegisterForm = () => {
     //Tostifiy Notification: When the user registered and saved in the database successfully
     toast.success("You are registered successfully", {
       position: toast.POSITION.TOP_CENTER,
-      className: "toast-position",
+      autoClose: 2000,
     });
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
   };
 
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
@@ -80,7 +84,7 @@ const RegisterForm = () => {
     if (error == "Email already exists") {
       toast.error(error, {
         position: toast.POSITION.TOP_CENTER,
-        className: "toast-position",
+        autoClose: 2000,
       });
     }
   }, [error]);

@@ -8,4 +8,12 @@
 
 body {
   font-family: "Hubballi", cursive;
+  background-color: var(--main-bg-color);
+}
+
+:root {
+  --main-bg-color: #dcd7c9;
+  --active-navlink-color: #3f4e4f;
+  --navbar-color: #a27b5c;
+  --mobile-navbar-color: #2c3639;
 }

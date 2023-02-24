@@ -5,17 +5,22 @@ import LoginForm from "./pages/Auth/LoginForm";
 import RegisterForm from "./pages/Auth/RegisterForm";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/footer";
+import { AuthProvider } from "./context/authContext";
+import MyProfile from "./pages/MyProfile/MyProfile";
 
 const App = () => {
   return (
     <>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm />} />
-      </Routes>
-      <Footer />
+      <AuthProvider>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/profile/:id" element={<MyProfile />} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </>
   );
 };

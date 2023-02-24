@@ -4,9 +4,14 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
 import logo from "../../assets/img/logo-transparent.png";
 import "./nav.css";
+import Profile from "./Profile/Profile";
+import { useAuth } from "../../context/authContext";
 
 const Nav = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+  // get user from context
+  const { isLoggedIn } = useAuth();
 
   const handleClick = () => setMenuIsOpen(!menuIsOpen);
   const onClose = () => setMenuIsOpen(false);
@@ -41,15 +46,7 @@ const Nav = () => {
                 Museums
               </NavLink>
             </li>
-            <li className="navbar-item">
-              <NavLink
-                to="favorites"
-                className={({ isActive }) => (isActive ? "activeBar" : "")}
-                onClick={onClose}
-              >
-                Favorites
-              </NavLink>
-            </li>
+
             <li className="navbar-item">
               <NavLink
                 to="offers"
@@ -59,24 +56,31 @@ const Nav = () => {
                 Offers
               </NavLink>
             </li>
-            <li className="navbar-item">
-              <NavLink
-                to="/user"
-                className={({ isActive }) => (isActive ? "activeBar" : "")}
-                onClick={onClose}
-              >
-                Log in
-              </NavLink>
-            </li>
-            <li className="navbar-item">
-              <NavLink
-                to="/register"
-                className={({ isActive }) => (isActive ? "activeBar" : "")}
-                onClick={onClose}
-              >
-                Register
-              </NavLink>
-            </li>
+
+            {isLoggedIn ? (
+              <Profile onClose={onClose} />
+            ) : (
+              <>
+                <li className="navbar-item">
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) => (isActive ? "activeBar" : "")}
+                    onClick={onClose}
+                  >
+                    Log in
+                  </NavLink>
+                </li>
+                <li className="navbar-item">
+                  <NavLink
+                    to="/register"
+                    className={({ isActive }) => (isActive ? "activeBar" : "")}
+                    onClick={onClose}
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>
