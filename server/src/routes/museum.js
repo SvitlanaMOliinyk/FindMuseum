@@ -8,7 +8,7 @@ import {
 const museumRouter = express.Router();
 
 museumRouter.get("/", getMuseums);
-museumRouter.get("/:key", getMuseumNamePlace);
+museumRouter.get("/search/:key", getMuseumNamePlace);
 
 // Gokhan Added
 museumRouter.get("/:museumId", getMuseumById);
