@@ -1,0 +1,12 @@
+.all-museums {
+  display: flex;
+  flex: 9.5;
+  margin-top: 70px;
+  flex-direction: column;
+}
+
+.all-museums-card {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}

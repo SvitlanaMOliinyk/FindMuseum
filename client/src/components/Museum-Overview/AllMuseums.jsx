@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./all-museums.css";
+import SearchingBar from "../Home-Page/Searching-Bar/SearchingBar";
 import useFetch from "../../hooks/useFetch";
-import Loading from "../common/loading/Loading";
-import Museum from "./Museum";
+import MuseumCard from "./MuseumCard";
 
 export default function AllMuseums() {
   const [museums, setMuseums] = useState(null);
-  const { isLoading, error, performFetch, cancelFetch } = useFetch(
-    "/museum",
-    (response) => {
-      setMuseums(response.result);
-    }
-  );
+
+  const { performFetch, cancelFetch } = useFetch("/museum", (response) => {
+    setMuseums(response.result);
+  });
 
   useEffect(() => {
     performFetch();
@@ -18,25 +17,20 @@ export default function AllMuseums() {
     return cancelFetch;
   }, []);
 
-  let content = null;
+  return (
+    <div className="all-museums">
+      <div className="search-bar">
+        <SearchingBar />
+      </div>
+      <div className="selected-filter-counter"></div>
+      <div className="all-museums-card">
+        {museums &&
+          museums.map((museum) => {
+            <h1>Hello</h1>;
 
-  if (isLoading) {
-    content = <Loading />;
-  } else if (error != null) {
-    content = <div>Error: {error.toString()}</div>;
-  } else {
-    content = (
-      <>
-        <div className="museumsContainer">
-          {museums &&
-            museums.map((museum) => {
-              <h1>Hello</h1>;
-              return <Museum key={museum._id} museum={museum} />;
-            })}
-        </div>
-      </>
-    );
-  }
-
-  return <div>{content}</div>;
+            return <MuseumCard key={museum._id} museum={museum} />;
+          })}
+      </div>
+    </div>
+  );
 }
