@@ -9,6 +9,9 @@ import Footer from "./components/Footer/footer";
 import Museums from "./pages/Museums/Museums";
 import { AuthProvider } from "./context/authContext";
 import MyProfile from "./pages/MyProfile/MyProfile";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
+import OtpInput from "./pages/Auth/OTPInput";
 
 const App = () => {
   return (
@@ -23,6 +26,9 @@ const App = () => {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/museum/:museumId" element={<MuseumDetails />} />
           <Route path="/profile/:id" element={<MyProfile />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/otp" element={<OtpInput />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
         </Routes>
         <Footer />
       </AuthProvider>

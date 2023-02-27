@@ -1,6 +1,6 @@
 import User, { validateUser } from "../models/User.js";
-
 import { logError } from "../util/logging.js";
+import sendEmail from "../util/sendEmail.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 
 export const createUser = async (req, res) => {
@@ -65,30 +65,26 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const updateUser = async (req, res) => {
+export const forgotPassword = async (req, res) => {
   try {
-    const { user } = req.body;
-    if (typeof user !== "object") {
-      return res.status(400).json({
-        success: false,
-        msg: `You need to provide a 'user' object. Received: ${JSON.stringify(
-          user
-        )}`,
-      });
-    }
+    const { email } = req.body;
 
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: user,
-      },
-      { new: true }
-    );
-    res.status(200).json({ success: true, user: updatedUser });
-  } catch (err) {
-    logError(err);
-    res
-      .status(500)
-      .json({ success: false, msg: "You can update only your account" });
+    const userData = await User.findOne({ email });
+
+    if (!userData) {
+      res.status(404).json({ success: false, msg: "User Not Exist!" });
+      return;
+    } else {
+      sendEmail(email)
+        .then(res.status(200).json({ success: true }))
+        .catch((error) => res.status(500).send(error.message));
+      return;
+    }
+  } catch (error) {
+    logError(error);
+    res.status(500).json({
+      success: false,
+      msg: "Unable to reset password, try again later",
+    });
   }
 };
