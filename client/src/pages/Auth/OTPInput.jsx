@@ -1,9 +1,7 @@
 import React from "react";
 
 const OtpInput = () => {
-  const [disable, setDisable] = useState(true);
-
-  return <div></div>;
+  return <div>OTP Page</div>;
 };
 
 export default OtpInput;
