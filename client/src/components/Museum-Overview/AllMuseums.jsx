@@ -1,0 +1,42 @@
+import React, { useEffect, useState } from "react";
+import useFetch from "../../hooks/useFetch";
+import Loading from "../common/loading/Loading";
+import Museum from "./Museum";
+
+export default function AllMuseums() {
+  const [museums, setMuseums] = useState(null);
+  const { isLoading, error, performFetch, cancelFetch } = useFetch(
+    "/museum",
+    (response) => {
+      setMuseums(response.result);
+    }
+  );
+
+  useEffect(() => {
+    performFetch();
+
+    return cancelFetch;
+  }, []);
+
+  let content = null;
+
+  if (isLoading) {
+    content = <Loading />;
+  } else if (error != null) {
+    content = <div>Error: {error.toString()}</div>;
+  } else {
+    content = (
+      <>
+        <div className="museumsContainer">
+          {museums &&
+            museums.map((museum) => {
+              <h1>Hello</h1>;
+              return <Museum key={museum._id} museum={museum} />;
+            })}
+        </div>
+      </>
+    );
+  }
+
+  return <div>{content}</div>;
+}
