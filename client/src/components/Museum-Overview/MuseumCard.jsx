@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import React from "react";
 import PropTypes from "prop-types";
 import "./museum-card.css";
-import { MdLocationOn, MdCategory } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
+import { GiGreekTemple } from "react-icons/gi";
 
 const MuseumCard = ({ museum }) => {
   const { name, image, _id, address, category } = museum;
@@ -24,7 +25,7 @@ const MuseumCard = ({ museum }) => {
             <h2 className="museum-name-card">{name}</h2>
             <div className="museum-card-body">
               <div className="museum-card-body-content-category">
-                <MdCategory />
+                <GiGreekTemple />
                 {category}
               </div>
               <br />
