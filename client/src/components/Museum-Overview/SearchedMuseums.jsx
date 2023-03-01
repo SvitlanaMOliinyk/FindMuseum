@@ -5,18 +5,13 @@ import SearchingBar from "../Home-Page/Searching-Bar/SearchingBar";
 import "./searched-museums.css";
 import { useMuseums } from "../../context/museumContext";
 import FilterBar from "./FilterBar";
+import NotFound from "./NotFound";
 
 export default function SearchedMuseums() {
   const { key } = useParams();
   const { museums } = useMuseums();
   const [activeFilterList, setActiveFilterList] = useState([]);
-  const filteredMuseum = museums.filter((museum) => {
-    if (activeFilterList?.includes(museum.address.city)) {
-      return museum;
-    } else if (activeFilterList?.includes(museum.category)) {
-      return museum;
-    }
-  });
+  const [activePriceList, setActivePriceList] = useState([]);
 
   const searchedMuseum = museums.filter((museum) => {
     if (!key) {
@@ -29,31 +24,77 @@ export default function SearchedMuseums() {
       return museum;
     }
   });
+
+  const filteredMuseum = searchedMuseum.filter((museum) => {
+    if (activeFilterList?.includes(museum.address.city)) {
+      return museum;
+    } else if (activeFilterList?.includes(museum.category)) {
+      return museum;
+    } else if (activeFilterList?.includes(museum.rating.toString())) {
+      return museum;
+    } else if (
+      activePriceList?.some(
+        (item) =>
+          museum.price.adults >= item.minPrice &&
+          museum.price.adults < item.maxPrice
+      )
+    ) {
+      return museum;
+    }
+  });
+
   return (
     <>
       <FilterBar
         activeFilterList={activeFilterList}
         setActiveFilterList={setActiveFilterList}
+        museumData={searchedMuseum}
+        setActivePriceList={setActivePriceList}
       />
       <div className="searched-museums">
         <div className="search-bar">
           <SearchingBar />
         </div>
-        <div className="selected-filter-counter"></div>
-        {activeFilterList.length > 0 ? (
-          <div className="all-museums-card">
-            {filteredMuseum &&
-              filteredMuseum.map((museum) => {
-                return <MuseumCard key={museum._id} museum={museum} />;
-              })}
-          </div>
+        {activeFilterList.length > 0 || activePriceList.length > 0 ? (
+          <>
+            <div className="selected-filter-counter">
+              <b>{filteredMuseum.length} museums</b> &nbsp;found
+            </div>
+            <div className="all-museums-card">
+              <>
+                {filteredMuseum.length > 0 ? (
+                  <>
+                    {filteredMuseum &&
+                      filteredMuseum.map((museum) => {
+                        return <MuseumCard key={museum._id} museum={museum} />;
+                      })}
+                  </>
+                ) : (
+                  <NotFound />
+                )}
+              </>
+            </div>
+          </>
         ) : (
-          <div className="searched-museums-cards">
-            {searchedMuseum &&
-              searchedMuseum.map((museum) => {
-                return <MuseumCard key={museum._id} museum={museum} />;
-              })}
-          </div>
+          <>
+            <div className="selected-filter-counter">
+              <b>{searchedMuseum.length} museums</b> &nbsp;found
+            </div>
+            <div className="searched-museums-cards">
+              <>
+                {searchedMuseum.length > 0 ? (
+                  <>
+                    {searchedMuseum &&
+                      searchedMuseum.map((museum) => {
+                        return <MuseumCard key={museum._id} museum={museum} />;
+                      })}
+                  </>
+                ) : (
+                  <NotFound />
+                )}
+              </>
+            </div>
+          </>
         )}
       </div>
     </>

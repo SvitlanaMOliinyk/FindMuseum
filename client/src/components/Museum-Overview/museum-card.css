@@ -41,6 +41,7 @@
 
 .museum-card-body-content-category {
   display: flex;
+  min-height: 30px;
 }
 
 .museum-card-body-content-address {

@@ -1,6 +1,12 @@
 .museum-overview {
   margin-top: 10vh;
   display: flex;
-  margin-left: 2vw;
-  margin-right: 2vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
+}
+
+@media (max-width: 540px) {
+  .museum-overview {
+    flex-direction: column;
+  }
 }
