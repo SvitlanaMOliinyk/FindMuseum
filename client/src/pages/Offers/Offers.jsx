@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import OfferItem from "./OfferItem";
+import Loading from "../../components/common/loading/Loading";
 import "./offers.css";
 import background from "../../assets/museums/t3.jpeg";
 
@@ -38,7 +39,7 @@ const Offers = () => {
         </p>
       </div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : !error && offers?.length > 0 ? (
         <div className="offers-part">
           {offers.map((offer) => (
