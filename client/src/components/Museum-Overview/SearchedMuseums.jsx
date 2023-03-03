@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MuseumCard from "./MuseumCard";
 import SearchingBar from "../Home-Page/Searching-Bar/SearchingBar";
@@ -11,14 +11,27 @@ import Pagination from "../common/pagination/Pagination";
 export default function SearchedMuseums() {
   const { key } = useParams();
   const { museums } = useMuseums();
-  const [activeFilterList, setActiveFilterList] = useState([]);
-  const [activePriceList, setActivePriceList] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [museumsPerPage] = useState(4);
 
   const indexOfLastMuseum = currentPage * museumsPerPage;
   const indexOfFirstMuseum = indexOfLastMuseum - museumsPerPage;
+
+  //Filter lists by city, category, rating and price
+  const [activeCityFilterList, setActiveCityFilterList] = useState([]);
+  const [activeCategoryFilterList, setActiveCategoryFilterList] = useState([]);
+  const [activeRatingFilterList, setActiveRatingFilterList] = useState([]);
+  const [activePriceList, setActivePriceList] = useState([]);
+
+  //Museum lists by city, category and rating
+  const [cityFilteredMuseum, setCityFilteredMuseum] = useState([]);
+  const [categoryFilteredMuseum, setCategoryFilteredMuseum] = useState([]);
+  const [ratingFilteredMuseum, setRatingFilteredMuseum] = useState([]);
+  const [priceFilteredMuseum, setPriceFilteredMuseum] = useState([]);
+
+  //price index value
+  const [activePriceIndex, setActivePriceIndex] = useState(null);
 
   const searchedMuseum = museums.filter((museum) => {
     if (!key) {
@@ -38,19 +51,72 @@ export default function SearchedMuseums() {
   );
   const searchedTotalPages = Math.ceil(searchedMuseum?.length / museumsPerPage);
 
-  const filteredMuseum = searchedMuseum.filter((museum) => {
-    if (activeFilterList?.includes(museum.address.city)) {
-      return museum;
-    } else if (activeFilterList?.includes(museum.category)) {
-      return museum;
-    } else if (activeFilterList?.includes(museum.rating.toString())) {
-      return museum;
-    } else if (
-      activePriceList?.some(
-        (item) =>
-          museum.price.adults >= item.minPrice &&
-          museum.price.adults < item.maxPrice
-      )
+  useEffect(() => {
+    // city filtering
+    if (activeCityFilterList.length > 0) {
+      let cityMuseums = searchedMuseum.filter((museum) => {
+        if (activeCityFilterList?.includes(museum.address.city)) {
+          return museum;
+        }
+      });
+      setCityFilteredMuseum(cityMuseums);
+    } else {
+      setCityFilteredMuseum(searchedMuseum);
+    }
+
+    // category filtering
+    if (activeCategoryFilterList.length > 0) {
+      let categoryMuseums = searchedMuseum.filter((museum) => {
+        if (activeCategoryFilterList?.includes(museum.category)) {
+          return museum;
+        }
+      });
+      setCategoryFilteredMuseum(categoryMuseums);
+    } else {
+      setCategoryFilteredMuseum(searchedMuseum);
+    }
+
+    // rating filtering
+    if (activeRatingFilterList.length > 0) {
+      let ratingMuseums = searchedMuseum.filter((museum) => {
+        if (activeRatingFilterList?.includes(museum.rating.toString())) {
+          return museum;
+        }
+      });
+      setRatingFilteredMuseum(ratingMuseums);
+    } else {
+      setRatingFilteredMuseum(searchedMuseum);
+    }
+
+    // price filtering
+    if (activePriceList.length > 0) {
+      let priceMuseums = searchedMuseum.filter((museum) => {
+        if (
+          activePriceList?.some(
+            (item) =>
+              museum.price.adults >= item.minPrice &&
+              museum.price.adults < item.maxPrice
+          )
+        ) {
+          return museum;
+        }
+      });
+      setPriceFilteredMuseum(priceMuseums);
+    } else {
+      setPriceFilteredMuseum(searchedMuseum);
+    }
+  }, [
+    activeCityFilterList,
+    activeCategoryFilterList,
+    activeRatingFilterList,
+    activePriceList,
+  ]);
+
+  const filteredMuseum = cityFilteredMuseum.filter((museum) => {
+    if (
+      categoryFilteredMuseum.includes(museum) &&
+      ratingFilteredMuseum.includes(museum) &&
+      priceFilteredMuseum.includes(museum)
     ) {
       return museum;
     }
@@ -65,16 +131,25 @@ export default function SearchedMuseums() {
   return (
     <>
       <FilterBar
-        activeFilterList={activeFilterList}
-        setActiveFilterList={setActiveFilterList}
+        activeCityFilterList={activeCityFilterList}
+        setActiveCityFilterList={setActiveCityFilterList}
+        activeCategoryFilterList={activeCategoryFilterList}
+        setActiveCategoryFilterList={setActiveCategoryFilterList}
+        activeRatingFilterList={activeRatingFilterList}
+        setActiveRatingFilterList={setActiveRatingFilterList}
         museumData={searchedMuseum}
         setActivePriceList={setActivePriceList}
+        activePriceIndex={activePriceIndex}
+        setActivePriceIndex={setActivePriceIndex}
       />
       <div className="searched-museums">
         <div className="search-bar">
           <SearchingBar />
         </div>
-        {activeFilterList.length > 0 || activePriceList.length > 0 ? (
+        {activeCityFilterList.length > 0 ||
+        activeCategoryFilterList.length > 0 ||
+        activeRatingFilterList.length > 0 ||
+        activePriceList.length > 0 ? (
           <>
             <div className="selected-filter-counter">
               <b>{filteredMuseum.length} museums</b> &nbsp;found
@@ -89,7 +164,13 @@ export default function SearchedMuseums() {
                       })}
                   </>
                 ) : (
-                  <NotFound />
+                  <NotFound
+                    setActiveCityFilterList={setActiveCityFilterList}
+                    setActiveCategoryFilterList={setActiveCategoryFilterList}
+                    setActiveRatingFilterList={setActiveRatingFilterList}
+                    setActivePriceList={setActivePriceList}
+                    setActivePriceIndex={setActivePriceIndex}
+                  />
                 )}
               </>
             </div>
@@ -113,7 +194,13 @@ export default function SearchedMuseums() {
                       })}
                   </>
                 ) : (
-                  <NotFound />
+                  <NotFound
+                    setActiveCityFilterList={setActiveCityFilterList}
+                    setActiveCategoryFilterList={setActiveCategoryFilterList}
+                    setActiveRatingFilterList={setActiveRatingFilterList}
+                    setActivePriceList={setActivePriceList}
+                    setActivePriceIndex={setActivePriceIndex}
+                  />
                 )}
               </>
             </div>

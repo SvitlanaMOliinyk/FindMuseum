@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./filter-bar.css";
 
 const FilterBar = ({
-  activeFilterList,
-  setActiveFilterList,
+  activeCityFilterList,
+  setActiveCityFilterList,
+  activeCategoryFilterList,
+  setActiveCategoryFilterList,
+  activeRatingFilterList,
+  setActiveRatingFilterList,
   museumData,
   setActivePriceList,
+  activePriceIndex,
+  setActivePriceIndex,
 }) => {
-  const [activePriceIndex, setActivePriceIndex] = useState(null);
-
   let categoryList = [];
   let cityList = [];
   let ratingList = [];
@@ -38,23 +42,41 @@ const FilterBar = ({
     } else return;
   });
 
-  const handleFilterClick = (e) => {
-    // e.preventDefault();
-    if (activeFilterList.length > 0) {
-      if (activeFilterList?.includes(e.target.value)) {
-        setActiveFilterList(
-          activeFilterList.filter((filter) => filter !== e.target.value)
-        );
+  const handleActiveList = (activeList, setActiveList, e) => {
+    if (activeList.length > 0) {
+      if (activeList?.includes(e.target.value)) {
+        setActiveList(activeList.filter((filter) => filter !== e.target.value));
       } else {
-        setActiveFilterList([...activeFilterList, e.target.value]);
+        setActiveList([...activeList, e.target.value]);
       }
     } else {
-      setActiveFilterList([e.target.value]);
+      setActiveList([e.target.value]);
+    }
+  };
+
+  const handleFilterClick = (e) => {
+    // add city to activeCityFilterList
+    if (e.target.name === "city") {
+      handleActiveList(activeCityFilterList, setActiveCityFilterList, e);
+    }
+    // add category to activeCategoryFilterList
+    else if (e.target.name === "category") {
+      handleActiveList(
+        activeCategoryFilterList,
+        setActiveCategoryFilterList,
+        e
+      );
+    }
+    // add rating to activeRatingFilterList
+    else {
+      handleActiveList(activeRatingFilterList, setActiveRatingFilterList, e);
     }
   };
 
   const handleResetClick = () => {
-    setActiveFilterList([]);
+    setActiveCityFilterList([]);
+    setActiveCategoryFilterList([]);
+    setActiveRatingFilterList([]);
     setActivePriceList([]);
     setActivePriceIndex(null);
   };
@@ -66,7 +88,13 @@ const FilterBar = ({
           <h1>Filters</h1>
           <button
             onClick={handleResetClick}
-            className={activeFilterList.length > 0 ? null : "hidden"}
+            className={
+              activeCityFilterList.length > 0 ||
+              activeCategoryFilterList.length > 0 ||
+              activeRatingFilterList.length > 0
+                ? null
+                : "hidden"
+            }
           >
             Reset filters
           </button>
@@ -85,8 +113,9 @@ const FilterBar = ({
                           type="button"
                           onClick={handleFilterClick}
                           value={city}
+                          name="city"
                           className={
-                            activeFilterList?.includes(city)
+                            activeCityFilterList?.includes(city)
                               ? "filter-buttons active-filter"
                               : "filter-buttons"
                           }
@@ -112,8 +141,9 @@ const FilterBar = ({
                           type="button"
                           onClick={handleFilterClick}
                           value={category}
+                          name="category"
                           className={
-                            activeFilterList?.includes(category)
+                            activeCategoryFilterList?.includes(category)
                               ? "filter-buttons active-filter"
                               : "filter-buttons"
                           }
@@ -139,8 +169,9 @@ const FilterBar = ({
                           type="button"
                           onClick={handleFilterClick}
                           value={rate}
+                          name="rate"
                           className={
-                            activeFilterList?.includes(rate.toString())
+                            activeRatingFilterList?.includes(rate.toString())
                               ? "filter-buttons active-filter"
                               : "filter-buttons"
                           }
@@ -196,10 +227,16 @@ const FilterBar = ({
 };
 
 FilterBar.propTypes = {
-  activeFilterList: PropTypes.array,
-  setActiveFilterList: PropTypes.func,
+  activeCityFilterList: PropTypes.array,
+  setActiveCityFilterList: PropTypes.func,
+  activeCategoryFilterList: PropTypes.array,
+  setActiveCategoryFilterList: PropTypes.func,
+  activeRatingFilterList: PropTypes.array,
+  setActiveRatingFilterList: PropTypes.func,
   museumData: PropTypes.array,
   setActivePriceList: PropTypes.func,
+  activePriceIndex: PropTypes.bool,
+  setActivePriceIndex: PropTypes.func,
 };
 
 export default FilterBar;
