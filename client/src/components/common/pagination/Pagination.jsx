@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./pagination.css";
 import PropTypes from "prop-types";
 import { GrPrevious, GrNext } from "react-icons/gr";
 
-export default function Pagination({ pages, setCurrentPage }) {
+export default function Pagination({
+  pages,
+  setCurrentPage,
+  currentButton,
+  setCurrentButton,
+}) {
   const numOfPages = [];
 
   for (let i = 1; i <= pages; i++) {
     numOfPages.push(i);
   }
-
-  const [currentButton, setCurrentButton] = useState(1);
 
   useEffect(() => {
     setCurrentPage(currentButton);
@@ -80,4 +83,6 @@ export default function Pagination({ pages, setCurrentPage }) {
 Pagination.propTypes = {
   pages: PropTypes.number,
   setCurrentPage: PropTypes.func,
+  currentButton: PropTypes.number,
+  setCurrentButton: PropTypes.func,
 };

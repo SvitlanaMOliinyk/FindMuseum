@@ -13,7 +13,7 @@ export default function SearchedMuseums() {
   const { museums } = useMuseums();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [museumsPerPage] = useState(4);
+  const [museumsPerPage] = useState(6);
 
   const indexOfLastMuseum = currentPage * museumsPerPage;
   const indexOfFirstMuseum = indexOfLastMuseum - museumsPerPage;
@@ -32,6 +32,7 @@ export default function SearchedMuseums() {
 
   //price index value
   const [activePriceIndex, setActivePriceIndex] = useState(null);
+  const [currentButton, setCurrentButton] = useState(1);
 
   const searchedMuseum = museums.filter((museum) => {
     if (!key) {
@@ -105,6 +106,8 @@ export default function SearchedMuseums() {
     } else {
       setPriceFilteredMuseum(searchedMuseum);
     }
+    setCurrentPage(1);
+    setCurrentButton(1);
   }, [
     activeCityFilterList,
     activeCategoryFilterList,
@@ -177,6 +180,8 @@ export default function SearchedMuseums() {
             <Pagination
               pages={filteredTotalPages}
               setCurrentPage={setCurrentPage}
+              currentButton={currentButton}
+              setCurrentButton={setCurrentButton}
             />
           </>
         ) : (
@@ -207,6 +212,8 @@ export default function SearchedMuseums() {
             <Pagination
               pages={searchedTotalPages}
               setCurrentPage={setCurrentPage}
+              currentButton={currentButton}
+              setCurrentButton={setCurrentButton}
             />
           </>
         )}

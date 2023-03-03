@@ -12,7 +12,7 @@ export default function AllMuseums() {
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [museumsPerPage] = useState(4);
+  const [museumsPerPage] = useState(6);
 
   const indexOfLastMuseum = currentPage * museumsPerPage;
   const indexOfFirstMuseum = indexOfLastMuseum - museumsPerPage;
@@ -33,8 +33,7 @@ export default function AllMuseums() {
 
   //price index value
   const [activePriceIndex, setActivePriceIndex] = useState(null);
-  //Last result of filtering
-  // const [filteredMuseum, setFilteredMuseum] = useState([]);
+  const [currentButton, setCurrentButton] = useState(1);
 
   useEffect(() => {
     // city filtering
@@ -90,6 +89,9 @@ export default function AllMuseums() {
     } else {
       setPriceFilteredMuseum(museums);
     }
+
+    setCurrentPage(1);
+    setCurrentButton(1);
   }, [
     activeCityFilterList,
     activeCategoryFilterList,
@@ -113,8 +115,6 @@ export default function AllMuseums() {
     indexOfLastMuseum
   );
   const filteredTotalPages = Math.ceil(filteredMuseum?.length / museumsPerPage);
-
-  // setFilteredMuseum(resultMuseumList);
 
   return (
     <>
@@ -166,6 +166,8 @@ export default function AllMuseums() {
             <Pagination
               pages={filteredTotalPages}
               setCurrentPage={setCurrentPage}
+              currentButton={currentButton}
+              setCurrentButton={setCurrentButton}
             />
           </>
         ) : (
@@ -193,7 +195,12 @@ export default function AllMuseums() {
                 )}
               </>
             </div>
-            <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
+            <Pagination
+              pages={totalPagesNum}
+              setCurrentPage={setCurrentPage}
+              currentButton={currentButton}
+              setCurrentButton={setCurrentButton}
+            />
           </>
         )}
       </div>
