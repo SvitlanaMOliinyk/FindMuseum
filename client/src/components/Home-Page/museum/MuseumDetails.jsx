@@ -1,29 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { museumContext } from "../../../context/museumContext";
+
 import { useParams } from "react-router-dom";
-import useFetch from "../../../hooks/useFetch";
 import { AiFillBank, AiFillPhone } from "react-icons/ai";
 import styled from "styled-components";
 import { MdLocationPin } from "react-icons/md";
 import { FaLink } from "react-icons/fa";
 import ReviewForm from "./review/ReviewForm";
+import Heart from "../../../components/Favorite/Heart";
 
 const MuseumDetails = () => {
   const { museumId } = useParams();
-  // I will get the info below to set userId to the comments
-  // const {_id } = JSON.parse(localStorage.getItem("authUser"));
-  const [museum, setMuseum] = useState({});
-  const { performFetch, cancelFetch } = useFetch(
-    `/museum/${museumId}`,
-    (response) => {
-      setMuseum(response.result[0]);
-    }
-  );
 
-  useEffect(() => {
-    performFetch();
+  let { museums } = useContext(museumContext);
 
-    return cancelFetch;
-  }, [museumId]);
+  const selectedMuseum = museums.find((museum) => museum._id === museumId);
 
   const {
     image,
@@ -36,7 +27,7 @@ const MuseumDetails = () => {
     openingHours,
     price,
     category,
-  } = museum;
+  } = selectedMuseum;
 
   return (
     <>
@@ -44,6 +35,7 @@ const MuseumDetails = () => {
         <Row>
           <ColMuseum>
             <img src={image && image.url} alt={name} />
+            <Heart id={museumId} />
             <Category>
               <AiFillBank className="icon" />
               <h2>{category}</h2>
@@ -90,34 +82,12 @@ const MuseumDetails = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{openingHours && openingHours[0].day}</td>
-                  <td>{openingHours && openingHours[0].hours}</td>
-                </tr>
-                <tr>
-                  <td>{openingHours && openingHours[1].day}</td>
-                  <td>{openingHours && openingHours[1].hours}</td>
-                </tr>
-                <tr>
-                  <td>{openingHours && openingHours[2].day}</td>
-                  <td>{openingHours && openingHours[2].hours}</td>
-                </tr>
-                <tr>
-                  <td>{openingHours && openingHours[3].day}</td>
-                  <td>{openingHours && openingHours[3].hours}</td>
-                </tr>
-                <tr>
-                  <td>{openingHours && openingHours[4].day}</td>
-                  <td>{openingHours && openingHours[4].hours}</td>
-                </tr>
-                <tr>
-                  <td>{openingHours && openingHours[5].day}</td>
-                  <td>{openingHours && openingHours[5].hours}</td>
-                </tr>
-                <tr>
-                  <td>{openingHours && openingHours[6].day}</td>
-                  <td>{openingHours && openingHours[6].hours}</td>
-                </tr>
+                {openingHours?.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item && item.day}</td>
+                    <td>{item && item.hours}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </ColHourPrice>
@@ -233,6 +203,7 @@ const Category = styled.div`
     width: 1.5rem;
     height: 1.5rem;
     color: white;
+  }
   }
 `;
 

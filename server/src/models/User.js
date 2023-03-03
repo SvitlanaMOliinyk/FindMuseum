@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 import validateAllowedFields from "../util/validateAllowedFields.js";
-
+const { SchemaTypes } = mongoose;
 const userSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: true },
@@ -9,6 +9,12 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     profilePicture: { type: String, default: "" },
+    favoriteMuseums: [
+      {
+        type: SchemaTypes.ObjectId,
+        ref: "Museum",
+      },
+    ],
   },
   { timestamps: true }
 );
