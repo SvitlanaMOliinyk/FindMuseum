@@ -16,14 +16,33 @@ export const getOffers = async (req, res) => {
 };
 
 export const updateOffer = async (req, res) => {
-  const { numberOfTickets } = req.body;
+  const { buyer, numberOfTickets } = req.body;
   const { id } = req.params;
-
   try {
-    const offer = await Offer.findByIdAndUpdate(id, {
-      $set: { numberOfTickets: numberOfTickets },
+    const offer = await Offer.findOne({
+      $and: [{ _id: id }, { _id: id, buyers: buyer }],
     });
-    res.status(200).json({ success: true, result: offer });
+    if (!offer) {
+      await Offer.updateOne(
+        { _id: id },
+        {
+          $set: {
+            numberOfTickets: numberOfTickets,
+          },
+          $push: {
+            buyers: [buyer],
+          },
+        }
+      );
+      res.status(200).json({
+        success: true,
+        result: "Congratulations! Your offer is in your email-box now!",
+      });
+    } else {
+      res
+        .status(208)
+        .json({ success: true, result: "You have already got the offer!" });
+    }
   } catch (error) {
     res.status(500).json({
       success: false,

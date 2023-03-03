@@ -10,15 +10,26 @@ const OfferItem = ({ offer }) => {
   const { authUser } = useAuth();
   const [offerId, setOfferId] = useState("");
   const navigate = useNavigate();
+  const buyer = authUser?._id;
 
-  const onSuccess = () => {
-    toast.success("Congratulations! Your offer is in your email-box now.", {
-      position: "top-center",
-      autoClose: 3000,
-    });
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+  const onSuccess = (jsonResult) => {
+    if (jsonResult.result.includes("C")) {
+      toast.success("Congratulations! Your offer is in your email-box now.", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } else {
+      toast.error("You have already got the offer!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    }
   };
 
   const { performFetch } = useFetch(`/offer/${offerId}`, onSuccess);
@@ -41,11 +52,15 @@ const OfferItem = ({ offer }) => {
   useEffect(() => {
     if (offerId?.length > 0) {
       performFetch({
-        method: "PUT",
         headers: {
-          "content-type": "application/json",
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ numberOfTickets: numberOfTickets - 1 }),
+        method: "PUT",
+        body: JSON.stringify({
+          numberOfTickets: numberOfTickets - 1,
+          buyer: buyer,
+        }),
       });
     }
   }, [offerId]);
