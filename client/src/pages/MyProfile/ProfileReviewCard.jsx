@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import ReviewCardRate from "./ReviewCardRate.jsx";
+import ReviewCardRate from "../../components/Home-Page/museum/review/ReviewCardRate";
+import { FiEdit } from "react-icons/fi";
+import { RiDeleteBinLine } from "react-icons/ri";
+import ReviewEdit from "./ReviewEdit";
+import useFetch from "../../hooks/useFetch";
+import { toast } from "react-toastify";
 
-const ReviewCard = ({ comments, museumName }) => {
+const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
+  const user = JSON.parse(localStorage.getItem("authUser"));
+  const [comment, setComment] = useState({});
+  const [trigger, setTrigger] = useState(false);
   const monthNames = [
     "Jan",
     "Feb",
@@ -18,14 +26,53 @@ const ReviewCard = ({ comments, museumName }) => {
     "Dec",
   ];
 
+  const handleEdit = (comment) => {
+    setComment(comment);
+    setTrigger(true);
+  };
+
+  const { performFetch } = useFetch(`/comment/delete`, (response) => {
+    toast.success("Review Deleted Successfully", {
+      position: "top-center",
+      autoClose: 3000,
+    });
+  });
+
+  const handleDelete = (comment) => {
+    setComment(comment);
+    try {
+      performFetch({
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          comment: { commentId: comment._id },
+        }),
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Container>
+        <ReviewEdit
+          trigger={trigger}
+          setTrigger={setTrigger}
+          comment={comment}
+          refresh={refresh}
+          setRefresh={setRefresh}
+        />
         <Head>
-          <h1>{`Reviews of ${museumName}`} </h1>
-          <h3>{`There are ${
-            comments && comments.length
-          } reviews of ${museumName} `}</h3>
+          <h1>
+            {`Reviews of ${user && user.firstName} ${user && user.lastName}`}{" "}
+          </h1>
+          <h3>{`There are ${comments && comments.length} reviews of ${
+            user && user.firstName
+          } ${user && user.lastName} `}</h3>
         </Head>
 
         {comments &&
@@ -43,6 +90,12 @@ const ReviewCard = ({ comments, museumName }) => {
               <Row key={comment._id}>
                 <Col>
                   <CommentContainer>
+                    <EditDelete>
+                      {/* <Link  to="/user/comment/edit"> */}
+                      <FiEdit onClick={() => handleEdit(comment)} />
+                      {/* </Link> */}
+                      <RiDeleteBinLine onClick={() => handleDelete(comment)} />
+                    </EditDelete>
                     <AvatarCont>
                       <Avatar>
                         <span>{comment.userId.firstName.charAt(0)}</span>
@@ -73,14 +126,27 @@ const ReviewCard = ({ comments, museumName }) => {
   );
 };
 
+const EditDelete = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  svg {
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 1.5rem;
+    color: gray;
+    &:hover {
+      color: black;
+    }
+  }
+`;
+
 const Head = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
-  @media (max-width: 700px) {
-    text-align: center;
-  }
 `;
 
 const Container = styled.div`
@@ -97,7 +163,6 @@ const Container = styled.div`
 
 const Row = styled.div`
   height: 50%;
-
   margin-bottom: 3rem;
   width: 35%;
   @media (max-width: 700px) {
@@ -105,7 +170,7 @@ const Row = styled.div`
   }
   @media (min-width: 701px) and (max-width: 820px) {
     width: 60%;
-  };
+  }
   background-color: #ffffff;
   border-radius: 1rem;
 `;
@@ -176,4 +241,4 @@ const Review = styled.div`
   }
 `;
 
-export default ReviewCard;
+export default ProfileReviewCard;

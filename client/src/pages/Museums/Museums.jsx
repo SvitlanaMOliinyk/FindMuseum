@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
+import Loading from "../../components/common/loading/Loading";
 
 const Museums = () => {
   const { key } = useParams();
@@ -21,7 +22,8 @@ const Museums = () => {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        // Gokhan added 25 February 10:06
+        <Loading/>
       ) : !error && museums.length > 0 ? (
         museums.map((museum) => (
           <ViewMuseums key={museum._id} museum={museum} />
@@ -35,8 +37,9 @@ const Museums = () => {
   );
 };
 
+// Gokhan changed museum: PropTypes.node.isRequired as below; 25 February 10:21
 Museums.propTypes = {
   query: PropTypes.string,
-  museum: PropTypes.node.isRequired,
+  museum: PropTypes.object,
 };
 export default Museums;

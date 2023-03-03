@@ -15,7 +15,6 @@ const MuseumList = () => {
 
   useEffect(() => {
     performFetch();
-
     return cancelFetch;
   }, []);
 
