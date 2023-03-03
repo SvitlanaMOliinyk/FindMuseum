@@ -16,6 +16,14 @@ const ReviewForm = ({
   refresh,
   setRefresh,
 }) => {
+  ReviewForm.propTypes = {
+    type: PropTypes.string,
+    museumId: PropTypes.number,
+    comment: PropTypes.object,
+    setTrigger: PropTypes.bool,
+    refresh: PropTypes.bool,
+    setRefresh: PropTypes.func,
+  };
   const authUser = JSON.parse(localStorage.getItem("authUser"));
   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
   const [formData, setFormData] = useState({
@@ -29,19 +37,18 @@ const ReviewForm = ({
   };
 
   const onSuccess = (response) => {
-    console.log("ReviewForm onSuccses: ", response.type);
     setRefresh(!refresh);
-    if(response.type == "update"){
+    if (response.type == "update") {
       toast.success("Review Edited Successfully", {
         position: "top-center",
         autoClose: 3000,
       });
-    }else{
+    } else {
       toast.success("Thanks for your review", {
         position: "top-center",
         autoClose: 3000,
       });
-    };
+    }
     setFormData({ ...formData, museumId: "", rate: 0, review: "" });
   };
 
@@ -82,7 +89,6 @@ const ReviewForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLoggedIn == false) {
-      console.log("review form isLoggedIn: ", isLoggedIn);
       setError("UnAuthorized");
       return;
     }
@@ -206,14 +212,13 @@ const Form = styled.form`
   align-items: center;
   margin-bottom: 1rem;
   .input-group {
-    display:flex;
+    display: flex;
     /* align-items: center; */
     justify-content: center;
     margin: 0.5rem 1rem;
   }
   textarea {
     resize: none;
-    width:90%;
-   
+    width: 90%;
   }
 `;

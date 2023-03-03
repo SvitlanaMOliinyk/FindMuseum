@@ -6,8 +6,15 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import ReviewEdit from "./ReviewEdit";
 import useFetch from "../../hooks/useFetch";
 import { toast } from "react-toastify";
+import PropTypes from "prop-types";
+import { logError } from "../../../../server/src/util/logging";
 
 const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
+  ProfileReviewCard.propTypes = {
+    comments: PropTypes.array,
+    refresh: PropTypes.bool,
+    setRefresh: PropTypes.func,
+  };
   const user = JSON.parse(localStorage.getItem("authUser"));
   const [comment, setComment] = useState({});
   const [trigger, setTrigger] = useState(false);
@@ -31,7 +38,7 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
     setTrigger(true);
   };
 
-  const { performFetch } = useFetch(`/comment/delete`, (response) => {
+  const { performFetch } = useFetch("/comment/delete", () => {
     toast.success("Review Deleted Successfully", {
       position: "top-center",
       autoClose: 3000,
@@ -52,7 +59,7 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
       });
       setRefresh(!refresh);
     } catch (error) {
-      console.log(error);
+      logError(error);
     }
   };
 

@@ -1,8 +1,12 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StarRating = ({ rate }) => {
+  StarRating.propTypes = {
+    rate: PropTypes.string,
+  };
   const colors = {
     orange: "var(--star-filled)",
     gray: "var(--star-empty)",

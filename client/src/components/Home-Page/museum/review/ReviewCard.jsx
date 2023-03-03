@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import ReviewCardRate from "./ReviewCardRate.jsx";
+import PropTypes from "prop-types";
 
 const ReviewCard = ({ comments, museumName }) => {
+  ReviewCard.propTypes = {
+    comments: PropTypes.array,
+    museumName: PropTypes.string,
+  };
   const monthNames = [
     "Jan",
     "Feb",
@@ -105,7 +110,7 @@ const Row = styled.div`
   }
   @media (min-width: 701px) and (max-width: 820px) {
     width: 60%;
-  };
+  }
   background-color: #ffffff;
   border-radius: 1rem;
 `;

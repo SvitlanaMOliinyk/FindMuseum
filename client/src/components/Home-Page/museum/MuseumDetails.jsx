@@ -221,14 +221,13 @@ const ColDescription = styled.div`
     font-size: 3rem;
     margin-bottom: 2rem;
   }
-  p{
-    @media (max-width: 700px){
+  p {
+    @media (max-width: 700px) {
       line-height: 1.7em;
     }
-    @media (min-width: 1125){
+    @media (min-width: 1125) {
       line-height: 1em;
     }
-    
   }
 `;
 
@@ -309,7 +308,6 @@ const ColIframe = styled.div`
       width: 95%;
       padding: 0 3rem;
     }
-    
   }
   h1 {
     text-align: center;

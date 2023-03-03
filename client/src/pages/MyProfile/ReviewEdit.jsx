@@ -1,8 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import ReviewForm from "../../components/Home-Page/museum/review/ReviewForm";
+import PropTypes from "prop-types";
 
 const ReviewEdit = ({ trigger, comment, setTrigger, refresh, setRefresh }) => {
+  ReviewEdit.propTypes = {
+    trigger: PropTypes.bool,
+    comment: PropTypes.object,
+    setTrigger: PropTypes.func,
+    refresh: PropTypes.bool,
+    setRefresh: PropTypes.func,
+  };
   return trigger ? (
     <Div>
       <ReviewForm

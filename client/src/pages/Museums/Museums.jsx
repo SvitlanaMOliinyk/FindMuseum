@@ -23,7 +23,7 @@ const Museums = () => {
     <>
       {isLoading ? (
         // Gokhan added 25 February 10:06
-        <Loading/>
+        <Loading />
       ) : !error && museums.length > 0 ? (
         museums.map((museum) => (
           <ViewMuseums key={museum._id} museum={museum} />

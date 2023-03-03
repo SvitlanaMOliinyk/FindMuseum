@@ -1,4 +1,4 @@
-.unauthorized{
+.unauthorized {
   text-align: center;
   position: relative;
   min-height: 40vh;
@@ -8,14 +8,14 @@
   justify-content: center;
 }
 
-.unauthorized::after{
+.unauthorized::after {
   content: "401";
   position: absolute;
-  left:50%;
-  top:50%;
+  left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
   font-size: 30vw;
   font-weight: 800;
-  color:#efefef;
+  color: #efefef;
   z-index: -1;
 }
