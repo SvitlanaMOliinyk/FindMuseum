@@ -6,12 +6,19 @@ import "./searched-museums.css";
 import { useMuseums } from "../../context/museumContext";
 import FilterBar from "./FilterBar";
 import NotFound from "./NotFound";
+import Pagination from "../common/pagination/Pagination";
 
 export default function SearchedMuseums() {
   const { key } = useParams();
   const { museums } = useMuseums();
   const [activeFilterList, setActiveFilterList] = useState([]);
   const [activePriceList, setActivePriceList] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [museumsPerPage] = useState(4);
+
+  const indexOfLastMuseum = currentPage * museumsPerPage;
+  const indexOfFirstMuseum = indexOfLastMuseum - museumsPerPage;
 
   const searchedMuseum = museums.filter((museum) => {
     if (!key) {
@@ -24,6 +31,12 @@ export default function SearchedMuseums() {
       return museum;
     }
   });
+
+  const searchedCurrentMuseums = searchedMuseum?.slice(
+    indexOfFirstMuseum,
+    indexOfLastMuseum
+  );
+  const searchedTotalPages = Math.ceil(searchedMuseum?.length / museumsPerPage);
 
   const filteredMuseum = searchedMuseum.filter((museum) => {
     if (activeFilterList?.includes(museum.address.city)) {
@@ -42,6 +55,12 @@ export default function SearchedMuseums() {
       return museum;
     }
   });
+
+  const filteredCurrentMuseums = filteredMuseum?.slice(
+    indexOfFirstMuseum,
+    indexOfLastMuseum
+  );
+  const filteredTotalPages = Math.ceil(filteredMuseum?.length / museumsPerPage);
 
   return (
     <>
@@ -64,8 +83,8 @@ export default function SearchedMuseums() {
               <>
                 {filteredMuseum.length > 0 ? (
                   <>
-                    {filteredMuseum &&
-                      filteredMuseum.map((museum) => {
+                    {filteredCurrentMuseums &&
+                      filteredCurrentMuseums.map((museum) => {
                         return <MuseumCard key={museum._id} museum={museum} />;
                       })}
                   </>
@@ -74,6 +93,10 @@ export default function SearchedMuseums() {
                 )}
               </>
             </div>
+            <Pagination
+              pages={filteredTotalPages}
+              setCurrentPage={setCurrentPage}
+            />
           </>
         ) : (
           <>
@@ -84,8 +107,8 @@ export default function SearchedMuseums() {
               <>
                 {searchedMuseum.length > 0 ? (
                   <>
-                    {searchedMuseum &&
-                      searchedMuseum.map((museum) => {
+                    {searchedCurrentMuseums &&
+                      searchedCurrentMuseums.map((museum) => {
                         return <MuseumCard key={museum._id} museum={museum} />;
                       })}
                   </>
@@ -94,6 +117,10 @@ export default function SearchedMuseums() {
                 )}
               </>
             </div>
+            <Pagination
+              pages={searchedTotalPages}
+              setCurrentPage={setCurrentPage}
+            />
           </>
         )}
       </div>

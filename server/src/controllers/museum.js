@@ -43,3 +43,29 @@ export const getMuseumById = async (req, res) => {
     });
   }
 };
+
+// export const paginateUser = async (req, res) => {
+//   const allMuseums = await Museum.find({});
+//   const page = parseInt(req.query.page);
+//   const limit = parseInt(req.query.limit);
+
+//   const startIndex = (page - 1) * limit;
+//   const lastIndex = page * limit;
+
+//   const results = {};
+//   results.totalUser = allMuseums.length;
+//   results.pageCount = Math.ceil(allMuseums.length / limit);
+
+//   if (lastIndex < allMuseums.length) {
+//     results.next = {
+//       page: page + 1,
+//     };
+//   }
+//   if (startIndex > 0) {
+//     results.prev = {
+//       page: page - 1,
+//     };
+//   }
+//   results.result = allMuseums.slice(startIndex, lastIndex);
+//   res.json(results);
+// };

@@ -5,11 +5,20 @@ import MuseumCard from "./MuseumCard";
 import { useMuseums } from "../../context/museumContext";
 import FilterBar from "./FilterBar";
 import NotFound from "./NotFound";
+import Pagination from "../common/pagination/Pagination";
 
 export default function AllMuseums() {
   const { museums } = useMuseums([]);
   const [activeFilterList, setActiveFilterList] = useState([]);
   const [activePriceList, setActivePriceList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [museumsPerPage] = useState(4);
+
+  const indexOfLastMuseum = currentPage * museumsPerPage;
+  const indexOfFirstMuseum = indexOfLastMuseum - museumsPerPage;
+
+  const currentMuseums = museums?.slice(indexOfFirstMuseum, indexOfLastMuseum);
+  const totalPagesNum = Math.ceil(museums?.length / museumsPerPage);
 
   const filteredMuseum = museums.filter((museum) => {
     if (activeFilterList?.includes(museum.address.city)) {
@@ -28,6 +37,12 @@ export default function AllMuseums() {
       return museum;
     }
   });
+
+  const filteredCurrentMuseums = filteredMuseum?.slice(
+    indexOfFirstMuseum,
+    indexOfLastMuseum
+  );
+  const filteredTotalPages = Math.ceil(filteredMuseum?.length / museumsPerPage);
 
   return (
     <>
@@ -51,8 +66,8 @@ export default function AllMuseums() {
               <>
                 {filteredMuseum.length > 0 ? (
                   <>
-                    {filteredMuseum &&
-                      filteredMuseum.map((museum) => {
+                    {filteredCurrentMuseums &&
+                      filteredCurrentMuseums.map((museum) => {
                         return <MuseumCard key={museum._id} museum={museum} />;
                       })}
                   </>
@@ -61,6 +76,10 @@ export default function AllMuseums() {
                 )}
               </>
             </div>
+            <Pagination
+              pages={filteredTotalPages}
+              setCurrentPage={setCurrentPage}
+            />
           </>
         ) : (
           <>
@@ -71,8 +90,8 @@ export default function AllMuseums() {
               <>
                 {museums.length > 0 ? (
                   <>
-                    {museums &&
-                      museums.map((museum) => {
+                    {currentMuseums &&
+                      currentMuseums.map((museum) => {
                         return <MuseumCard key={museum._id} museum={museum} />;
                       })}
                   </>
@@ -81,6 +100,7 @@ export default function AllMuseums() {
                 )}
               </>
             </div>
+            <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
           </>
         )}
       </div>
