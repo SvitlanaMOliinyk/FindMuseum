@@ -3,7 +3,9 @@ import Museum from "../models/Museum.js";
 
 export const getOffers = async (req, res) => {
   try {
-    const offers = await Offer.find()
+    const offers = await Offer.find({
+      numberOfTickets: { $gt: 0 },
+    })
       .populate({ path: "museumId", model: Museum })
       .exec();
     res.status(200).json({ success: true, result: offers });
