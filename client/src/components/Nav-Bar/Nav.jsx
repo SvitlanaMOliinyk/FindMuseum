@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
-import logo from "../../assets/img/logo-transparent.png";
+import logo from "../../assets/img/findh.png";
 import "./nav.css";
 import Profile from "./Profile/Profile";
 import { useAuth } from "../../context/authContext";

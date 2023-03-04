@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from "react";
-import useFetch from "../../../hooks/useFetch";
+import React from "react";
+// import useFetch from "../../../hooks/useFetch";
 import ViewMuseums from "./ViewMuseums";
 import "./museum.css";
 import Loading from "../../common/loading/Loading";
+import { useMuseums } from "../../../context/museumContext";
 
 const MuseumList = () => {
-  const [museums, setMuseums] = useState(null);
-  const { isLoading, error, performFetch, cancelFetch } = useFetch(
-    "/museum",
-    (response) => {
-      setMuseums(response.result);
-    }
-  );
-
-  useEffect(() => {
-    performFetch();
-    return cancelFetch;
-  }, []);
+  // const [museums, setMuseums] = useState(null);
+  const { isLoading, error, museums } = useMuseums([]);
 
   let content = null;
 

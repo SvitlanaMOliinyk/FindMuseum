@@ -21,7 +21,7 @@ const SearchingBar = () => {
         <input
           type="text"
           className="form-control"
-          placeholder="Enter the city or the name of the museum"
+          placeholder="Search"
           id="search-name"
           value={key}
           onChange={(e) => setKey(e.target.value)}

@@ -1,21 +1,19 @@
 import React from "react";
-// import { AiOutlineAim } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import "./goal.css";
-
-// import { MdFeaturedPlayList } from "react-icons/md";
 
 const Goal = () => {
   return (
     <div className="container">
       <div className="goal">
         <span className="question">
-          Do you want to learn more about the all museums and their collections
-          in Netherlands?
+          Do you want to learn more about all the museums and their collections
+          in the Netherlands?
         </span>
         <br />
         <span className="answer">
-          FIND MUSEUM is the right application for that, where you can also
-          follow upcoming events, read reviews, and share your experiences.
+          You are in the right place for that! You can also follow upcoming
+          events, read reviews about museums, and can share experiences.
         </span>
 
         <span className="answer">
@@ -26,9 +24,9 @@ const Goal = () => {
           </a>
           , just for you!
         </span>
-        <button className="button about" type="button">
-          About Us
-        </button>
+        <Link to="/museums">
+          <button className="button-about">All Museums</button>
+        </Link>
       </div>
     </div>
   );
