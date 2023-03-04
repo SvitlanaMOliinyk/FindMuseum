@@ -8,7 +8,7 @@ import NotFound from "./NotFound";
 import Pagination from "../common/pagination/Pagination";
 
 export default function AllMuseums() {
-  const { museums } = useMuseums([]);
+  const { museums } = useMuseums();
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);

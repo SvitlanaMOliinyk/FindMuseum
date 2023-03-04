@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { museumContext } from "../../context/museumContext";
+import React, { useEffect, useState } from "react";
+import { useMuseums } from "../../context/museumContext";
 import { useAuth } from "../../context/authContext";
 import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
 
 const Favorites = () => {
   const { favorites } = useAuth();
 
-  const { museums } = useContext(museumContext);
+  const { museums } = useMuseums();
 
   const [favMuseums, setFavMuseums] = useState([]);
 

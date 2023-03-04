@@ -88,8 +88,6 @@ const Profile = ({ onClose }) => {
                 link={`/profile/${authUser?._id}`}
               />
               <DropdownItem img={star} text={"Favorites"} link={"/favorite"} />
-              <DropdownItem img={edit} text={"Comments"} link={"/comments"} />
-              <DropdownItem img={star} text={"Favorites"} link={"/favorites"} />
               <DropdownItem
                 img={edit}
                 text={"Comments"}
