@@ -11,7 +11,6 @@ import MuseumOverview from "./pages/MuseumOverview/MuseumOverview";
 import Offers from "./pages/Offers/Offers";
 import Favorites from "./pages/Museums/Favorites";
 import { AuthProvider } from "./context/authContext";
-import { MuseumContext } from "./context/museumContext";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import { MuseumsProvider } from "./context/museumContext";
 import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";

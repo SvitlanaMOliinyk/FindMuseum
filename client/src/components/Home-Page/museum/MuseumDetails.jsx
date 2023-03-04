@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import { museumContext } from "../../../context/museumContext";
-
+import React, { useState, useEffect } from "react";
+import useFetch from "../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { AiFillBank, AiFillPhone } from "react-icons/ai";
 import styled from "styled-components";
