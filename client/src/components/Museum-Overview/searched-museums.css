@@ -1,0 +1,12 @@
+.searched-museums {
+  display: flex;
+  flex: 9.5;
+  flex-direction: column;
+}
+
+.searched-museums-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto 0;
+  justify-content: space-evenly;
+}

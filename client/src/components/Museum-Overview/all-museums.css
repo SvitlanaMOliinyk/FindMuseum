@@ -1,0 +1,14 @@
+.all-museums {
+  /* margin-top: 10vh; */
+  display: flex;
+  flex: 9.5;
+  flex-direction: column;
+}
+
+.all-museums-card {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-top: 30px; */
+  margin: 30px auto 0;
+  justify-content: space-evenly;
+}

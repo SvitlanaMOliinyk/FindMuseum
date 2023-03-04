@@ -1,0 +1,65 @@
+.container--filter-bar {
+  flex: 2.5;
+  border-radius: 8px;
+  background-color: white;
+  padding: 5px 10px;
+}
+
+.header--filter-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0 30px;
+}
+
+.header--filter-bar button {
+  padding: 0;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.filter-divider {
+  margin: 15px 0;
+  height: 1px;
+  border: none;
+  background-color: lightgray;
+  flex: 1 1 0%;
+}
+
+.container--filter-list fieldset {
+  border: none;
+  margin: 0 0 30px;
+}
+
+.container--fieldset ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container--filter-bar li {
+  list-style-type: none;
+  margin: 0 5px 5px 0;
+}
+
+.filter-buttons {
+  padding: 7px 12px;
+  border: solid 2px #dcd7c9;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.filter-buttons:hover {
+  border-color: #3f4e4f;
+}
+
+.active-filter {
+  border-color: #3f4e4f;
+  background-color: #3f4e4f;
+  color: white;
+}
+
+.title--filter {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
