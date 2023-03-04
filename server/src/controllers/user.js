@@ -65,6 +65,101 @@ export const loginUser = async (req, res) => {
   }
 };
 
+export const updateUser = async (req, res) => {
+  try {
+    const { authUser } = req.body;
+    //console.log(req.body);
+    //console.log(authUser);
+    //console.log(authUser.profilePicture);
+    if (typeof authUser !== "object") {
+      return res.status(400).json({
+        success: false,
+        msg: `You need to provide a 'user' object. Received: ${JSON.stringify(
+          authUser
+        )}`,
+      });
+    }
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: authUser,
+      },
+      { new: true }
+    );
+    res.status(200).json({ success: true, user: updatedUser });
+  } catch (err) {
+    logError(err);
+    res
+      .status(500)
+      .json({ success: false, msg: "You can update only your account" });
+  }
+};
+
+// Gokhan: I have used this inside the comment controller so that as soon as I created a comment to push the comment Id into the user comments array
+export const addCommentIdToUser = async (userId, commentId) => {
+  try {
+    await User.findByIdAndUpdate(
+      userId,
+      { $push: { comments: commentId } },
+      { new: true }
+    );
+  } catch (error) {
+    logError(error);
+  }
+};
+
+export const getAllComments = async (req, res) => {
+  const userId = req.params.userId;
+  User.findOne({ _id: userId }, { comments: 1 })
+    .populate({
+      path: "comments",
+      populate: [
+        { path: "museumId", select: { name: 1 } },
+        { path: "userId", select: { firstName: 1, lastName: 1 } },
+      ],
+      // populate: { path: "userId", select: { firstName: 1, lastName: 1 } },
+    })
+    .exec((err, comments) => {
+      if (err) {
+        res.status(400).json({
+          success: false,
+          msg: `unable to get user comments with user id: ${userId}`,
+        });
+      }
+      res.status(200).json({ success: true, result: comments });
+    });
+};
+
+// update the favorite list
+export const updateFavorite = async (req, res) => {
+  try {
+    const { userFavorite } = req.body;
+
+    if (typeof userFavorite !== "object") {
+      return res.status(400).json({
+        success: false,
+        msg: `You need to provide a 'favorite' array. Received: ${JSON.stringify(
+          userFavorite
+        )}`,
+      });
+    }
+
+    const updatedFavorite = await User.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: { favoriteMuseums: userFavorite },
+      },
+      { new: true }
+    );
+    res.status(200).json({ success: true, userFavorite: updatedFavorite });
+  } catch (err) {
+    logError(err);
+    res
+      .status(500)
+      .json({ success: false, msg: "Your favorite list is Not updated" });
+  }
+};
+
 export const forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;

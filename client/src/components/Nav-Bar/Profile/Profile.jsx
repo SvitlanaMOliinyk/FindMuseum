@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import PropTypes from "prop-types";
 import "./profile.css";
-
 import avatar from "../../../assets/drop/user.png";
 import star from "../../../assets/drop/star.png";
 import edit from "../../../assets/drop/edit.png";
@@ -12,8 +10,14 @@ import { useAuth } from "../../../context/authContext";
 
 const Profile = ({ onClose }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const { authUser, setIsLoggedIn, setAuthUser } = useAuth();
-
+  const {
+    clearFavorites,
+    authUser,
+    setIsLoggedIn,
+    setAuthUser,
+    handleLogoutFavorite,
+  } = useAuth();
+  const userId = JSON.parse(localStorage.getItem("authUser"));
   const menuRef = useRef();
 
   //profile menu items
@@ -84,14 +88,20 @@ const Profile = ({ onClose }) => {
                 link={`/profile/${authUser?._id}`}
               />
               <DropdownItem img={star} text={"Favorites"} link={"/favorites"} />
-              <DropdownItem img={edit} text={"Comments"} link={"/comments"} />
+              <DropdownItem
+                img={edit}
+                text={"Comments"}
+                link={`/user/comments/${userId && userId._id}`}
+              />
               <DropdownItem
                 img={logout}
                 text={"Logout"}
                 link={"/"}
-                logout={() => {
+                logout={async () => {
+                  await handleLogoutFavorite();
                   setIsLoggedIn(false);
                   setAuthUser(null);
+                  clearFavorites();
                 }}
               />
             </ul>

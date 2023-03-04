@@ -87,7 +87,7 @@ const useFetch = (route, onReceived) => {
     });
   };
 
-  return { isLoading, error, performFetch, cancelFetch };
+  return { isLoading, error, setError, performFetch, cancelFetch };
 };
 
 export default useFetch;

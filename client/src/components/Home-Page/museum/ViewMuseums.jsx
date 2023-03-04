@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import Heart from "../../../components/Favorite/Heart";
 import PropTypes from "prop-types";
 
 const Museum = ({ museum }) => {
   const { name, image, _id, address } = museum;
   Museum.propTypes = {
-    museum: PropTypes.node.isRequired,
+    museum: PropTypes.object,
   };
 
   return (
@@ -19,6 +20,7 @@ const Museum = ({ museum }) => {
               <p className="museum-city">{address.city}</p>
             </div>
           </Link>
+          <Heart id={_id} />
         </div>
       )}
     </>

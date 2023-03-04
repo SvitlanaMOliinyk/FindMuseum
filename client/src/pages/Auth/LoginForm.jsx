@@ -14,13 +14,18 @@ import { useAuth } from "../../context/authContext";
 const LoginForm = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);
   const navigate = useNavigate();
-  const { setIsLoggedIn, setAuthUser } = useAuth();
+
+  const { setIsLoggedIn, setAuthUser, setFavorites, clearFavorites } =
+    useAuth();
 
   const onSuccess = (res) => {
     formik.resetForm();
     //get user from database
-    const { _id, email, firstName, lastName, profilePicture } = res.user;
-    //success notification
+    const { _id, email, firstName, lastName, profilePicture, favoriteMuseums } =
+      res.user;
+
+    clearFavorites();
+
     toast.success(
       <div>
         Welcome {firstName}!
@@ -31,10 +36,19 @@ const LoginForm = () => {
         autoClose: 2000,
       }
     );
+
     //setting context
     setIsLoggedIn(true);
-    setAuthUser({ _id, email, firstName, lastName, profilePicture });
-
+    setAuthUser({
+      _id,
+      email,
+      firstName,
+      lastName,
+      profilePicture,
+      favoriteMuseums,
+    });
+    localStorage.setItem("favorites", JSON.stringify(favoriteMuseums));
+    setFavorites(favoriteMuseums);
     setTimeout(() => {
       navigate("/");
     }, 2000);
@@ -48,6 +62,10 @@ const LoginForm = () => {
   useEffect(() => {
     return cancelFetch;
   }, []);
+
+  useEffect(() => {
+    localStorage.clear();
+  }, [isLoading]);
 
   const initialValues = {
     email: "",
