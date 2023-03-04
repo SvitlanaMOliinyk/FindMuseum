@@ -1,39 +1,50 @@
-/*buttons*/
-.upcoming-events button {
-  width: clamp(200px, 10vw, 10rem);
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  border-radius: 4px;
-  padding: 1rem 1.5rem;
-  border: none;
-  outline: none;
+.home-offers-section {
+  padding: 20px;
+  display: flex;
+  background-color: #3f4e4f;
+  justify-content: space-between;
 }
 
-.section-button {
-  background-color: var(--mobile-navbar-color);
-  color: white;
-}
-/*sections*/
-/*offer section*/
-.offers-section {
-  background-color: var(--active-navlink-color);
-  width: 100%;
-  height: clamp(10rem, 20vh, 300px);
+.home-offers-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 1rem;
-  text-align: justify;
 }
-.offers-link {
-  background-color: var(--main-bg-color);
-  align-self: center;
-  border-radius: 4px;
+
+.home-offers-img {
+  width: 40%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
+
 .offers-text {
-  display: inline-block;
-  font-size: clamp(1.2rem, 2vw, 2rem);
-  align-self: flex-end;
-  color: white;
+  font-size: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  justify-content: center;
+  display: flex;
+  margin-right: 200px;
+  color: #dcd7c9;
+}
+
+.home-offers-button {
+  margin-bottom: 50px;
+  border-radius: 4px;
+  background-color: #a27b5c;
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: #dcd7c9;
+}
+
+.home-offers-button:hover {
+  background-color: #dcd7c9;
+  color: #a27b5c;
 }
 /*museums events sections*/
 .van-gogh-section,
@@ -41,42 +52,84 @@
 .kunstmuseum-section {
   display: flex;
   max-width: 100%;
-  padding: 1rem;
+  padding: 3rem;
   justify-content: space-between;
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   text-align: justify;
 }
-.louwman-section .event-sections-text .section-para {
-  text-align: center;
-  color: white;
+
+.kunstmuseum-section button {
+  margin-top: 50px;
+  border-radius: 4px;
+  background-color: #a27b5c;
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: #dcd7c9;
 }
-.event-sections-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+.kunstmuseum-section button:hover {
+  background-color: #3f4e4f;
 }
-.event-sections-text h3,
-h1,
-p {
-  display: block;
-  padding-bottom: 0.5rem;
+
+.section-button {
+  margin-top: 50px;
+  border-radius: 4px;
+  background-color: #a27b5c;
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: #dcd7c9;
 }
+
+.section-button:hover {
+  background-color: #3f4e4f;
+}
+
 .louwman-section {
   background-color: var(--navbar-color);
 }
-/*image-section-container, img*/
-.louwman-section .image-section-container {
-  padding-left: 2rem;
-  padding-right: 0;
+
+.louwman-section button {
+  margin-top: 50px;
+  border-radius: 4px;
+  background-color: #3f4e4f;
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: #dcd7c9;
 }
-.image-section-container {
-  max-width: 40%;
-  padding-right: 2rem;
+
+.louwman-section button:hover {
+  background-color: #dcd7c9;
+  color: #3f4e4f;
 }
+
+.event-sections-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.section-para {
+  margin-left: 55px;
+  margin-right: 55px;
+  font-size: 25px;
+}
+
 .sunflowers,
 .auto,
 .escher {
-  width: 100%;
+  width: 60vh;
+  height: 60vh;
 }
 
 @media screen and (max-width: 899px) {
@@ -101,5 +154,43 @@ p {
   }
   .louwman-section .image-section-container {
     padding-left: 0;
+  }
+
+  .home-offers-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .offers-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .offers-text {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 0;
+  }
+  .home-offers-img {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-para {
+    font-size: 20px;
+    width: 90%;
+  }
+
+  .sunflowers,
+  .auto,
+  .escher {
+    width: 35vh;
+    height: 40vh;
   }
 }

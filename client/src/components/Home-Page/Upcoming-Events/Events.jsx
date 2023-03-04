@@ -4,29 +4,31 @@ import "./events.css";
 import sunflowers from "../../../assets/img/van-gogh-museum.jpeg";
 import auto from "../../../assets/img/louwman-museum.jpeg";
 import escher from "../../../assets/img/kunstmuseum.jpeg";
+import gift from "../../../assets/img/gift.svg";
 
 const Events = () => {
   return (
     <section className="upcoming-events">
-      <div className="offers-section">
-        <div className="offers-text">
-          <p>Still looking for something interesting?</p>
-          <p>You can learn more about special museums offers</p>
+      <div className="home-offers-section">
+        <div className="home-offers-container">
+          <img src={gift} className="home-offers-img" />
         </div>
-        <Link to="offers" className="offers-link">
-          <button className="offers-button">Check it out</button>
-        </Link>
+
+        <div className="offers-section">
+          <p className="offers-text">
+            Still looking for something interesting? <br /> You can learn more
+            about special museums offers!
+          </p>
+
+          <Link to="/offers">
+            <button className="home-offers-button">Check it out</button>
+          </Link>
+        </div>
       </div>
 
       <div className="van-gogh-section">
-        <div className="image-section-container">
-          <img
-            className="sunflowers"
-            src={sunflowers}
-            alt="sunflowers"
-            width={150}
-          />
-        </div>
+        <img className="sunflowers" src={sunflowers} alt="sunflowers" />
+
         <div className="event-sections-text">
           <div className="section-para">
             <p>
@@ -66,15 +68,13 @@ const Events = () => {
             <button className="section-button">Check it out</button>
           </a>
         </div>
-        <div className="image-section-container">
-          <img className="auto" src={auto} alt="auto" width={150} />
-        </div>
+
+        <img className="auto" src={auto} alt="auto" />
       </div>
 
       <div className="kunstmuseum-section">
-        <div className="image-section-container">
-          <img className="escher" src={escher} alt="escher" width={150} />
-        </div>
+        <img className="escher" src={escher} alt="escher" width={150} />
+
         <div className="event-sections-text">
           <div className="section-para">
             <h3>

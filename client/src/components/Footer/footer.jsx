@@ -10,7 +10,6 @@ import {
 } from "react-icons/ai";
 import "./footer.css";
 import logo from "../../assets/img/logo-find-museum.png";
-import mobileStores from "../../assets/img/mobile-stores.png";
 
 const Footer = () => {
   return (
@@ -47,9 +46,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="container--mobile-app">
+          {/* <div className="container--mobile-app">
             <img src={mobileStores} alt="Google Play Store" />
-          </div>
+          </div> */}
         </div>
         <div className="container--have-question">
           <h3>Do you a have question?</h3>
