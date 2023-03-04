@@ -1,5 +1,4 @@
 import User, { validateUser } from "../models/User.js";
-
 import { logError } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 
@@ -93,4 +92,39 @@ export const updateUser = async (req, res) => {
       .status(500)
       .json({ success: false, msg: "You can update only your account" });
   }
+};
+
+// Gokhan: I have used this inside the comment controller so that as soon as I created a comment to push the comment Id into the user comments array
+export const addCommentIdToUser = async (userId, commentId) => {
+  try {
+    await User.findByIdAndUpdate(
+      userId,
+      { $push: { comments: commentId } },
+      { new: true }
+    );
+  } catch (error) {
+    logError(error);
+  }
+};
+
+export const getAllComments = async (req, res) => {
+  const userId = req.params.userId;
+  User.findOne({ _id: userId }, { comments: 1 })
+    .populate({
+      path: "comments",
+      populate: [
+        { path: "museumId", select: { name: 1 } },
+        { path: "userId", select: { firstName: 1, lastName: 1 } },
+      ],
+      // populate: { path: "userId", select: { firstName: 1, lastName: 1 } },
+    })
+    .exec((err, comments) => {
+      if (err) {
+        res.status(400).json({
+          success: false,
+          msg: `unable to get user comments with user id: ${userId}`,
+        });
+      }
+      res.status(200).json({ success: true, result: comments });
+    });
 };

@@ -15,6 +15,7 @@ import { MuseumsProvider } from "./context/museumContext";
 import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
 
 // import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
+import UserComments from "./pages/MyProfile/UserComments";
 
 const App = () => {
   return (
@@ -31,6 +32,8 @@ const App = () => {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/museum/:museumId" element={<MuseumDetails />} />
             <Route path="/profile/:id" element={<MyProfile />} />
+            <Route path="/user/comments/:userId" element={<UserComments />} />
+            {/* <Route path="/user/comment/edit" element={<ReviewEdit/>} /> */}
           </Routes>
           <Footer />
         </AuthProvider>

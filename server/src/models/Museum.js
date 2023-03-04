@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { SchemaTypes } = mongoose;
 const museumSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  category: { type: String, required: true },
+  category: [{ type: String, required: true }],
   description: { type: String, required: true },
   address: {
     city: { type: String, required: true },
@@ -34,5 +34,5 @@ const museumSchema = new mongoose.Schema({
     },
   ],
 });
-const Museum = mongoose.model("museums", museumSchema);
+const Museum = mongoose.model("Museum", museumSchema);
 export default Museum;
