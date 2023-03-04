@@ -8,8 +8,8 @@
 .all-museums-card {
   display: flex;
   flex-wrap: wrap;
-  /* margin-top: 30px; */
   margin: 30px auto;
+  padding: 0 40px;
   justify-content: space-evenly;
 }
 

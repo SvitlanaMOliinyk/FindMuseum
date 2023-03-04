@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/museums/:key" element={<SearchedOverview />} />
             <Route path="/museums" element={<MuseumOverview />} />
             <Route path="/offers" element={<Offers />} />
-            <Route path="/favorite" element={<Favorites />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/museum/:museumId" element={<MuseumDetails />} />
