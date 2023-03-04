@@ -67,20 +67,22 @@ export const loginUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const { user } = req.body;
-    if (typeof user !== "object") {
+    const { authUser } = req.body;
+    //console.log(req.body);
+    //console.log(authUser);
+    //console.log(authUser.profilePicture);
+    if (typeof authUser !== "object") {
       return res.status(400).json({
         success: false,
         msg: `You need to provide a 'user' object. Received: ${JSON.stringify(
-          user
+          authUser
         )}`,
       });
     }
-
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
-        $set: user,
+        $set: authUser,
       },
       { new: true }
     );

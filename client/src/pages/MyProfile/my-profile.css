@@ -1,60 +1,56 @@
 .my-profile-container {
   margin-top: 10vh;
-  display: flex;
 }
 
 .my-profile {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .my-profile-settings {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.update-profile-header {
+  font-size: 35px;
 }
 
 .my-profile-form {
+  padding-top: 20px;
+}
+
+.profile-settings {
   display: flex;
+  margin-bottom: 10px;
   flex-direction: column;
+  width: 300px;
 }
 
-.profile-picture-settings {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.profile-picture-settings img {
-  width: 70px;
-  height: 70px;
+.profile-settings img {
+  width: 80px;
+  height: 80px;
   border-radius: 50px;
   object-fit: cover;
+  margin: 0 auto;
 }
 
-.pp-icon {
-  width: 25px;
-  height: 25px;
-  border-radius: 50px;
-  background-color: blueviolet;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10px;
-  cursor: pointer;
+.profile-settings label {
+  font-size: 23px;
+  font-weight: bolder;
+  margin-top: 30px;
 }
 
-.profile-picture-settings label {
-  font-size: 20px;
-  margin-top: 20px;
-}
-
-.profile-picture-settings input {
-  color: gray;
+.profile-settings input {
+  color: #3f4e4f;
+  background-color: #dcd7c9;
   margin: 10px 0;
   height: 30px;
   border: none;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 2px solid #2c3639;
+  outline: none;
 }
 
 .profile-update-btn {
@@ -67,7 +63,13 @@
   height: 40px;
   font-size: 1.2rem;
   color: #dcd7c9;
-  align-items: center;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+.profile-update-btn:hover {
+  background-color: #a27b5c;
+  color: white;
   cursor: pointer;
 }
 
@@ -80,4 +82,10 @@
 .profile-p {
   height: 40px;
   width: 40px;
+}
+
+@media screen and (max-width: 420px) {
+  .profile-settings {
+    width: 230px;
+  }
 }
