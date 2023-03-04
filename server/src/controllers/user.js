@@ -128,3 +128,33 @@ export const getAllComments = async (req, res) => {
       res.status(200).json({ success: true, result: comments });
     });
 };
+
+// update the favorite list
+export const updateFavorite = async (req, res) => {
+  try {
+    const { userFavorite } = req.body;
+
+    if (typeof userFavorite !== "object") {
+      return res.status(400).json({
+        success: false,
+        msg: `You need to provide a 'favorite' array. Received: ${JSON.stringify(
+          userFavorite
+        )}`,
+      });
+    }
+
+    const updatedFavorite = await User.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: { favoriteMuseums: userFavorite },
+      },
+      { new: true }
+    );
+    res.status(200).json({ success: true, userFavorite: updatedFavorite });
+  } catch (err) {
+    logError(err);
+    res
+      .status(500)
+      .json({ success: false, msg: "Your favorite list is Not updated" });
+  }
+};

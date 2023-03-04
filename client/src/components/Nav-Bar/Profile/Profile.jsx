@@ -10,7 +10,13 @@ import { useAuth } from "../../../context/authContext";
 
 const Profile = ({ onClose }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const { authUser, setIsLoggedIn, setAuthUser } = useAuth();
+  const {
+    clearFavorites,
+    authUser,
+    setIsLoggedIn,
+    setAuthUser,
+    handleLogoutFavorite,
+  } = useAuth();
   const userId = JSON.parse(localStorage.getItem("authUser"));
   const menuRef = useRef();
 
@@ -81,11 +87,9 @@ const Profile = ({ onClose }) => {
                 text={"My Profile"}
                 link={`/profile/${authUser?._id}`}
               />
-              <DropdownItem
-                img={star}
-                text={"Favorites"}
-                link={`/user/favorites/${userId && userId._id}`}
-              />
+              <DropdownItem img={star} text={"Favorites"} link={"/favorite"} />
+              <DropdownItem img={edit} text={"Comments"} link={"/comments"} />
+              <DropdownItem img={star} text={"Favorites"} link={"/favorites"} />
               <DropdownItem
                 img={edit}
                 text={"Comments"}
@@ -95,9 +99,11 @@ const Profile = ({ onClose }) => {
                 img={logout}
                 text={"Logout"}
                 link={"/"}
-                logout={() => {
+                logout={async () => {
+                  await handleLogoutFavorite();
                   setIsLoggedIn(false);
                   setAuthUser(null);
+                  clearFavorites();
                 }}
               />
             </ul>

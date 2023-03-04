@@ -4,6 +4,7 @@ import {
   getAllComments,
   loginUser,
   updateUser,
+  updateFavorite,
 } from "../controllers/user.js";
 
 const userRouter = express.Router();
@@ -11,6 +12,7 @@ const userRouter = express.Router();
 userRouter.post("/register", createUser);
 userRouter.post("/login", loginUser);
 userRouter.put("/:id", updateUser);
+userRouter.put("/update/:id", updateFavorite);
 userRouter.get("/comments/:userId", getAllComments);
 
 export default userRouter;

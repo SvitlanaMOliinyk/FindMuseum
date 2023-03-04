@@ -15,6 +15,12 @@ const userSchema = new mongoose.Schema(
         ref: "Comment",
       },
     ],
+    favoriteMuseums: [
+      {
+        type: SchemaTypes.ObjectId,
+        ref: "Museum",
+      },
+    ],
   },
   { timestamps: true }
 );

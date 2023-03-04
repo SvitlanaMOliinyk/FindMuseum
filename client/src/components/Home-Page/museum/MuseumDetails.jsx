@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
+import { useParams } from "react-router-dom";
 import { AiFillBank, AiFillPhone } from "react-icons/ai";
 import styled from "styled-components";
 import { MdLocationPin } from "react-icons/md";
 import { FaLink } from "react-icons/fa";
 import ReviewForm from "./review/ReviewForm";
 import ReviewCard from "./review/ReviewCard";
+import Heart from "../../../components/Favorite/Heart";
 
 const MuseumDetails = () => {
   const { museumId } = useParams();
@@ -49,6 +50,7 @@ const MuseumDetails = () => {
         <Row>
           <ColMuseum>
             <img src={image && image.url} alt={name} />
+            <Heart id={museumId} />
             <Category>
               <AiFillBank className="icon" />
               <h2>{category && category[0] && category[0]}</h2>
@@ -204,6 +206,7 @@ const Category = styled.div`
     width: 1.5rem;
     height: 1.5rem;
     color: white;
+  }
   }
 `;
 
