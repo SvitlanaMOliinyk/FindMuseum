@@ -8,7 +8,7 @@ import { GiGreekTemple } from "react-icons/gi";
 const MuseumCard = ({ museum }) => {
   const { name, image, _id, address, category } = museum;
   MuseumCard.propTypes = {
-    museum: PropTypes.node.isRequired,
+    museum: PropTypes.object.isRequired,
   };
 
   return (

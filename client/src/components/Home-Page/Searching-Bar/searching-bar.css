@@ -26,6 +26,10 @@
   position: relative;
 }
 
+.search-form input {
+  font-size: 1.2rem;
+}
+
 .form-control {
   width: inherit;
   height: 70%;
@@ -44,8 +48,8 @@
 }
 
 .search-bar-button {
-  border-radius: 20px;
-  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  padding: 0.3rem 0.5rem;
   background-color: #3f4e4f;
   position: absolute;
   color: #dcd7c9;
