@@ -85,6 +85,19 @@
   transition: transform 500ms ease;
 }
 
+.favorites_page h1 {
+  text-align: center;
+  margin: 100px 0 50px;
+  font-size: 40px;
+}
+.favorites_page .notYet_img {
+  display: block;
+  height: 20%;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (hover) {
   .museum-card-content {
     transform: translateY(65%);

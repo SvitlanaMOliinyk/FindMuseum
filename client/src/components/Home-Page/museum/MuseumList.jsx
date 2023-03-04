@@ -1,7 +1,7 @@
 import React from "react";
 import { useMuseums } from "../../../context/museumContext";
-import ViewMuseums from "./ViewMuseums";
-import "./museum.css";
+import MuseumCard from "../../Museum-Overview/MuseumCard";
+import "../../Museum-Overview/museum-card.css";
 import Loading from "../../common/loading/Loading";
 
 const MuseumList = () => {
@@ -15,10 +15,10 @@ const MuseumList = () => {
   } else {
     content = (
       <>
-        <div className="museumsContainer">
+        <div className="all-museums-card">
           {museums &&
-            museums.slice(0, 4).map((museum) => {
-              return <ViewMuseums key={museum._id} museum={museum} />;
+            museums.slice(0, 3).map((museum) => {
+              return <MuseumCard key={museum._id} museum={museum} />;
             })}
         </div>
       </>

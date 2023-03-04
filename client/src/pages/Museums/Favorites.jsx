@@ -1,7 +1,9 @@
 import React from "react";
 import { useMuseums } from "../../context/museumContext";
 import { useAuth } from "../../context/authContext";
-import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
+import MuseumCard from "../../components/Museum-Overview/MuseumCard";
+import "../../components/Museum-Overview/museum-card.css";
+//import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
 
 const Favorites = () => {
   const { favorites } = useAuth();
@@ -28,10 +30,10 @@ const Favorites = () => {
       )}
 
       {favMuseums.length > 0 && (
-        <div className="fav_container">
+        <div className="all-museums-card">
           {favMuseums &&
             favMuseums.map((museum) => {
-              return <ViewMuseums museum={museum} key={museum._id} />;
+              return <MuseumCard key={museum._id} museum={museum} />;
             })}
         </div>
       )}
