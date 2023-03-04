@@ -48,9 +48,9 @@ const sendEmail = (recipient_email) => {
     };
     transporter.sendMail(mail_configs, function (error) {
       if (error) {
-        return reject({ message: "An error has occured" });
+        return reject({ message: "An error has occurred" });
       }
-      return resolve({ message: "Email sent succesfuly" });
+      return resolve({ message: "Email sent successfully" });
     });
   });
 };
