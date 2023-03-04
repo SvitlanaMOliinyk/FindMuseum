@@ -3,7 +3,7 @@ import { useMuseums } from "../../context/museumContext";
 import { useAuth } from "../../context/authContext";
 import MuseumCard from "../../components/Museum-Overview/MuseumCard";
 import "../../components/Museum-Overview/museum-card.css";
-//import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
+import "../../components/Museum-Overview/all-museums.css";
 
 const Favorites = () => {
   const { favorites } = useAuth();
