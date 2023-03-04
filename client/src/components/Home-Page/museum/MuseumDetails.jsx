@@ -7,14 +7,29 @@ import styled from "styled-components";
 import { MdLocationPin } from "react-icons/md";
 import { FaLink } from "react-icons/fa";
 import ReviewForm from "./review/ReviewForm";
+import ReviewCard from "./review/ReviewCard";
 import Heart from "../../../components/Favorite/Heart";
 
 const MuseumDetails = () => {
   const { museumId } = useParams();
+  const [museum, setMuseum] = useState({});
+  const [refresh, setRefresh] = useState(false);
+  const { performFetch, cancelFetch } = useFetch(
+    `/museum/${museumId}`,
+    (response) => {
+      setMuseum(response.result);
+    }
+  );
 
-  let { museums } = useContext(museumContext);
-
-  const selectedMuseum = museums.find((museum) => museum._id === museumId);
+  useEffect(() => {
+    performFetch();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    return cancelFetch;
+  }, [museumId, refresh]);
 
   const {
     image,
@@ -27,7 +42,8 @@ const MuseumDetails = () => {
     openingHours,
     price,
     category,
-  } = selectedMuseum;
+    comments,
+  } = museum;
 
   return (
     <>
@@ -38,21 +54,21 @@ const MuseumDetails = () => {
             <Heart id={museumId} />
             <Category>
               <AiFillBank className="icon" />
-              <h2>{category}</h2>
+              <h2>{category && category[0] && category[0]}</h2>
             </Category>
 
             <Info>
               <div className="address">
-                <p>{address && address.city}</p>
-                <p>{address && address.street}</p>
-                <p>{address && address.postcode}</p>
+                <p>{address?.city}</p>
+                <p>{address?.street}</p>
+                <p>{address?.postcode}</p>
                 <p>The Nederlands</p>
               </div>
 
               <div className="contact">
                 <div className="contact-item">
                   <MdLocationPin />
-                  <a href={location && location.map}>View on map</a>
+                  <a href={location?.map}>View on map</a>
                 </div>
                 <div className="contact-item">
                   <AiFillPhone />
@@ -67,7 +83,7 @@ const MuseumDetails = () => {
           </ColMuseum>
 
           <ColDescription>
-            <h3>{name}</h3>
+            <h2>{name}</h2>
             <p>{description}</p>
           </ColDescription>
         </Row>
@@ -82,12 +98,14 @@ const MuseumDetails = () => {
                 </tr>
               </thead>
               <tbody>
-                {openingHours?.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item && item.day}</td>
-                    <td>{item && item.hours}</td>
-                  </tr>
-                ))}
+                {openingHours?.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{item && item.day}</td>
+                      <td>{item && item.hours}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </ColHourPrice>
@@ -101,36 +119,13 @@ const MuseumDetails = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Adults</td>
-                  <td>
-                    {price && price.adults != null ? "€" + price.adults : "-"}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Students</td>
-                  <td>
-                    {price && price.students != null
-                      ? "€" + price.students
-                      : "-"}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Children</td>
-                  <td>
-                    {price && price.children != null
-                      ? "€" + price.children
-                      : "-"}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Toddlers</td>
-                  <td>
-                    {price && price.toddlers != null
-                      ? "€" + price.toddlers
-                      : "-"}
-                  </td>
-                </tr>
+                {price &&
+                  Object.keys(price).map((item, index) => (
+                    <tr key={index}>
+                      <td>{item}</td>
+                      <td>{"€" + price[item]}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </ColHourPrice>
@@ -139,15 +134,24 @@ const MuseumDetails = () => {
           <ColIframe>
             <h1>Location & Map</h1>
             <iframe
-              src={location && location.iframe}
+              src={location?.iframe}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </ColIframe>
         </Row>
-
-        <ReviewForm museumId={museumId} />
+        <Row>
+          <ReviewCard comments={comments} museumName={name} />
+        </Row>
+        <Row>
+          <ReviewForm
+            type="Write"
+            museumId={museumId}
+            refresh={refresh}
+            setRefresh={setRefresh}
+          />
+        </Row>
       </Container>
     </>
   );
@@ -209,6 +213,7 @@ const Category = styled.div`
 
 const ColDescription = styled.div`
   width: 50%;
+  height: 542px;
   @media (max-width: 700px) {
     width: 90%;
     text-align: center;
@@ -216,9 +221,17 @@ const ColDescription = styled.div`
   }
   margin: 0 2rem;
   font-size: 1.5rem;
-  h3 {
+  h2 {
     font-size: 3rem;
     margin-bottom: 2rem;
+  }
+  p {
+    @media (max-width: 700px) {
+      line-height: 1.7em;
+    }
+    @media (min-width: 1125) {
+      line-height: 1em;
+    }
   }
 `;
 
@@ -289,14 +302,14 @@ const ColHourPrice = styled.div`
 
 const ColIframe = styled.div`
   @media (max-width: 700px) {
-    width: 100%;
+    width: 95%;
   }
   iframe {
     width: 75vh;
     height: 56vh;
     border: 0;
     @media (max-width: 700px) {
-      width: 100%;
+      width: 95%;
       padding: 0 3rem;
     }
   }

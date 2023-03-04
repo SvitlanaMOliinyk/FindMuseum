@@ -1,11 +1,11 @@
 .container--footer {
   background-color: var(--border-color);
-  padding: 2rem;
+  padding: 0.5rem 2rem 2rem;
   color: var(--background-color);
 }
 
 .container--footer h2 {
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 .container--company-logo {
@@ -16,7 +16,7 @@
 
 .logo-find-company {
   padding: 0;
-  width: 9rem;
+  width: 8rem;
 }
 
 .container--follow-us {
@@ -42,9 +42,7 @@
 .container--company-section {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.5rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin: 0.5rem 4rem 0;
 }
 
 .container--company-section ul {
@@ -75,14 +73,14 @@
 
 .container--info {
   padding-top: 0.5rem;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
 }
 
 .container--phone {
   padding-top: 0.5rem;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
 }
@@ -97,7 +95,7 @@
 
 .footer-list-item {
   padding-top: 0.5rem;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
 }
 
 .footer-list-item a {
@@ -112,7 +110,7 @@
 .container--copyright-section {
   text-align: center;
   margin-top: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 899px) {

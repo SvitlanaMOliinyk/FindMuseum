@@ -1,4 +1,5 @@
 import Museum from "../models/Museum.js";
+import { logError } from "../util/logging.js";
 
 export const getMuseums = async (req, res) => {
   try {
@@ -33,13 +34,57 @@ export const getMuseumNamePlace = async (req, res) => {
 // Gokhan added
 export const getMuseumById = async (req, res) => {
   const id = req.params.museumId;
-  try {
-    const museum = await Museum.find({ _id: id });
-    res.status(200).json({ success: true, result: museum });
-  } catch (error) {
-    res.status(400).json({
-      success: false,
-      msg: `unable to get museum with id: ${id}`,
+  Museum.findOne({ _id: id })
+    .populate({
+      path: "comments",
+      populate: { path: "userId", select: { firstName: 1, lastName: 1 } },
+    })
+    .exec((err, museum) => {
+      if (err) {
+        res.status(400).json({
+          success: false,
+          msg: `unable to get museum with id: ${id}`,
+        });
+      }
+      res.status(200).json({ success: true, result: museum });
     });
+};
+
+// Gokhan: I have used this inside the comment controller so that as soon as I created a comment to push the comment Id into the museum comments array
+export const addCommentIdToMuseum = async (museumId, commentId) => {
+  try {
+    await Museum.findByIdAndUpdate(
+      museumId,
+      { $push: { comments: commentId } },
+      { new: true }
+    );
+  } catch (error) {
+    logError(error);
   }
 };
+
+// export const paginateUser = async (req, res) => {
+//   const allMuseums = await Museum.find({});
+//   const page = parseInt(req.query.page);
+//   const limit = parseInt(req.query.limit);
+
+//   const startIndex = (page - 1) * limit;
+//   const lastIndex = page * limit;
+
+//   const results = {};
+//   results.totalUser = allMuseums.length;
+//   results.pageCount = Math.ceil(allMuseums.length / limit);
+
+//   if (lastIndex < allMuseums.length) {
+//     results.next = {
+//       page: page + 1,
+//     };
+//   }
+//   if (startIndex > 0) {
+//     results.prev = {
+//       page: page - 1,
+//     };
+//   }
+//   results.result = allMuseums.slice(startIndex, lastIndex);
+//   res.json(results);
+// };

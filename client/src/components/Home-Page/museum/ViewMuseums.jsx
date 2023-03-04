@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const Museum = ({ museum }) => {
   const { name, image, _id, address } = museum;
   Museum.propTypes = {
-    museum: PropTypes.node.isRequired,
+    museum: PropTypes.object,
   };
 
   return (

@@ -6,31 +6,41 @@ import LoginForm from "./pages/Auth/LoginForm";
 import RegisterForm from "./pages/Auth/RegisterForm";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/footer";
-import Museums from "./pages/Museums/Museums";
+// import Museums from "./pages/Museums/Museums";
+import MuseumOverview from "./pages/MuseumOverview/MuseumOverview";
+import Offers from "./pages/Offers/Offers";
 import Favorites from "./pages/Museums/Favorites";
 import { AuthProvider } from "./context/authContext";
 import { MuseumContext } from "./context/museumContext";
 import MyProfile from "./pages/MyProfile/MyProfile";
+import { MuseumsProvider } from "./context/museumContext";
+import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
+
+// import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
+import UserComments from "./pages/MyProfile/UserComments";
 
 const App = () => {
   return (
     <>
-      <MuseumContext>
+      <MuseumsProvider>
         <AuthProvider>
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/museums/:key" element={<Museums />} />
-            <Route path="/museums" element={<Museums />} />
+            <Route path="/museums/:key" element={<SearchedOverview />} />
+            <Route path="/museums" element={<MuseumOverview />} />
+            <Route path="/offers" element={<Offers />} />
             <Route path="/favorite" element={<Favorites />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/museum/:museumId" element={<MuseumDetails />} />
             <Route path="/profile/:id" element={<MyProfile />} />
+            <Route path="/user/comments/:userId" element={<UserComments />} />
+            {/* <Route path="/user/comment/edit" element={<ReviewEdit/>} /> */}
           </Routes>
           <Footer />
         </AuthProvider>
-      </MuseumContext>
+      </MuseumsProvider>
     </>
   );
 };

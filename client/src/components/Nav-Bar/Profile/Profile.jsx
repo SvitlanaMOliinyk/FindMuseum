@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import PropTypes from "prop-types";
 import "./profile.css";
-
 import avatar from "../../../assets/drop/user.png";
 import star from "../../../assets/drop/star.png";
 import edit from "../../../assets/drop/edit.png";
@@ -19,7 +17,7 @@ const Profile = ({ onClose }) => {
     setAuthUser,
     handleLogoutFavorite,
   } = useAuth();
-
+  const userId = JSON.parse(localStorage.getItem("authUser"));
   const menuRef = useRef();
 
   //profile menu items
@@ -91,6 +89,12 @@ const Profile = ({ onClose }) => {
               />
               <DropdownItem img={star} text={"Favorites"} link={"/favorite"} />
               <DropdownItem img={edit} text={"Comments"} link={"/comments"} />
+              <DropdownItem img={star} text={"Favorites"} link={"/favorites"} />
+              <DropdownItem
+                img={edit}
+                text={"Comments"}
+                link={`/user/comments/${userId && userId._id}`}
+              />
               <DropdownItem
                 img={logout}
                 text={"Logout"}

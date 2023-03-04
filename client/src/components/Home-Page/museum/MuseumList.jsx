@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { museumContext } from "../../../context/museumContext";
+import React from "react";
+import { useMuseums } from "../../../context/museumContext";
 import ViewMuseums from "./ViewMuseums";
 import "./museum.css";
 import Loading from "../../common/loading/Loading";
 
 const MuseumList = () => {
-  const { isLoading, error, museums } = useContext(museumContext);
+  const { isLoading, error, museums } = useMuseums();
   let content = null;
 
   if (isLoading) {

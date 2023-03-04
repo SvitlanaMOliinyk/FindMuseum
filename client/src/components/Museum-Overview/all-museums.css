@@ -1,0 +1,22 @@
+.all-museums {
+  /* margin-top: 10vh; */
+  display: flex;
+  flex: 10;
+  flex-direction: column;
+}
+
+.all-museums-card {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-top: 30px; */
+  margin: 30px auto;
+  justify-content: space-evenly;
+}
+
+.selected-filter-counter {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2vw;
+  font-size: 20px;
+  margin-top: 10px;
+}

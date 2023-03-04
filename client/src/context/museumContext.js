@@ -1,15 +1,14 @@
 import PropTypes from "prop-types";
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 
-export const museumContext = createContext();
+const MuseumsContext = createContext();
 
-export const MuseumContext = ({ children }) => {
-  MuseumContext.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+export function useMuseums() {
+  return useContext(MuseumsContext);
+}
 
-  //  museums
+export const MuseumsProvider = ({ children }) => {
   const [museums, setMuseums] = useState([]);
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
     "/museum",
@@ -30,6 +29,10 @@ export const MuseumContext = ({ children }) => {
   };
 
   return (
-    <museumContext.Provider value={value}>{children}</museumContext.Provider>
+    <MuseumsContext.Provider value={value}>{children}</MuseumsContext.Provider>
   );
+};
+
+MuseumsProvider.propTypes = {
+  children: PropTypes.node,
 };

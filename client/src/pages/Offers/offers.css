@@ -1,0 +1,113 @@
+.chance-button {
+  width: clamp(150px, 2.5vw, 4rem);
+  height: clamp(50px, 1.5vw, 1rem);
+  font-size: clamp(0.8rem, 1.8vw, 1rem);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background-color: var(--navbar-color);
+}
+.chance-button:hover {
+  opacity: 0.7;
+}
+
+.offers {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin-bottom: 4rem;
+}
+
+.head-part {
+  max-width: 100%;
+  min-height: 40vh;
+  display: flex;
+  margin-top: 10vh;
+  margin-bottom: 4vh;
+  text-align: justify;
+  align-items: center;
+}
+
+.head-part p {
+  font-size: 1.5rem;
+  display: inline-block;
+  width: 50%;
+  margin: auto;
+  padding: 2rem;
+}
+.offers-img-container {
+  max-width: 100%;
+}
+
+.offers-part {
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.offer-item {
+  max-width: 100%;
+  max-height: 40vh;
+  display: flex;
+  border: 2px solid var(--navbar-color);
+  border-radius: 4px;
+  display: flex;
+  padding: 1rem;
+  gap: 2rem;
+  background-color: whitesmoke;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+  transition: transform 1s;
+}
+
+.offer-item:hover {
+  transform: scale(1.1);
+}
+
+.offer-item-name img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+.offer-item-name h2 {
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.offer-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.date-number h2 {
+  padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 899px) {
+  .offers-part {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .offer-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .date-number h2 {
+    padding: 0;
+  }
+  .offer-price {
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .head-part {
+    max-height: 20vh;
+  }
+  .head-part p {
+    width: 100%;
+    text-align: center;
+  }
+}

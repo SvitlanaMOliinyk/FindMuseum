@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createUser,
+  getAllComments,
   loginUser,
   updateUser,
   updateFavorite,
@@ -12,8 +13,6 @@ userRouter.post("/register", createUser);
 userRouter.post("/login", loginUser);
 userRouter.put("/:id", updateUser);
 userRouter.put("/update/:id", updateFavorite);
-
-// we will use this later
-// userRouter.get("/:id")
+userRouter.get("/comments/:userId", getAllComments);
 
 export default userRouter;
