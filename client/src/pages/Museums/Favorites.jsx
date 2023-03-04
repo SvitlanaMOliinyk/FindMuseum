@@ -1,21 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import { museumContext } from "../../context/museumContext";
+import React from "react";
+import { useMuseums } from "../../context/museumContext";
 import { useAuth } from "../../context/authContext";
 import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
 
 const Favorites = () => {
   const { favorites } = useAuth();
 
-  const { museums } = useContext(museumContext);
+  const { museums } = useMuseums();
 
-  const [favMuseums, setFavMuseums] = useState([]);
-
-  useEffect(() => {
-    let arrayFav = [];
-    museums.map((museum) => {
-      if (favorites.includes(museum._id)) arrayFav.push(museum);
-    });
-    setFavMuseums(arrayFav);
+  const favMuseums = museums.filter((museum) => {
+    if (favorites.includes(museum._id)) {
+      return museum;
+    }
   });
 
   return (

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { SchemaTypes } = mongoose;
 const museumSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  category: [{ type: String, required: true }],
+  category: { type: String, required: true },
   description: { type: String, required: true },
   address: {
     city: { type: String, required: true },
