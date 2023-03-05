@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import "./otp-input.css";
 import background from "../../assets/img/register-background.jpeg";
 import { useFormik } from "formik";
@@ -7,7 +6,6 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 
-//const OtpInput = ({ value, valueLength, onChange })
 const OtpInput = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
@@ -29,7 +27,7 @@ const OtpInput = () => {
 
     if (otp === random) {
       formik.resetForm();
-      toast.success("Your code is true!", {
+      toast.success("Confirmation completed successfully!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 2000,
       });
@@ -38,7 +36,7 @@ const OtpInput = () => {
         navigate(`/resetPassword/${userId}`);
       }, 2000);
     } else {
-      toast.error("Wrong code!", {
+      toast.error("Enter the correct verification code!", {
         position: toast.POSITION.TOP_CENTER,
         className: "toast-position",
       });
