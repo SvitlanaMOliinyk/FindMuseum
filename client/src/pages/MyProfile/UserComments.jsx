@@ -3,11 +3,19 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ProfileReviewCard from "./ProfileReviewCard";
 import useFetch from "../../hooks/useFetch";
+import Pagination from "../../components/common/pagination/Pagination";
 
 const UserComments = () => {
   const [userComments, setUserComments] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const { userId } = useParams();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [commentsPerPage] = useState(1);
+  const [currentButton, setCurrentButton] = useState(1);
+
+  const indexOfLastComment = currentPage * commentsPerPage;
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+  const totalPagesNum = Math.ceil(userComments?.length / commentsPerPage);
 
   const { performFetch } = useFetch(`/user/comments/${userId}`, (response) => {
     setUserComments(response.result.comments);
@@ -17,13 +25,25 @@ const UserComments = () => {
     performFetch();
   }, [userId, refresh]);
 
+  const currentComments = userComments?.slice(
+    indexOfFirstComment,
+    indexOfLastComment
+  );
+
   return (
     <>
       <Container>
         <ProfileReviewCard
-          comments={userComments}
+          comments={currentComments}
           refresh={refresh}
           setRefresh={setRefresh}
+        />
+
+        <Pagination
+          pages={totalPagesNum}
+          setCurrentPage={setCurrentPage}
+          currentButton={currentButton}
+          setCurrentButton={setCurrentButton}
         />
       </Container>
     </>
