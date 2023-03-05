@@ -158,3 +158,13 @@ export const updateFavorite = async (req, res) => {
       .json({ success: false, msg: "Your favorite list is Not updated" });
   }
 };
+
+export const profilePictureUpload = async (req, res) => {
+  const { base64 } = req.body;
+  try {
+    User.create({ profilePicture: base64 });
+    res.send({ Status: "ok" });
+  } catch (error) {
+    res.send({ Status: "error", data: error });
+  }
+};

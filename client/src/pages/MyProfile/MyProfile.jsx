@@ -5,6 +5,7 @@ import { useAuth } from "../../context/authContext";
 import avatar from "../../assets/drop/user.png";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AiOutlinePlus } from "react-icons/ai";
 
 export default function MyProfile() {
   const { authUser, setAuthUser } = useAuth();
@@ -15,6 +16,27 @@ export default function MyProfile() {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 2000,
     });
+  };
+  const convertToBase64 = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      {
+        setAuthUser({ ...authUser, profilePicture: reader.result });
+      }
+    };
+  };
+
+  const uploadProfilePicture = () => {
+    fetch(`${process.env.BASE_SERVER_URL}/upload`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({ base64: authUser.profilePicture }),
+    }).then((res) => res.json());
   };
 
   const { performFetch, cancelFetch } = useFetch(`/user/${id}`, onSuccess);
@@ -43,7 +65,30 @@ export default function MyProfile() {
         </div>
         <form className="my-profile-form" onSubmit={handleSubmit}>
           <div className="profile-settings">
-            <img src={avatar} alt="" className="profile-picture" />
+            {authUser?.profilePicture ? (
+              <img
+                src={authUser?.profilePicture}
+                alt=""
+                style={{ width: "80px", height: "80px" }}
+              />
+            ) : (
+              <img
+                src={avatar}
+                alt=""
+                style={{ width: "80px", height: "80px" }}
+              />
+            )}
+            <label htmlFor="fileInput">
+              <AiOutlinePlus className="pp-icon" />
+            </label>
+            <input
+              accept="image/*"
+              type="file"
+              id="fileInput"
+              style={{ display: "none" }}
+              onChange={convertToBase64}
+            />
+            <button onClick={uploadProfilePicture}>Upload Picture</button>
 
             <label>Name</label>
             <input
