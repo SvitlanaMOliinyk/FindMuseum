@@ -6,9 +6,15 @@ import { useMuseums } from "../../context/museumContext";
 import FilterBar from "./FilterBar";
 import NotFound from "./NotFound";
 import Pagination from "../common/pagination/Pagination";
+import { FaRegWindowClose } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 
 export default function AllMuseums() {
   const { museums } = useMuseums();
+
+  //Filter in mobile mode
+  const [filterIsOpen, setFilterIsOpen] = useState(false);
+  const handleClick = () => setFilterIsOpen(!filterIsOpen);
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -118,18 +124,23 @@ export default function AllMuseums() {
 
   return (
     <>
-      <FilterBar
-        activeCityFilterList={activeCityFilterList}
-        setActiveCityFilterList={setActiveCityFilterList}
-        activeCategoryFilterList={activeCategoryFilterList}
-        setActiveCategoryFilterList={setActiveCategoryFilterList}
-        activeRatingFilterList={activeRatingFilterList}
-        setActiveRatingFilterList={setActiveRatingFilterList}
-        museumData={museums}
-        setActivePriceList={setActivePriceList}
-        activePriceIndex={activePriceIndex}
-        setActivePriceIndex={setActivePriceIndex}
-      />
+      <div className="filter-bar-icon" onClick={handleClick}>
+        {filterIsOpen ? <FaRegWindowClose /> : <FaFilter />}
+      </div>
+      <div className={filterIsOpen ? "open" : "closed"}>
+        <FilterBar
+          activeCityFilterList={activeCityFilterList}
+          setActiveCityFilterList={setActiveCityFilterList}
+          activeCategoryFilterList={activeCategoryFilterList}
+          setActiveCategoryFilterList={setActiveCategoryFilterList}
+          activeRatingFilterList={activeRatingFilterList}
+          setActiveRatingFilterList={setActiveRatingFilterList}
+          museumData={museums}
+          setActivePriceList={setActivePriceList}
+          activePriceIndex={activePriceIndex}
+          setActivePriceIndex={setActivePriceIndex}
+        />
+      </div>
       <div className="all-museums">
         <div className="search-bar">
           <SearchingBar />
