@@ -131,17 +131,16 @@ export default function AllMuseums() {
         setActivePriceIndex={setActivePriceIndex}
       />
       <div className="all-museums">
-        <div className="search-bar">
-          <SearchingBar />
-        </div>
-
         {activeCityFilterList.length > 0 ||
         activeCategoryFilterList.length > 0 ||
         activeRatingFilterList.length > 0 ||
         activePriceList.length > 0 ? (
           <>
-            <div className="selected-filter-counter">
-              <b>{filteredMuseum?.length} museums</b> &nbsp;found
+            <div className="search-bar">
+              <SearchingBar />
+              <div className="selected-filter-counter">
+                <b>{filteredMuseum?.length} museums</b> &nbsp;found
+              </div>
             </div>
             <div className="all-museums-card">
               <>
@@ -172,8 +171,11 @@ export default function AllMuseums() {
           </>
         ) : (
           <>
-            <div className="selected-filter-counter">
-              <b>{museums.length} museums</b> &nbsp;found
+            <div className="search-bar">
+              <SearchingBar />
+              <div className="selected-filter-counter">
+                <b>{museums?.length} museums</b> &nbsp;found
+              </div>
             </div>
             <div className="all-museums-card">
               <>
