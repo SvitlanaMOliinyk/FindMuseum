@@ -75,7 +75,7 @@ const OfferItem = ({ offer }) => {
       </div>
 
       <div className="date-number">
-        <h1>Until Date: {expireDate.toString().slice(0, 10)}</h1>
+        <h2>Expire Date: {expireDate.toString().slice(0, 10)}</h2>
         <h2>
           There are just{" "}
           <span style={{ color: "var(--navbar-color)" }}>
@@ -85,13 +85,16 @@ const OfferItem = ({ offer }) => {
         </h2>
       </div>
       <div className="offer-price">
-        <h3>
+        <h4>
           Price:{" "}
-          <span style={{ color: "var(--navbar-color)" }}>{newPrice}€</span>
+          <span style={{ color: "var(--navbar-color)", fontSize: "2rem" }}>
+            {newPrice}€
+          </span>
+          &nbsp;
           <span style={{ textDecoration: "line-through" }}>
             {museumId.price.adults}€
           </span>
-        </h3>
+        </h4>
         <button className="chance-button" onClick={handleClick}>
           Get the chance
         </button>

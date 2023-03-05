@@ -29,7 +29,7 @@
   border-radius: 4px;
   display: flex;
   color: white;
-  width: 13%;
+  max-height: 10vh;
 }
 
 .burger-menu-icon {

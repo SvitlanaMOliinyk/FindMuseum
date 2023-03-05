@@ -1,5 +1,8 @@
 import Offer from "../models/Offer.js";
 import Museum from "../models/Museum.js";
+import User from "../models/User.js";
+import { sendMail } from "../util/mailer.js";
+import { logError } from "../util/logging.js";
 
 export const getOffers = async (req, res) => {
   try {
@@ -21,11 +24,11 @@ export const updateOffer = async (req, res) => {
   const { buyer, numberOfTickets } = req.body;
   const { id } = req.params;
   try {
-    const offer = await Offer.findOne({
+    const offerExist = await Offer.findOne({
       $and: [{ _id: id }, { _id: id, buyers: buyer }],
     });
-    if (!offer) {
-      await Offer.updateOne(
+    if (!offerExist) {
+      await Offer.findOneAndUpdate(
         { _id: id },
         {
           $set: {
@@ -34,8 +37,10 @@ export const updateOffer = async (req, res) => {
           $push: {
             buyers: [buyer],
           },
-        }
+        },
+        { new: true }
       );
+      sendEmail(id);
       res.status(200).json({
         success: true,
         result: "Congratulations! Your offer is in your email-box now!",
@@ -50,5 +55,24 @@ export const updateOffer = async (req, res) => {
       success: false,
       msg: "Unable to update offer, please try again later",
     });
+  }
+};
+
+const sendEmail = async (offerId) => {
+  try {
+    const populatedOffer = await Offer.findById(offerId)
+      .populate({ path: "buyers", model: User })
+      .exec();
+    const buyers = populatedOffer.buyers;
+    let lastBayerEmailName;
+    if (buyers.length === 1) {
+      lastBayerEmailName = buyers[0];
+    } else {
+      lastBayerEmailName = buyers[buyers.length - 1];
+    }
+    const { firstName, email } = lastBayerEmailName;
+    sendMail(firstName, email);
+  } catch (error) {
+    logError(error.message);
   }
 };

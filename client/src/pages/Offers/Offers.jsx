@@ -3,10 +3,23 @@ import useFetch from "../../hooks/useFetch";
 import OfferItem from "./OfferItem";
 import Loading from "../../components/common/loading/Loading";
 import "./offers.css";
-import background from "../../assets/museums/t3.jpeg";
+
+import Pagination from "../../components/common/pagination/Pagination";
+import background from "../../assets/museums/t11.jpeg";
+
+
 
 const Offers = () => {
   const [offers, setOffers] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [offersPerPage] = useState(3);
+  const [currentButton, setCurrentButton] = useState(1);
+
+  const indexOfLastOffer = currentPage * offersPerPage;
+  const indexOfFirstOffer = indexOfLastOffer - offersPerPage;
+  const totalPagesNum = Math.ceil(offers?.length / offersPerPage);
+
   const { isLoading, error, performFetch } = useFetch("/offer", (response) => {
     setOffers(response.result);
   });
@@ -15,17 +28,19 @@ const Offers = () => {
     performFetch();
   }, []);
 
+  const currentOffers = offers?.slice(indexOfFirstOffer, indexOfLastOffer);
+
   return (
     <main className="offers">
       <div
         className="head-part"
         style={{
           backgroundColor: "grey",
-          backgroundBlendMode: "multiply",
-          backgroundImage: `url(${background})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          color: "white",
+          color: "antiquewhite",
+          backgroundPosition: "50%",
         }}
       >
         <p>
@@ -42,13 +57,19 @@ const Offers = () => {
         <Loading />
       ) : !error && offers?.length > 0 ? (
         <div className="offers-part">
-          {offers.map((offer) => (
+          {currentOffers.map((offer) => (
             <OfferItem key={offer._id} offer={offer} />
           ))}
         </div>
       ) : (
         <p>{error}</p>
       )}
+      <Pagination
+        pages={totalPagesNum}
+        setCurrentPage={setCurrentPage}
+        currentButton={currentButton}
+        setCurrentButton={setCurrentButton}
+      />
     </main>
   );
 };
