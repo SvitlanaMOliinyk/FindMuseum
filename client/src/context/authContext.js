@@ -10,7 +10,7 @@ export function useAuth() {
 }
 
 export const AuthProvider = ({ children }) => {
-  const [authUser, setAuthUser] = useState(null);
+  const [authUser, setAuthUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const { error, performFetch, cancelFetch } = useFetch(

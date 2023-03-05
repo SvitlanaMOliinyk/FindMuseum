@@ -26,8 +26,9 @@ const ReviewForm = ({
   };
   const authUser = JSON.parse(localStorage.getItem("authUser"));
   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+  console.log("comment from reviewform: ", comment);
   const [formData, setFormData] = useState({
-    museumId: "",
+    museumId: `${comment ? comment.museumId._id : museumId}`,
     rate: `${comment ? comment.rate : 0}`,
     review: `${comment ? comment.review : ""}`,
   });
@@ -97,7 +98,7 @@ const ReviewForm = ({
     if (comment) {
       commentId = comment._id;
     }
-    const { rate, review } = formData;
+    const { rate, review, museumId } = formData;
     try {
       performFetch({
         method: `${type == "Write" ? "POST" : "PUT"}`,

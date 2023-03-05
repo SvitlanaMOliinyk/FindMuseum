@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { logError } from "../../../../server/src/util/logging";
 
 const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
+  console.log("comments: ", comments);
   ProfileReviewCard.propTypes = {
     comments: PropTypes.array,
     refresh: PropTypes.bool,
@@ -98,9 +99,10 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
                 <Col>
                   <CommentContainer>
                     <EditDelete>
-                      {/* <Link  to="/user/comment/edit"> */}
+                      <CommentMuseum>
+                        {comment && comment.museumId.name}
+                      </CommentMuseum>
                       <FiEdit onClick={() => handleEdit(comment)} />
-                      {/* </Link> */}
                       <RiDeleteBinLine onClick={() => handleDelete(comment)} />
                     </EditDelete>
                     <AvatarCont>
@@ -132,6 +134,13 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
     </>
   );
 };
+
+const CommentMuseum = styled.div`
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  color: blue;
+  font-size: 1.5rem;
+`;
 
 const EditDelete = styled.div`
   display: flex;
