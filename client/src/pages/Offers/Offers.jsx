@@ -60,7 +60,7 @@ const Offers = () => {
         </p>
       </div>
       {isLoading ? (
-        <Loading isLoading={isLoading} />
+        <Loading />
       ) : !error && offers?.length > 0 ? (
         <div className="offers-part">
           {currentOffers.map((offer) => (

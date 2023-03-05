@@ -17,7 +17,7 @@ const MuseumList = () => {
   }, [isLoading]);
 
   if (isLoading) {
-    content = <Loading isLoading={isLoading} />;
+    content = <Loading />;
   } else if (error != null) {
     content = <div>Error: {error.toString()}</div>;
   } else {
