@@ -10,7 +10,7 @@ const UserComments = () => {
   const [refresh, setRefresh] = useState(false);
   const { userId } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const [commentsPerPage] = useState(1);
+  const [commentsPerPage] = useState(5);
   const [currentButton, setCurrentButton] = useState(1);
 
   const indexOfLastComment = currentPage * commentsPerPage;
@@ -37,6 +37,7 @@ const UserComments = () => {
           comments={currentComments}
           refresh={refresh}
           setRefresh={setRefresh}
+          commentLength={userComments?.length}
         />
 
         <Pagination

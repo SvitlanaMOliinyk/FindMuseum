@@ -28,6 +28,14 @@ const Offers = () => {
 
   const currentOffers = offers?.slice(indexOfFirstOffer, indexOfLastOffer);
 
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [isLoading]);
+
   return (
     <main className="offers">
       <div

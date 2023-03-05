@@ -1,8 +1,3 @@
-.all-filters {
-  margin-top: 45px;
-  flex: 2;
-}
-
 .container--filter-bar {
   border-radius: 8px;
   background-color: #f1efe6;
@@ -91,14 +86,37 @@
   display: none;
 }
 
-@media screen and (max-width: 599px) {
+.closed {
+  margin-top: 45px;
+  flex: 2;
+}
+
+.filter-bar-hr {
+  display: none;
+}
+
+@media screen and (max-width: 699px) {
   .closed {
     display: none;
   }
 
   .filter-bar-icon {
-    display: block;
-    margin-top: 10vh;
+    display: flex;
     font-size: 2rem;
+  }
+
+  .container--filter-bar-icon {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .filter-bar-hr {
+    display: block;
+    background-color: rgb(160, 160, 160);
+    height: 1px;
+    border: none;
+    margin: 10px 0;
   }
 }

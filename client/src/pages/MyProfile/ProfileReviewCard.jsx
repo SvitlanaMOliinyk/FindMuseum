@@ -9,11 +9,17 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { logError } from "../../../../server/src/util/logging";
 
-const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
+const ProfileReviewCard = ({
+  comments,
+  refresh,
+  setRefresh,
+  commentLength,
+}) => {
   ProfileReviewCard.propTypes = {
     comments: PropTypes.array,
     refresh: PropTypes.bool,
     setRefresh: PropTypes.func,
+    commentLength: PropTypes.number,
   };
   const user = JSON.parse(localStorage.getItem("authUser"));
   const [comment, setComment] = useState({});
@@ -77,7 +83,7 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
           <h1>
             {`Reviews of ${user && user.firstName} ${user && user.lastName}`}{" "}
           </h1>
-          <h3>{`There are ${comments && comments.length} reviews of ${
+          <h3>{`There are ${commentLength && commentLength} reviews of ${
             user && user.firstName
           } ${user && user.lastName} `}</h3>
         </Head>
