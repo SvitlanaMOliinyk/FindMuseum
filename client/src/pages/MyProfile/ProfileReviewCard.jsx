@@ -9,11 +9,17 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { logError } from "../../../../server/src/util/logging";
 
-const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
+const ProfileReviewCard = ({
+  comments,
+  refresh,
+  setRefresh,
+  commentLength,
+}) => {
   ProfileReviewCard.propTypes = {
     comments: PropTypes.array,
     refresh: PropTypes.bool,
     setRefresh: PropTypes.func,
+    commentLength: PropTypes.number,
   };
   const user = JSON.parse(localStorage.getItem("authUser"));
   const [comment, setComment] = useState({});
@@ -77,7 +83,7 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
           <h1>
             {`Reviews of ${user && user.firstName} ${user && user.lastName}`}{" "}
           </h1>
-          <h3>{`There are ${comments && comments.length} reviews of ${
+          <h3>{`There are ${commentLength && commentLength} reviews of ${
             user && user.firstName
           } ${user && user.lastName} `}</h3>
         </Head>
@@ -98,9 +104,10 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
                 <Col>
                   <CommentContainer>
                     <EditDelete>
-                      {/* <Link  to="/user/comment/edit"> */}
+                      <CommentMuseum>
+                        {comment && comment.museumId.name}
+                      </CommentMuseum>
                       <FiEdit onClick={() => handleEdit(comment)} />
-                      {/* </Link> */}
                       <RiDeleteBinLine onClick={() => handleDelete(comment)} />
                     </EditDelete>
                     <AvatarCont>
@@ -132,6 +139,13 @@ const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
     </>
   );
 };
+
+const CommentMuseum = styled.div`
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  color: blue;
+  font-size: 1.5rem;
+`;
 
 const EditDelete = styled.div`
   display: flex;

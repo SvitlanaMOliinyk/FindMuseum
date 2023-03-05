@@ -1,5 +1,6 @@
 import User, { validateUser } from "../models/User.js";
 import { logError } from "../util/logging.js";
+import sendEmail from "../util/sendEmail.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 
 export const createUser = async (req, res) => {
@@ -159,6 +160,7 @@ export const updateFavorite = async (req, res) => {
   }
 };
 
+
 export const profilePictureUpload = async (req, res) => {
   const { base64 } = req.body;
   try {
@@ -166,5 +168,54 @@ export const profilePictureUpload = async (req, res) => {
     res.send({ Status: "ok" });
   } catch (error) {
     res.send({ Status: "error", data: error });
+
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const userData = await User.findOne({ email });
+
+    if (!userData) {
+      res.status(404).json({ success: false, msg: "User Not Exist!" });
+      return;
+    } else {
+      const random = Math.floor(100000 + Math.random() * 900000);
+      sendEmail(email, random)
+        .then(
+          res.status(200).json({
+            success: true,
+            reset: { random: random, userId: userData._id },
+          })
+        )
+        .catch((error) => res.status(500).send(error.message));
+      return;
+    }
+  } catch (error) {
+    logError(error);
+    res.status(500).json({
+      success: false,
+      msg: "Unable to reset password, try again later",
+    });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  try {
+    const { password } = req.body;
+
+    await User.findByIdAndUpdate(
+      req.params.userId,
+      {
+        $set: { password: password },
+      },
+      { new: true }
+    );
+    res.status(200).json({ success: true });
+  } catch (err) {
+    logError(err);
+    res
+      .status(500)
+      .json({ success: false, msg: "Your password is not updated" });
+
   }
 };

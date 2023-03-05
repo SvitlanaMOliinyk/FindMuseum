@@ -5,8 +5,12 @@
   margin-right: 3vw;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 699px) {
   .museum-overview {
     flex-direction: column;
+  }
+
+  .museum-overview {
+    margin-left: 3vw;
   }
 }

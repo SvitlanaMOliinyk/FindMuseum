@@ -124,9 +124,14 @@ export default function AllMuseums() {
 
   return (
     <>
-      <div className="filter-bar-icon" onClick={handleClick}>
-        {filterIsOpen ? <FaRegWindowClose /> : <FaFilter />}
+      <div className="container--filter-bar-icon">
+        <hr className="filter-bar-hr"></hr>
+        <div className="filter-bar-icon" onClick={handleClick}>
+          {filterIsOpen ? <FaRegWindowClose /> : <FaFilter />}
+        </div>
+        <hr className="filter-bar-hr"></hr>
       </div>
+
       <div className={filterIsOpen ? "open" : "closed"}>
         <FilterBar
           activeCityFilterList={activeCityFilterList}

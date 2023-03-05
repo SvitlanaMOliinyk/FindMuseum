@@ -31,7 +31,6 @@ export const getMuseumNamePlace = async (req, res) => {
   }
 };
 
-// Gokhan added
 export const getMuseumById = async (req, res) => {
   const id = req.params.museumId;
   Museum.findOne({ _id: id })
@@ -51,11 +50,16 @@ export const getMuseumById = async (req, res) => {
 };
 
 // Gokhan: I have used this inside the comment controller so that as soon as I created a comment to push the comment Id into the museum comments array
-export const addCommentIdToMuseum = async (museumId, commentId) => {
+export const addCommentIdToMuseum = async (
+  museumId,
+  commentId,
+  newCommentRate
+) => {
+  const avarageRate = await updateAvarageRate(museumId, newCommentRate);
   try {
     await Museum.findByIdAndUpdate(
       museumId,
-      { $push: { comments: commentId } },
+      { $push: { comments: commentId }, rating: avarageRate },
       { new: true }
     );
   } catch (error) {
@@ -63,28 +67,23 @@ export const addCommentIdToMuseum = async (museumId, commentId) => {
   }
 };
 
-// export const paginateUser = async (req, res) => {
-//   const allMuseums = await Museum.find({});
-//   const page = parseInt(req.query.page);
-//   const limit = parseInt(req.query.limit);
+// Gokhan: this method updated the avarage rating of the museum's total comment rate and return it inside the addCommentIdToMuseum method that is above and adds that avaragaRate to that museum's rating field in the database
+export const updateAvarageRate = async (museumId, newCommentRate) => {
+  let avarageRate = 0;
 
-//   const startIndex = (page - 1) * limit;
-//   const lastIndex = page * limit;
-
-//   const results = {};
-//   results.totalUser = allMuseums.length;
-//   results.pageCount = Math.ceil(allMuseums.length / limit);
-
-//   if (lastIndex < allMuseums.length) {
-//     results.next = {
-//       page: page + 1,
-//     };
-//   }
-//   if (startIndex > 0) {
-//     results.prev = {
-//       page: page - 1,
-//     };
-//   }
-//   results.result = allMuseums.slice(startIndex, lastIndex);
-//   res.json(results);
-// };
+  const ratesOfMuseum = await Museum.findOne(
+    { _id: museumId },
+    { projection: { comments: true } }
+  ).populate({
+    path: "comments",
+    select: { rate: 1 },
+  });
+  // length +1 because I didnt fetch the last comment's rate I got last comment's rate above "newCommentRate" manually so I added +1;
+  let length = ratesOfMuseum.comments.length + 1;
+  avarageRate = ratesOfMuseum.comments.reduce(
+    (acc, current) => acc + Number(current.rate),
+    Number(newCommentRate)
+  );
+  avarageRate = Math.round(avarageRate / length);
+  return avarageRate;
+};
