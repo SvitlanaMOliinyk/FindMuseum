@@ -7,8 +7,6 @@ import "./offers.css";
 import Pagination from "../../components/common/pagination/Pagination";
 import background from "../../assets/museums/t11.jpeg";
 
-
-
 const Offers = () => {
   const [offers, setOffers] = useState([]);
 
