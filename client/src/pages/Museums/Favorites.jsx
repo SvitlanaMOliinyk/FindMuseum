@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useMuseums } from "../../context/museumContext";
 import { useAuth } from "../../context/authContext";
-import ViewMuseums from "../../components/Home-Page/museum/ViewMuseums";
+import MuseumCard from "../../components/Museum-Overview/MuseumCard";
+import "../../components/Museum-Overview/museum-card.css";
+import "../../components/Museum-Overview/all-museums.css";
 import Pagination from "../../components/common/pagination/Pagination";
 
 const Favorites = () => {
@@ -42,10 +44,10 @@ const Favorites = () => {
       )}
 
       {favMuseums.length > 0 && (
-        <div className="fav_container">
+        <div className="all-museums-card">
           {currentFavorites &&
             currentFavorites.map((museum) => {
-              return <ViewMuseums museum={museum} key={museum._id} />;
+              return <MuseumCard key={museum._id} museum={museum} />;
             })}
         </div>
       )}
