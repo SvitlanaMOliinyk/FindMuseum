@@ -3,8 +3,11 @@ import useFetch from "../../hooks/useFetch";
 import OfferItem from "./OfferItem";
 import Loading from "../../components/common/loading/Loading";
 import "./offers.css";
-import background from "../../assets/museums/t3.jpeg";
+
 import Pagination from "../../components/common/pagination/Pagination";
+import background from "../../assets/museums/t11.jpeg";
+
+
 
 const Offers = () => {
   const [offers, setOffers] = useState([]);
@@ -33,11 +36,11 @@ const Offers = () => {
         className="head-part"
         style={{
           backgroundColor: "grey",
-          backgroundBlendMode: "multiply",
-          backgroundImage: `url(${background})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          color: "white",
+          color: "antiquewhite",
+          backgroundPosition: "50%",
         }}
       >
         <p>
