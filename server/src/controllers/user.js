@@ -160,6 +160,16 @@ export const updateFavorite = async (req, res) => {
   }
 };
 
+export const profilePictureUpload = async (req, res) => {
+  const { base64 } = req.body;
+  try {
+    User.create({ profilePicture: base64 });
+    res.send({ Status: "ok" });
+  } catch (error) {
+    res.send({ Status: "error", data: error });
+  }
+};
+
 export const forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;

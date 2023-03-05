@@ -6,11 +6,12 @@ import {
   updateUser,
   forgotPassword,
   updateFavorite,
+  profilePictureUpload,
   resetPassword,
 } from "../controllers/user.js";
 
 const userRouter = express.Router();
-
+userRouter.post("/upload", profilePictureUpload);
 userRouter.post("/register", createUser);
 userRouter.post("/login", loginUser);
 userRouter.put("/:id", updateUser);

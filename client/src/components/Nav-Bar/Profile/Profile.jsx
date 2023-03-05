@@ -68,14 +68,40 @@ const Profile = ({ onClose }) => {
               setIsProfileOpen(!isProfileOpen);
             }}
           >
-            <img src={avatar}></img>
+            {authUser?.profilePicture ? (
+              <img
+                src={authUser?.profilePicture}
+                alt=""
+                style={{ width: "50px", height: "50px" }}
+              />
+            ) : (
+              <img
+                src={avatar}
+                alt=""
+                style={{ width: "50px", height: "50px" }}
+              />
+            )}
+            {/* <img src={avatar}></img> */}
           </div>
 
           <div
             className={`dropdown-menu ${isProfileOpen ? "active" : "inactive"}`}
           >
             <div className="container--user">
-              <img src={avatar}></img>
+              {/* <img src={avatar}></img> */}
+              {authUser?.profilePicture ? (
+                <img
+                  src={authUser?.profilePicture}
+                  alt=""
+                  style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+                />
+              ) : (
+                <img
+                  src={avatar}
+                  alt=""
+                  style={{ width: "50px", height: "50px" }}
+                />
+              )}
               <h3 className="profile-name">
                 {authUser ? authUser.firstName : "No Name"}
               </h3>

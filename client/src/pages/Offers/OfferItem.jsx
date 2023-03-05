@@ -16,7 +16,7 @@ const OfferItem = ({ offer }) => {
     if (jsonResult.result.includes("C")) {
       toast.success("Congratulations! Your offer is in your email-box now.", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       setTimeout(() => {
         navigate("/");
@@ -24,7 +24,7 @@ const OfferItem = ({ offer }) => {
     } else {
       toast.error("You have already got the offer!", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       setTimeout(() => {
         navigate("/");
@@ -41,7 +41,7 @@ const OfferItem = ({ offer }) => {
     } else {
       toast.warn("Please, log in to get your offer!", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       setTimeout(() => {
         navigate("/login");
