@@ -10,7 +10,6 @@ import {
 } from "../controllers/museum.js";
 
 export const createComment = async (req, res) => {
-  console.log("body: ", req.body);
   try {
     const { userId, museumId, rate, review } = req.body.comment;
     const newCommentToCreate = {

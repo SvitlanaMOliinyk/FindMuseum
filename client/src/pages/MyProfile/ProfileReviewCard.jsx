@@ -10,7 +10,6 @@ import PropTypes from "prop-types";
 import { logError } from "../../../../server/src/util/logging";
 
 const ProfileReviewCard = ({ comments, refresh, setRefresh }) => {
-  console.log("comments: ", comments);
   ProfileReviewCard.propTypes = {
     comments: PropTypes.array,
     refresh: PropTypes.bool,
