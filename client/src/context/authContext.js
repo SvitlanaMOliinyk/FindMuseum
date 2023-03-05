@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
   //
   const handleFavorite = (id, isLoggedIn) => {
     if (!isLoggedIn) {
-      toast.warn("Kindly, login first", {
+      toast.warn("Please, log in to add favorites!", {
         position: "top-center",
         autoClose: 3000,
       });

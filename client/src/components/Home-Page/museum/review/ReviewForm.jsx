@@ -66,7 +66,7 @@ const ReviewForm = ({
         autoClose: 3000,
       });
     } else if (error == "UnAuthorized") {
-      toast.warn("You Have to logged In", {
+      toast.warn("You must be logged in to comment", {
         position: "top-center",
         autoClose: 3000,
       });
@@ -95,7 +95,7 @@ const ReviewForm = ({
     const { _id } = authUser;
     let commentId = "";
     if (comment) {
-      commentId = comment._id;
+      commentId = comment?._id;
     }
     const { rate, review, museumId } = formData;
     try {

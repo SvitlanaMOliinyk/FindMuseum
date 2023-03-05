@@ -21,61 +21,59 @@ export default function Pagination({
 
   return (
     <div className="clearfix">
-      <ul className="pagination">
-        <ul className="pagination">
-          <li
-            className={`${
-              currentButton === 1 ? "page-item disabled" : "page-item"
-            }`}
+      <ul className={pages === 0 ? "pagination hidden" : "pagination"}>
+        <li
+          className={`${
+            currentButton === 1 ? "page-item disabled" : "page-item"
+          }`}
+        >
+          <a
+            href="#!"
+            onClick={() =>
+              setCurrentButton((prev) => (prev === 1 ? prev : prev - 1))
+            }
           >
-            <a
-              href="#!"
-              onClick={() =>
-                setCurrentButton((prev) => (prev === 1 ? prev : prev - 1))
-              }
-            >
-              <GrPrevious className="pagination-icon" />
-            </a>
-          </li>
+            <GrPrevious className="pagination-icon" />
+          </a>
+        </li>
 
-          {numOfPages.map((page, index) => {
-            return (
-              <li
-                key={index}
-                className={`${
-                  currentButton === page ? "page-item active" : "page-item"
-                }`}
+        {numOfPages.map((page, index) => {
+          return (
+            <li
+              key={index}
+              className={`${
+                currentButton === page ? "page-item active" : "page-item"
+              }`}
+            >
+              <a
+                href="#!"
+                className="page-link"
+                onClick={() => setCurrentButton(page)}
               >
-                <a
-                  href="#!"
-                  className="page-link"
-                  onClick={() => setCurrentButton(page)}
-                >
-                  {page}
-                </a>
-              </li>
-            );
-          })}
+                {page}
+              </a>
+            </li>
+          );
+        })}
 
-          <li
-            className={`${
-              currentButton === numOfPages.length
-                ? "page-item disabled"
-                : "page-item"
-            }`}
+        <li
+          className={`${
+            currentButton === numOfPages.length
+              ? "page-item disabled"
+              : "page-item"
+          }`}
+        >
+          <a
+            href="#!"
+            onClick={() =>
+              setCurrentButton((next) =>
+                next === numOfPages.length ? next : next + 1
+              )
+            }
           >
-            <a
-              href="#!"
-              onClick={() =>
-                setCurrentButton((next) =>
-                  next === numOfPages.length ? next : next + 1
-                )
-              }
-            >
-              <GrNext />
-            </a>
-          </li>
-        </ul>
+            <GrNext />
+          </a>
+        </li>
       </ul>
     </div>
   );

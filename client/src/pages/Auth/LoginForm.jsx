@@ -185,7 +185,9 @@ const LoginForm = () => {
                   "Login"
                 )}
               </button>
-              <span className="forgot-password">Forgot your password?</span>
+              <Link to={"/forgotPassword"} className="forgot-password">
+                Forgot your password?
+              </Link>
             </div>
           </form>
         </div>

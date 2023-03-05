@@ -49,11 +49,11 @@ const MuseumDetails = () => {
       <Container>
         <Row>
           <ColMuseum>
-            <img className="museum-img" src={image && image.url} alt={name} />
-            <Heart className="heart" id={museumId} />
+            <img src={image && image.url} alt={name} className="image-museum" />
+            <Heart id={museumId} />
             <Category>
               <AiFillBank className="icon" />
-              <h2>{category && category[0] && category[0]}</h2>
+              <h2>{category && category}</h2>
             </Category>
 
             <Info>
@@ -195,7 +195,7 @@ const ColMuseum = styled.div`
     height: 5rem;
   }
   margin: 0 2rem;
-  .museum-img {
+  .image-museum {
     width: 100%;
     height: 350px;
   }

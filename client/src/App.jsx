@@ -17,6 +17,9 @@ import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
 
 // import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
 import UserComments from "./pages/MyProfile/UserComments";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
+import OtpInput from "./pages/Auth/OTPInput";
 
 const App = () => {
   return (
@@ -29,13 +32,16 @@ const App = () => {
             <Route path="/museums/:key" element={<SearchedOverview />} />
             <Route path="/museums" element={<MuseumOverview />} />
             <Route path="/offers" element={<Offers />} />
-            <Route path="/favorite" element={<Favorites />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/museum/:museumId" element={<MuseumDetails />} />
             <Route path="/profile/:id" element={<MyProfile />} />
             <Route path="/user/comments/:userId" element={<UserComments />} />
             {/* <Route path="/user/comment/edit" element={<ReviewEdit/>} /> */}
+            <Route path="/forgotPassword" element={<ForgotPassword />} />
+            <Route path="/otp/:userId" element={<OtpInput />} />
+            <Route path="/resetPassword/:userId" element={<ResetPassword />} />
           </Routes>
           <Footer />
         </AuthProvider>
