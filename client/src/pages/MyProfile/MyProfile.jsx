@@ -65,22 +65,24 @@ export default function MyProfile() {
         </div>
         <form className="my-profile-form" onSubmit={handleSubmit}>
           <div className="profile-settings">
-            {authUser?.profilePicture ? (
-              <img
-                src={authUser?.profilePicture}
-                alt=""
-                style={{ width: "80px", height: "80px" }}
-              />
-            ) : (
-              <img
-                src={avatar}
-                alt=""
-                style={{ width: "80px", height: "80px" }}
-              />
-            )}
-            <label htmlFor="fileInput">
-              <AiOutlinePlus className="pp-icon" />
-            </label>
+            <div className="profile-image">
+              {authUser?.profilePicture ? (
+                <img
+                  src={authUser?.profilePicture}
+                  alt=""
+                  style={{ width: "80px", height: "80px" }}
+                />
+              ) : (
+                <img
+                  src={avatar}
+                  alt=""
+                  style={{ width: "80px", height: "80px" }}
+                />
+              )}
+              <label htmlFor="fileInput">
+                <AiOutlinePlus className="pp-icon" style={{ color: "white" }} />
+              </label>
+            </div>
             <input
               accept="image/*"
               type="file"
@@ -88,7 +90,9 @@ export default function MyProfile() {
               style={{ display: "none" }}
               onChange={convertToBase64}
             />
-            <button onClick={uploadProfilePicture}>Upload Picture</button>
+            <button className="upload-picture" onClick={uploadProfilePicture}>
+              Upload Picture
+            </button>
 
             <label>Name</label>
             <input

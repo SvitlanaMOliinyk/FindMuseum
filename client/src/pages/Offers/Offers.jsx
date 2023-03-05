@@ -11,7 +11,7 @@ const Offers = () => {
   const [offers, setOffers] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [offersPerPage] = useState(3);
+  const [offersPerPage] = useState(4);
   const [currentButton, setCurrentButton] = useState(1);
 
   const indexOfLastOffer = currentPage * offersPerPage;

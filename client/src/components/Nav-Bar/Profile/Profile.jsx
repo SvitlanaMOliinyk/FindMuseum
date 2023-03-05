@@ -72,13 +72,13 @@ const Profile = ({ onClose }) => {
               <img
                 src={authUser?.profilePicture}
                 alt=""
-                style={{ width: "60px", height: "60px" }}
+                style={{ width: "50px", height: "50px" }}
               />
             ) : (
               <img
                 src={avatar}
                 alt=""
-                style={{ width: "60px", height: "60px" }}
+                style={{ width: "50px", height: "50px" }}
               />
             )}
             {/* <img src={avatar}></img> */}
@@ -93,13 +93,13 @@ const Profile = ({ onClose }) => {
                 <img
                   src={authUser?.profilePicture}
                   alt=""
-                  style={{ width: "80px", height: "80px" }}
+                  style={{ width: "50px", height: "50px", borderRadius: "50%" }}
                 />
               ) : (
                 <img
                   src={avatar}
                   alt=""
-                  style={{ width: "80px", height: "80px" }}
+                  style={{ width: "50px", height: "50px" }}
                 />
               )}
               <h3 className="profile-name">
