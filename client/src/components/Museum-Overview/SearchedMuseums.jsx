@@ -7,11 +7,18 @@ import { useMuseums } from "../../context/museumContext";
 import FilterBar from "./FilterBar";
 import NotFound from "./NotFound";
 import Pagination from "../common/pagination/Pagination";
+import { FaRegWindowClose } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 
 export default function SearchedMuseums() {
   const { key } = useParams();
   const { museums } = useMuseums();
 
+  //Filter in mobile mode
+  const [filterIsOpen, setFilterIsOpen] = useState(false);
+  const handleClick = () => setFilterIsOpen(!filterIsOpen);
+
+  //Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [museumsPerPage] = useState(6);
 
@@ -133,18 +140,28 @@ export default function SearchedMuseums() {
 
   return (
     <>
-      <FilterBar
-        activeCityFilterList={activeCityFilterList}
-        setActiveCityFilterList={setActiveCityFilterList}
-        activeCategoryFilterList={activeCategoryFilterList}
-        setActiveCategoryFilterList={setActiveCategoryFilterList}
-        activeRatingFilterList={activeRatingFilterList}
-        setActiveRatingFilterList={setActiveRatingFilterList}
-        museumData={searchedMuseum}
-        setActivePriceList={setActivePriceList}
-        activePriceIndex={activePriceIndex}
-        setActivePriceIndex={setActivePriceIndex}
-      />
+      <div className="container--filter-bar-icon">
+        <hr className="filter-bar-hr"></hr>
+        <div className="filter-bar-icon" onClick={handleClick}>
+          {filterIsOpen ? <FaRegWindowClose /> : <FaFilter />}
+        </div>
+        <hr className="filter-bar-hr"></hr>
+      </div>
+      <div className={filterIsOpen ? "open" : "closed"}>
+        <FilterBar
+          activeCityFilterList={activeCityFilterList}
+          setActiveCityFilterList={setActiveCityFilterList}
+          activeCategoryFilterList={activeCategoryFilterList}
+          setActiveCategoryFilterList={setActiveCategoryFilterList}
+          activeRatingFilterList={activeRatingFilterList}
+          setActiveRatingFilterList={setActiveRatingFilterList}
+          museumData={searchedMuseum}
+          setActivePriceList={setActivePriceList}
+          activePriceIndex={activePriceIndex}
+          setActivePriceIndex={setActivePriceIndex}
+        />
+      </div>
+
       <div className="searched-museums">
         {activeCityFilterList.length > 0 ||
         activeCategoryFilterList.length > 0 ||

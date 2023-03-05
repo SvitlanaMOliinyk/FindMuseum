@@ -5,8 +5,12 @@
   margin-right: 2vw;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 699px) {
   .searched-overview {
     flex-direction: column;
+  }
+
+  .searched-overview {
+    margin-left: 2vw;
   }
 }

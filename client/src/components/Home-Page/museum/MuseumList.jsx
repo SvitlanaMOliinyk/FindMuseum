@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMuseums } from "../../../context/museumContext";
 import MuseumCard from "../../Museum-Overview/MuseumCard";
 import "../../Museum-Overview/museum-card.css";
@@ -8,8 +8,16 @@ const MuseumList = () => {
   const { isLoading, error, museums } = useMuseums();
   let content = null;
 
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [isLoading]);
+
   if (isLoading) {
-    content = <Loading />;
+    content = <Loading isLoading={isLoading} />;
   } else if (error != null) {
     content = <div>Error: {error.toString()}</div>;
   } else {

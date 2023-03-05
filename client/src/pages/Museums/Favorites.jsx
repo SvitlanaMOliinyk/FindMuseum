@@ -12,7 +12,7 @@ const Favorites = () => {
   const { museums } = useMuseums();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [favoritesPerPage] = useState(1);
+  const [favoritesPerPage] = useState(8);
   const [currentButton, setCurrentButton] = useState(1);
 
   const indexOfLastFavorite = currentPage * favoritesPerPage;
