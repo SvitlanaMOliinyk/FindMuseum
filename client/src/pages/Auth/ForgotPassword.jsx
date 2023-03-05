@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./forgot-password.css";
 import background from "../../assets/img/register-background.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -10,7 +10,8 @@ import { Oval } from "react-loading-icons";
 import useFetch from "../../hooks/useFetch";
 
 const ForgotPassword = () => {
-  const onSuccess = () => {
+  const navigate = useNavigate();
+  const onSuccess = ({ reset }) => {
     formik.resetForm();
     toast.success(
       <div>Check your email inbox to get code for your password</div>,
@@ -19,6 +20,12 @@ const ForgotPassword = () => {
         autoClose: 2000,
       }
     );
+
+    sessionStorage.setItem("random_key", reset.random);
+
+    setTimeout(() => {
+      navigate(`/otp/${reset.userId}`);
+    }, 2000);
   };
 
   const { isLoading, error, performFetch, cancelFetch } = useFetch(

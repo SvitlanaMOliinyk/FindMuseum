@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./reset-password.css";
 import background from "../../assets/img/register-background.jpeg";
 import useFetch from "../../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
@@ -15,6 +15,7 @@ const ResetPassword = () => {
   const [confirmPasswordIsVisible, setConfirmPasswordIsVisible] =
     useState(true);
   const navigate = useNavigate();
+  const { userId } = useParams();
 
   const onSuccess = () => {
     formik.resetForm();
@@ -30,7 +31,7 @@ const ResetPassword = () => {
   };
 
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
-    "/user/resetPassword/:_id",
+    `/user/resetPassword/${userId}`,
     onSuccess
   );
 
@@ -60,7 +61,7 @@ const ResetPassword = () => {
     const { password } = formik.values;
 
     performFetch({
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -89,6 +90,7 @@ const ResetPassword = () => {
       }}
     >
       <form className="form-reset-password" onSubmit={formik.handleSubmit}>
+        <h1>Reset Password</h1>
         <div className="container-input">
           <input
             type={passwordIsVisible ? "password" : "text"}

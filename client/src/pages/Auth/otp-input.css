@@ -1,9 +1,39 @@
 .otp-group {
-  margin: 10vh auto 0;
-  padding: 10.5rem 0;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  max-width: 360px;
+  max-width: 600px;
+}
+
+.otp-group h1 {
+  margin: 5px auto;
+  font-size: 3rem;
+  color: #3f4e4f;
+}
+
+.otp-group p {
+  color: #3f4e4f;
+  font-size: 1.3rem;
+}
+
+.otp-group form {
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.otp-group form input {
+  background-color: #dcd7c9;
+  border: none;
+  height: 28px;
+  outline: none;
+  font-size: 1.4rem;
+  font-family: "Hubballi", cursive;
+  text-align: center;
+  padding-left: 13px;
 }
 
 .otp-input {

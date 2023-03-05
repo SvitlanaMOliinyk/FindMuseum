@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const sendEmail = (recipient_email) => {
+const sendEmail = (recipient_email, random) => {
   const myEmail = process.env.SENDER_EMAIL;
   const myPassword = process.env.SENDER_PASSWORD;
 
@@ -27,12 +27,12 @@ const sendEmail = (recipient_email) => {
       <body>
       
       <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
-        <div style="margin:50px auto;width:70%;padding:20px 0">
+        <div style="margin:50px auto;padding:20px 0">
           <div style="border-bottom:1px solid #eee">
             <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Find Museum</a>
           </div>
           <p style="font-size:1.1em">Hello,</p>
-          <p>We received a request to reset your password.<br />Let's get you a new one!</p>
+          <p>We received a request to reset your password.<br />Let's get you a new one with this verification code <b>${random}</b> !</p>
           <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;"></h2>
           <p style="font-size:0.9em;">Regards,<br />Find Museum</p>
           <hr style="border:none;border-top:1px solid #eee" />

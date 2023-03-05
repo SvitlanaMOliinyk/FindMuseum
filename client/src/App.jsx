@@ -40,8 +40,8 @@ const App = () => {
             <Route path="/user/comments/:userId" element={<UserComments />} />
             {/* <Route path="/user/comment/edit" element={<ReviewEdit/>} /> */}
             <Route path="/forgotPassword" element={<ForgotPassword />} />
-            <Route path="/otp" element={<OtpInput />} />
-            <Route path="/resetPassword" element={<ResetPassword />} />
+            <Route path="/otp/:userId" element={<OtpInput />} />
+            <Route path="/resetPassword/:userId" element={<ResetPassword />} />
           </Routes>
           <Footer />
         </AuthProvider>
