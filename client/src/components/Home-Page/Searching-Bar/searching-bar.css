@@ -20,7 +20,6 @@
   margin: auto;
   display: flex;
   font-size: clamp(1.5rem, 2vw, 2.2rem);
-  /* border: 2px solid var(--border-color); */
   align-items: center;
   justify-content: center;
   position: relative;

@@ -187,6 +187,13 @@ const ColMuseum = styled.div`
   @media (max-width: 700px) {
     width: 90%;
   }
+  .heart .fav_icon svg {
+    position: absolute;
+    right: 0.5rem;
+    left: auto;
+    width: 5rem;
+    height: 5rem;
+  }
   margin: 0 2rem;
   .image-museum {
     width: 100%;
@@ -207,7 +214,6 @@ const Category = styled.div`
     width: 1.5rem;
     height: 1.5rem;
     color: white;
-  }
   }
 `;
 

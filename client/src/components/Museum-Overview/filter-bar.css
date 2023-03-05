@@ -87,3 +87,18 @@
   margin-left: 10px;
   font-size: 1.1rem;
 }
+.filter-bar-icon {
+  display: none;
+}
+
+@media screen and (max-width: 599px) {
+  .closed {
+    display: none;
+  }
+
+  .filter-bar-icon {
+    display: block;
+    margin-top: 10vh;
+    font-size: 2rem;
+  }
+}
