@@ -216,6 +216,5 @@ export const resetPassword = async (req, res) => {
     res
       .status(500)
       .json({ success: false, msg: "Your password is not updated" });
-
   }
 };
