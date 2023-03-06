@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./otp-input.css";
 import background from "../../assets/img/register-background.jpeg";
 import { useFormik } from "formik";
@@ -44,6 +44,14 @@ const OtpInput = () => {
   };
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
 
   return (
     <div

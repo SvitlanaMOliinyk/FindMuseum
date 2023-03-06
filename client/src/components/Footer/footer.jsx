@@ -12,6 +12,14 @@ import "./footer.css";
 import logo from "../../assets/img/logo-find-museum.png";
 
 const Footer = () => {
+  const scrollHomeUp = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="container--footer">
       <div className="container--company-logo">
@@ -65,7 +73,9 @@ const Footer = () => {
           <h3>Short Links</h3>
           <ul className="short-links">
             <li className="footer-list-item">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={scrollHomeUp}>
+                Home
+              </Link>
             </li>
             <li className="footer-list-item">
               <Link to="/museums">Museums</Link>

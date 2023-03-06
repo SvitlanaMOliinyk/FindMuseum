@@ -41,12 +41,12 @@ const ReviewForm = ({
     if (response.type == "update") {
       toast.success("Review Edited Successfully", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     } else {
       toast.success("Thanks for your review", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     }
     setFormData({ ...formData, museumId: "", rate: 0, review: "" });
@@ -63,12 +63,12 @@ const ReviewForm = ({
     if (error == "BAD REQUEST: review is a required field") {
       toast.warn("Review is required field", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     } else if (error == "UnAuthorized") {
       toast.warn("You must be logged in to comment", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     }
   }, [error]);

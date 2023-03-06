@@ -19,7 +19,7 @@ const OfferItem = ({ offer }) => {
         autoClose: 2000,
       });
       setTimeout(() => {
-        navigate("/");
+        navigate("/offers");
       }, 2000);
     } else {
       toast.error("You have already got the offer!", {
@@ -27,7 +27,7 @@ const OfferItem = ({ offer }) => {
         autoClose: 2000,
       });
       setTimeout(() => {
-        navigate("/");
+        navigate("/offers");
       }, 2000);
     }
   };
@@ -63,6 +63,12 @@ const OfferItem = ({ offer }) => {
         }),
       });
     }
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [offerId]);
 
   return (

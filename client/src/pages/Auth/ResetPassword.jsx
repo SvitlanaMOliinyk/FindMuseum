@@ -80,6 +80,14 @@ const ResetPassword = () => {
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+
   return (
     <div
       className="container--reset-password"
