@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const OfferItem = ({ offer }) => {
   const { _id, expireDate, numberOfTickets, newPrice, museumId } = offer;
-  const { authUser } = useAuth();
+  const { authUser, isLoggedIn } = useAuth();
   const [offerId, setOfferId] = useState("");
   const navigate = useNavigate();
   const buyer = authUser?._id;
@@ -36,7 +36,7 @@ const OfferItem = ({ offer }) => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    if (authUser) {
+    if (isLoggedIn === true) {
       setOfferId(_id);
     } else {
       toast.warn("Please, log in to get your offer!", {
