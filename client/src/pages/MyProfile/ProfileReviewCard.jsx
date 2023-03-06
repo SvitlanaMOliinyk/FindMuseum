@@ -8,6 +8,7 @@ import useFetch from "../../hooks/useFetch";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { logError } from "../../../../server/src/util/logging";
+import { Link } from "react-router-dom";
 
 const ProfileReviewCard = ({
   comments,
@@ -104,7 +105,10 @@ const ProfileReviewCard = ({
                 <Col>
                   <CommentContainer>
                     <EditDelete>
-                      <CommentMuseum>
+                      <CommentMuseum
+                        as={Link}
+                        to={`/museum/${comment.museumId._id}`}
+                      >
                         {comment && comment.museumId.name}
                       </CommentMuseum>
                       <FiEdit onClick={() => handleEdit(comment)} />

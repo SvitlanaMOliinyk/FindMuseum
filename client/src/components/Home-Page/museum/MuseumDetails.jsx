@@ -233,7 +233,7 @@ const ColDescription = styled.div`
   }
   p {
     @media (max-width: 700px) {
-      line-height: 1.7em;
+      line-height: 1.4em;
     }
     @media (min-width: 1125) {
       line-height: 1em;
@@ -308,15 +308,14 @@ const ColHourPrice = styled.div`
 
 const ColIframe = styled.div`
   @media (max-width: 700px) {
-    width: 95%;
+    width: 90%;
   }
   iframe {
     width: 75vh;
     height: 56vh;
     border: 0;
     @media (max-width: 700px) {
-      width: 95%;
-      padding: 0 3rem;
+      width: 100%;
     }
   }
   h1 {
@@ -325,9 +324,5 @@ const ColIframe = styled.div`
     padding-top: 1rem;
     background-color: var(--background-color);
     height: 10vh;
-    @media (max-width: 700px) {
-      margin-right: 3rem;
-      margin-left: 3rem;
-    }
   }
 `;
