@@ -7,7 +7,9 @@ import FilterBar from "./FilterBar";
 import NotFound from "./NotFound";
 import Pagination from "../common/pagination/Pagination";
 import { FaRegWindowClose } from "react-icons/fa";
-import { FaFilter } from "react-icons/fa";
+import { GiSettingsKnobs } from "react-icons/gi";
+// import { FaFilter } from "react-icons/fa";
+// import { GoSettings } from "react-icons/go";
 
 export default function AllMuseums() {
   const { museums } = useMuseums();
@@ -127,7 +129,7 @@ export default function AllMuseums() {
       <div className="container--filter-bar-icon">
         <hr className="filter-bar-hr"></hr>
         <div className="filter-bar-icon" onClick={handleClick}>
-          {filterIsOpen ? <FaRegWindowClose /> : <FaFilter />}
+          {filterIsOpen ? <FaRegWindowClose /> : <GiSettingsKnobs />}
         </div>
         <hr className="filter-bar-hr"></hr>
       </div>

@@ -106,7 +106,7 @@ const FilterBar = ({
               <fieldset className="container--fieldset">
                 <legend className="title--filter">CITY</legend>
                 <ul>
-                  {cityList.map((city) => {
+                  {cityList.sort().map((city) => {
                     return (
                       <li key={city}>
                         <input
@@ -134,7 +134,7 @@ const FilterBar = ({
               <fieldset className="container--fieldset">
                 <legend className="title--filter">CATEGORY</legend>
                 <ul>
-                  {categoryList.map((category) => {
+                  {categoryList.sort().map((category) => {
                     return (
                       <li key={category}>
                         <input
@@ -162,23 +162,26 @@ const FilterBar = ({
               <fieldset className="container--fieldset">
                 <legend className="title--filter">RATING</legend>
                 <ul>
-                  {ratingList.map((rate) => {
-                    return (
-                      <li key={rate}>
-                        <input
-                          type="button"
-                          onClick={handleFilterClick}
-                          value={rate}
-                          name="rate"
-                          className={
-                            activeRatingFilterList?.includes(rate.toString())
-                              ? "filter-buttons active-filter"
-                              : "filter-buttons"
-                          }
-                        />
-                      </li>
-                    );
-                  })}
+                  {ratingList
+                    .sort()
+                    .reverse()
+                    .map((rate) => {
+                      return (
+                        <li key={rate}>
+                          <input
+                            type="button"
+                            onClick={handleFilterClick}
+                            value={rate}
+                            name="rate"
+                            className={
+                              activeRatingFilterList?.includes(rate.toString())
+                                ? "filter-buttons active-filter"
+                                : "filter-buttons"
+                            }
+                          />
+                        </li>
+                      );
+                    })}
                 </ul>
               </fieldset>
             </>
