@@ -198,4 +198,23 @@
     font-size: 20px;
     width: 90%;
   }
+
+  .sunflowers {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 10px;
+    filter: drop-shadow(4px 4px 2px #3f4e4f);
+  }
+  .auto {
+    width: 45vh;
+    height: 30vh;
+    border-radius: 10px;
+    filter: drop-shadow(4px 4px 2px #2b2f2f);
+  }
+  .escher {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 10px;
+    filter: drop-shadow(4px 4px 2px #2b2f2f);
+  }
 }
