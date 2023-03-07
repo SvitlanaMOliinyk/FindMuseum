@@ -5,9 +5,11 @@ import { sendMail } from "../util/mailer.js";
 import { logError } from "../util/logging.js";
 
 export const getOffers = async (req, res) => {
+  const currentDate = new Date().toISOString();
   try {
     const offers = await Offer.find({
       numberOfTickets: { $gt: 0 },
+      expireDate: { $gte: currentDate },
     })
       .populate({ path: "museumId", model: Museum })
       .exec();
