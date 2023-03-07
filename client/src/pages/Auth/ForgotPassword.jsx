@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { Oval } from "react-loading-icons";
 
 import useFetch from "../../hooks/useFetch";
-import { scrollToUp } from "../../hooks/scrollToTop";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();

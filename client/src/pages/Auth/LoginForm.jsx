@@ -10,7 +10,7 @@ import { RxEyeClosed } from "react-icons/rx";
 import background from "../../assets/img/register-background.jpeg";
 import { Oval } from "react-loading-icons";
 import { useAuth } from "../../context/authContext";
-import { scrollToUp } from "../../hooks/scrollToTop";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const LoginForm = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);

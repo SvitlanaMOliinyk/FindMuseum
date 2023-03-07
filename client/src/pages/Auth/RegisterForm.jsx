@@ -10,7 +10,7 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RxEyeClosed } from "react-icons/rx";
 import { Oval } from "react-loading-icons";
 import background from "../../assets/img/register-background.jpeg";
-import { scrollToUp } from "../../hooks/scrollToTop";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const RegisterForm = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);

@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import PropTypes from "prop-types";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
-import { scrollToUp } from "../../hooks/scrollToTop";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const OfferItem = ({ offer }) => {
   const { _id, expireDate, numberOfTickets, newPrice, museumId } = offer;

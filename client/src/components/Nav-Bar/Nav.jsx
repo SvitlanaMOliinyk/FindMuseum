@@ -6,6 +6,7 @@ import logo from "../../assets/img/findh.png";
 import "./nav.css";
 import Profile from "./Profile/Profile";
 import { useAuth } from "../../context/authContext";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const Nav = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -32,7 +33,10 @@ const Nav = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) => (isActive ? "activeBar" : "")}
-                onClick={onClose}
+                onClick={() => {
+                  onClose();
+                  scrollToUp();
+                }}
               >
                 Home
               </NavLink>

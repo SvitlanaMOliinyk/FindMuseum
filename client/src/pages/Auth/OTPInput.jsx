@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import { scrollToUp } from "../../hooks/scrollToTop";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const OtpInput = () => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./pagination.css";
 import PropTypes from "prop-types";
 import { GrPrevious, GrNext } from "react-icons/gr";
-import { scrollToUp } from "../../../hooks/scrollToTop";
+import { scrollToUp } from "../../../hooks/scrollToUp";
 
 export default function Pagination({
   pages,

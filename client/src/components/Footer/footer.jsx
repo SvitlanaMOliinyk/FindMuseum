@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import "./footer.css";
 import logo from "../../assets/img/logo-find-museum.png";
-import { scrollToUp } from "../../hooks/scrollToTop";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const Footer = () => {
   return (
