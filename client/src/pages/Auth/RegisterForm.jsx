@@ -10,6 +10,7 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RxEyeClosed } from "react-icons/rx";
 import { Oval } from "react-loading-icons";
 import background from "../../assets/img/register-background.jpeg";
+import { scrollToUp } from "../../hooks/scrollToTop";
 
 const RegisterForm = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);
@@ -92,11 +93,7 @@ const RegisterForm = () => {
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToUp();
   });
 
   return (

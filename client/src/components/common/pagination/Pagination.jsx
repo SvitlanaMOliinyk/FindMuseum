@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./pagination.css";
 import PropTypes from "prop-types";
 import { GrPrevious, GrNext } from "react-icons/gr";
+import { scrollToUp } from "../../../hooks/scrollToTop";
 
 export default function Pagination({
   pages,
@@ -17,11 +18,7 @@ export default function Pagination({
 
   useEffect(() => {
     setCurrentPage(currentButton);
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToUp();
   }, [currentButton, setCurrentPage]);
 
   return (

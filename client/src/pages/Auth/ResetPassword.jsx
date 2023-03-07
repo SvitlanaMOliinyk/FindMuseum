@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RxEyeClosed } from "react-icons/rx";
 import { Oval } from "react-loading-icons";
+import { scrollToUp } from "../../hooks/scrollToTop";
 
 const ResetPassword = () => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);
@@ -81,11 +82,7 @@ const ResetPassword = () => {
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToUp();
   });
 
   return (

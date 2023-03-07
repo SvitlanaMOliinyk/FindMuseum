@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import PropTypes from "prop-types";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
+import { scrollToUp } from "../../hooks/scrollToTop";
 
 const OfferItem = ({ offer }) => {
   const { _id, expireDate, numberOfTickets, newPrice, museumId } = offer;
@@ -64,11 +65,7 @@ const OfferItem = ({ offer }) => {
       });
     }
 
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToUp();
   }, [offerId]);
 
   return (

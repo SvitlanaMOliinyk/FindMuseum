@@ -10,16 +10,9 @@ import {
 } from "react-icons/ai";
 import "./footer.css";
 import logo from "../../assets/img/logo-find-museum.png";
+import { scrollToUp } from "../../hooks/scrollToTop";
 
 const Footer = () => {
-  const scrollHomeUp = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <footer className="container--footer">
       <div className="container--company-logo">
@@ -73,7 +66,7 @@ const Footer = () => {
           <h3>Short Links</h3>
           <ul className="short-links">
             <li className="footer-list-item">
-              <Link to="/" onClick={scrollHomeUp}>
+              <Link to="/" onClick={scrollToUp}>
                 Home
               </Link>
             </li>

@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
 import SearchedMuseums from "../../components/Museum-Overview/SearchedMuseums";
+import { scrollToUp } from "../../hooks/scrollToTop";
 import "./searched-overview.css";
 
 export default function SearchedOverview() {
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToUp();
   });
+
   return (
     <div className="searched-overview">
       <SearchedMuseums />

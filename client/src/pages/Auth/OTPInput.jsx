@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
+import { scrollToUp } from "../../hooks/scrollToTop";
 
 const OtpInput = () => {
   const navigate = useNavigate();
@@ -46,11 +47,7 @@ const OtpInput = () => {
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToUp();
   });
 
   return (

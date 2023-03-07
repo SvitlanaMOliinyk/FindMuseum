@@ -6,6 +6,7 @@ import "./offers.css";
 
 import Pagination from "../../components/common/pagination/Pagination";
 import background from "../../assets/museums/t11.jpeg";
+import { scrollToUp } from "../../hooks/scrollToTop";
 
 const Offers = () => {
   const [offers, setOffers] = useState([]);
@@ -24,11 +25,6 @@ const Offers = () => {
 
   useEffect(() => {
     performFetch();
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
   }, []);
 
   const currentOffers = offers?.slice(indexOfFirstOffer, indexOfLastOffer);
@@ -40,6 +36,10 @@ const Offers = () => {
       document.body.style.overflow = "visible";
     }
   }, [isLoading]);
+
+  useEffect(() => {
+    scrollToUp();
+  });
 
   return (
     <main className="offers">

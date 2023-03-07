@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { Oval } from "react-loading-icons";
 
 import useFetch from "../../hooks/useFetch";
+import { scrollToUp } from "../../hooks/scrollToTop";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -71,11 +72,7 @@ const ForgotPassword = () => {
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToUp();
   });
 
   return (
