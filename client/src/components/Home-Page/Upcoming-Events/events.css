@@ -125,11 +125,23 @@
   font-size: 25px;
 }
 
-.sunflowers,
-.auto,
+.sunflowers {
+  width: 60vh;
+  height: 60vh;
+  border-radius: 10px;
+  filter: drop-shadow(4px 4px 2px #3f4e4f);
+}
+.auto {
+  width: 90vh;
+  height: 60vh;
+  border-radius: 10px;
+  filter: drop-shadow(4px 4px 2px #2b2f2f);
+}
 .escher {
   width: 60vh;
   height: 60vh;
+  border-radius: 10px;
+  filter: drop-shadow(4px 4px 2px #2b2f2f);
 }
 
 @media screen and (max-width: 899px) {
@@ -187,10 +199,22 @@
     width: 90%;
   }
 
-  .sunflowers,
-  .auto,
+  .sunflowers {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 10px;
+    filter: drop-shadow(4px 4px 2px #3f4e4f);
+  }
+  .auto {
+    width: 45vh;
+    height: 30vh;
+    border-radius: 10px;
+    filter: drop-shadow(4px 4px 2px #2b2f2f);
+  }
   .escher {
-    width: 35vh;
-    height: 40vh;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 10px;
+    filter: drop-shadow(4px 4px 2px #2b2f2f);
   }
 }
