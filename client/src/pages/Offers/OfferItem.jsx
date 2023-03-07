@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import PropTypes from "prop-types";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const OfferItem = ({ offer }) => {
   const { _id, expireDate, numberOfTickets, newPrice, museumId } = offer;
@@ -19,7 +20,7 @@ const OfferItem = ({ offer }) => {
         autoClose: 2000,
       });
       setTimeout(() => {
-        navigate("/");
+        navigate("/offers");
       }, 2000);
     } else {
       toast.error("You have already got the offer!", {
@@ -27,7 +28,7 @@ const OfferItem = ({ offer }) => {
         autoClose: 2000,
       });
       setTimeout(() => {
-        navigate("/");
+        navigate("/offers");
       }, 2000);
     }
   };
@@ -63,6 +64,8 @@ const OfferItem = ({ offer }) => {
         }),
       });
     }
+
+    scrollToUp();
   }, [offerId]);
 
   return (

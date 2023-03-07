@@ -10,6 +10,7 @@ import {
 } from "react-icons/ai";
 import "./footer.css";
 import logo from "../../assets/img/logo-find-museum.png";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const Footer = () => {
   return (
@@ -65,7 +66,9 @@ const Footer = () => {
           <h3>Short Links</h3>
           <ul className="short-links">
             <li className="footer-list-item">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={scrollToUp}>
+                Home
+              </Link>
             </li>
             <li className="footer-list-item">
               <Link to="/museums">Museums</Link>

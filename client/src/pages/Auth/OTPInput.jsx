@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./otp-input.css";
 import background from "../../assets/img/register-background.jpeg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
+import { scrollToUp } from "../../hooks/scrollToUp";
 
 const OtpInput = () => {
   const navigate = useNavigate();
@@ -44,6 +45,10 @@ const OtpInput = () => {
   };
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
+
+  useEffect(() => {
+    scrollToUp();
+  });
 
   return (
     <div
