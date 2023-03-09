@@ -56,7 +56,7 @@ export default UserComments;
 const Container = styled.div`
   text-align: center;
   margin-top: 15vh;
-  min-height: 45.5vh;
+  min-height: 45.4vh;
   height: 100%;
   color: black;
 `;
