@@ -4,11 +4,29 @@
 
 .fav_icon {
   position: absolute;
-  flex-basis: 20%;
-  width: 30px;
-  height: 30px;
-  top: 5%;
-  right: 5%;
-  left: auto;
+  margin: 0;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.img-wrapper {
+  position: relative;
+  background-color: #fff;
+  opacity: 0.5;
+  width: 35px;
+  height: 35px;
+  left: 89%;
+  top: -82%;
+  border-top-right-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .img-wrapper {
+    top: -79%;
+  }
 }

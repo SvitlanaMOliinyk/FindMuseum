@@ -16,12 +16,14 @@ const Heart = ({ id }) => {
 
   return (
     <>
-      <img
-        src={inFav ? heartSolid : heart}
-        alt={inFav ? "heartSolid" : "heart"}
-        className="fav_icon"
-        onClick={() => handleFavorite(id, isLoggedIn)}
-      />
+      <div className="img-wrapper">
+        <img
+          src={inFav ? heartSolid : heart}
+          alt={inFav ? "heartSolid" : "heart"}
+          className="fav_icon"
+          onClick={() => handleFavorite(id, isLoggedIn)}
+        />
+      </div>
     </>
   );
 };
