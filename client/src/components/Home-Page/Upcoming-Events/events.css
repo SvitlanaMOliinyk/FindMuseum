@@ -2,11 +2,17 @@
   padding: 20px;
   display: flex;
   background-color: #3f4e4f;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .home-offers-container {
   display: flex;
+  justify-content: center;
+}
+
+.offers-section {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
