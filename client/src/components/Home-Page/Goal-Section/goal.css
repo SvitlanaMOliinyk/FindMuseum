@@ -41,6 +41,10 @@ a {
   font-weight: bold;
 }
 
+.focus:hover {
+  color: var(--navbar-color);
+}
+
 .button-about {
   border-radius: 4px;
   background-color: #3f4e4f;

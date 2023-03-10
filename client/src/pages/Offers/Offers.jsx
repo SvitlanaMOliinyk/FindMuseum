@@ -12,7 +12,7 @@ const Offers = () => {
   const [offers, setOffers] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [offersPerPage] = useState(4);
+  const [offersPerPage] = useState(5);
   const [currentButton, setCurrentButton] = useState(1);
 
   const indexOfLastOffer = currentPage * offersPerPage;
@@ -56,7 +56,7 @@ const Offers = () => {
       >
         <p>
           <span style={{ fontSize: "1.8rem" }}>
-            More discoveries, more visit, more benefits...
+            More discoveries, more visits, more benefits...
           </span>
           <br></br>Browse our current offers below or log into your account to
           see all the offers available for your tier. We add new offers all the
@@ -75,12 +75,16 @@ const Offers = () => {
       ) : (
         <p>{error}</p>
       )}
-      <Pagination
-        pages={totalPagesNum}
-        setCurrentPage={setCurrentPage}
-        currentButton={currentButton}
-        setCurrentButton={setCurrentButton}
-      />
+      {totalPagesNum > 1 ? (
+        <Pagination
+          pages={totalPagesNum}
+          setCurrentPage={setCurrentPage}
+          currentButton={currentButton}
+          setCurrentButton={setCurrentButton}
+        />
+      ) : (
+        <></>
+      )}
     </main>
   );
 };

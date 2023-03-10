@@ -6,8 +6,7 @@
   position: fixed;
   z-index: 7;
   top: 0;
-  font-size: clamp(1.2rem, 2vw, 1rem);
-  font-weight: 600;
+  font-size: clamp(1.2rem, 2vw, 2.2rem);
   width: 100%;
 }
 
@@ -45,8 +44,7 @@
 }
 
 .navbar-item {
-  margin-left: 75px;
-  width: 105px;
+  margin-left: clamp(2rem, 2.2vw, 2.5rem);
 }
 
 .navbar-item a {
