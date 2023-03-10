@@ -36,7 +36,10 @@ export const getMuseumById = async (req, res) => {
   Museum.findOne({ _id: id })
     .populate({
       path: "comments",
-      populate: { path: "userId", select: { firstName: 1, lastName: 1 } },
+      populate: {
+        path: "userId",
+        select: { firstName: 1, lastName: 1, profilePicture: 1 },
+      },
     })
     .exec((err, museum) => {
       if (err) {
