@@ -1,7 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import styled from "styled-components";
 import PropTypes from "prop-types";
+import "./review-card-rate.css";
 
 const StarRating = ({ rate }) => {
   StarRating.propTypes = {
@@ -13,7 +13,7 @@ const StarRating = ({ rate }) => {
   };
   return (
     <>
-      <Stars className="stars-review">
+      <div className="stars-review">
         {Array(5)
           .fill(0)
           .map((_, index) => {
@@ -29,23 +29,9 @@ const StarRating = ({ rate }) => {
               />
             );
           })}
-      </Stars>
+      </div>
     </>
   );
 };
 
-const Stars = styled.div`
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-
-  svg {
-    width: 1rem;
-    stroke: orange;
-    stroke-width: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    margin-right: 5px;
-  }
-`;
 export default StarRating;

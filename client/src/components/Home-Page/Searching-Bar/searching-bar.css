@@ -1,23 +1,15 @@
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-} */
-
 .searching-bar {
-  /* margin-top: 30px; */
   margin: 30px auto 0;
   width: 100%;
   display: flex;
   flex: 9.5;
   height: 10vh;
-  /* background-color: var(--background-color); */
 }
 
 .search-form {
   width: 90%;
   height: 90%;
-  margin: auto;
+  margin: 0 4rem 0 4rem;
   display: flex;
   font-size: clamp(1.5rem, 2vw, 2.2rem);
   align-items: center;

@@ -95,7 +95,6 @@
   .navbar-item {
     opacity: 0;
     margin-left: 0;
-    width: auto;
   }
 
   .navbar.active {
