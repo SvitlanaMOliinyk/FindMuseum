@@ -158,7 +158,7 @@
 }
 
 .headerGoal {
-  flex-basis: 80%;
+  flex-basis: 90%;
   padding-left: 10em;
   padding: 2em;
   margin-left: 15px;
@@ -168,7 +168,7 @@
   font-size: 25px;
   font-family: "Courier New", monospace;
   color: white;
-  line-height: 1.3;
+  line-height: 1;
 }
 
 .reviewers {

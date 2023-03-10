@@ -37,7 +37,7 @@ const MuseumList = () => {
         <Header />
         <div className="all-museums-card">
           {amsterdam &&
-            amsterdam.slice(0, 5).map((museum) => {
+            amsterdam.slice(0, 4).map((museum) => {
               return <MuseumCard key={museum._id} museum={museum} />;
             })}
         </div>
