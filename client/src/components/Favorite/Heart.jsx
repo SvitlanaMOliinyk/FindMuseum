@@ -22,9 +22,9 @@ const Heart = ({ id }) => {
           alt={inFav ? "heartSolid" : "heart"}
           className="fav_icon"
           onClick={(event) => {
-          handleFavorite(id, isLoggedIn);
-          event.stopPropagation();
-        }}
+            handleFavorite(id, isLoggedIn);
+            event.stopPropagation();
+          }}
         />
       </div>
     </>
