@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import PropTypes from "prop-types";
 import "./museum-card.css";
@@ -8,6 +8,7 @@ import Heart from "../Favorite/Heart";
 
 const MuseumCard = ({ museum }) => {
   const { name, image, _id, address, category } = museum;
+  const navigate = useNavigate();
   MuseumCard.propTypes = {
     museum: PropTypes.object.isRequired,
   };
@@ -20,6 +21,9 @@ const MuseumCard = ({ museum }) => {
           style={{
             background: ` url(${image.url}) no-repeat`,
             backgroundSize: "cover",
+          }}
+          onClick={() => {
+            navigate(`/museum/${_id}`);
           }}
         >
           <Heart id={_id} />
