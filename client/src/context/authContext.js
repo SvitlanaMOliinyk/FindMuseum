@@ -74,6 +74,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       setFavorites([...favorites, id]);
     }
+    // event.stopPropagation();
   };
 
   // logout for favorite

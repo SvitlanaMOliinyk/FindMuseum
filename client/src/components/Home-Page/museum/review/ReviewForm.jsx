@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import StarRating from "./StarRating";
-import styled from "styled-components";
+// import styled from "styled-components";
 import PropTypes from "prop-types";
 import useFetch from "../../../../hooks/useFetch";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Oval } from "react-loading-icons";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import "./review-form.css";
 
 const ReviewForm = ({
   type,
@@ -116,19 +117,23 @@ const ReviewForm = ({
 
   return (
     <>
-      <Container>
-        <Row>
+      <div className="review-form-container">
+        <div className="review-form">
           {type == "Edit" && (
             <div className="close">
               <IoMdCloseCircleOutline onClick={handleClose} />
             </div>
           )}
-          <Col>
+          <div className="review-form-box">
             <h1>{`${type} Your Review`}</h1>
             <StarRating formData={formData} setFormData={setFormData} />
-          </Col>
-          <Col>
-            <Form noValidate onSubmit={handleSubmit}>
+          </div>
+          <div className="review-form-box">
+            <div
+              className="review-form-input"
+              noValidate
+              onSubmit={handleSubmit}
+            >
               <div className="input-group">
                 <input
                   type="hidden"
@@ -159,66 +164,12 @@ const ReviewForm = ({
                   "Send"
                 )}
               </button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
 
 export default ReviewForm;
-
-const Container = styled.div`
-  margin-top: 5rem;
-  margin-bottom: 3rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  h1 {
-    margin-top: 1rem;
-    text-align: center;
-  }
-  .close {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    font-size: 2rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
-    color: gray;
-    &:hover {
-      color: black;
-    }
-  }
-`;
-
-const Row = styled.div`
-  width: 40%;
-  @media (max-width: 700px) {
-    width: 80%;
-  }
-  background-color: white;
-  border-radius: 0.5rem;
-`;
-
-const Col = styled.div``;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-  .input-group {
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-    margin: 0.5rem 1rem;
-  }
-  textarea {
-    resize: none;
-    width: 90%;
-  }
-`;
