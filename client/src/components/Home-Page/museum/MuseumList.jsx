@@ -16,7 +16,7 @@ const MuseumList = () => {
   });
 
   const amsterdam = result.sort((a, b) => {
-    return a.rating - b.rating;
+    return b.rating - a.rating;
   });
 
   useEffect(() => {
