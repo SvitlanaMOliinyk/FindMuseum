@@ -52,7 +52,7 @@ const Footer = () => {
           </div> */}
         </div>
         <div className="container--have-question">
-          <h3>Do you a have question?</h3>
+          <h3>Do you have a question?</h3>
           <div className="container--info">
             <AiOutlineMail />
             <a href="/">info@museum.nl</a>

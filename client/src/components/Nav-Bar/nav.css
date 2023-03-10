@@ -6,9 +6,8 @@
   position: fixed;
   z-index: 7;
   top: 0;
-  font-size: clamp(1.2rem, 2vw, 1rem);
-  font-weight: 600;
-  width: 100vw;
+  font-size: clamp(1.2rem, 1.6vw, 2rem);
+  width: 100%;
 }
 
 .logo-navbar-container {
@@ -45,8 +44,8 @@
 }
 
 .navbar-item {
-  margin-left: 75px;
-  width: 105px;
+  margin-left: clamp(1.8rem, 2vw, 2.2rem);
+  width: 10rem;
 }
 
 .navbar-item a {

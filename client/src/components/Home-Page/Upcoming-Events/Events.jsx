@@ -49,7 +49,11 @@ const Events = () => {
               Choosing Vincent.
             </p>
           </div>
-          <a href="https://www.vangoghmuseum.nl/en/visit/whats-on/50-years-of-inspiration">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.vangoghmuseum.nl/en/visit/whats-on/50-years-of-inspiration"
+          >
             <button className="section-button">Check it out</button>
           </a>
         </div>
@@ -57,14 +61,18 @@ const Events = () => {
 
       <div className="louwman-section">
         <div className="event-sections-text">
-          <div className="section-para">
-            <h3>Collection of automobiles </h3>
-            <h1>in LOUWMAN MUSEUM</h1>
-            <h3>
+          <div className="section-para" style={{ textAlign: "center" }}>
+            <h4>Collection of automobiles </h4>
+            <h3>in LOUWMAN MUSEUM</h3>
+            <p>
               <i>1 January 2023 - 31 December 2023</i>
-            </h3>
+            </p>
           </div>
-          <a href="https://www.louwmanmuseum.nl/en/exposition/always-on-display-masterpieces-of-mobility/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.louwmanmuseum.nl/en/exposition/always-on-display-masterpieces-of-mobility/"
+          >
             <button className="section-button">Check it out</button>
           </a>
         </div>
@@ -77,10 +85,10 @@ const Events = () => {
 
         <div className="event-sections-text">
           <div className="section-para">
-            <h3>
+            <h4>
               <i>18 February 2023 - 10 September 2023</i>
-            </h3>
-            <h1>Escher - Other World</h1>
+            </h4>
+            <h3>Escher - Other World</h3>
             <p>
               Birds that become fish, water that flows uphill, two hands drawing
               each other: with consummate skill, M.C. Escher would transform a
@@ -90,7 +98,11 @@ const Events = () => {
               world.
             </p>
           </div>
-          <a href="https://www.kunstmuseum.nl/en/exhibitions/escher-other-world">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.kunstmuseum.nl/en/exhibitions/escher-other-world"
+          >
             <button className="section-button">Check it out</button>
           </a>
         </div>

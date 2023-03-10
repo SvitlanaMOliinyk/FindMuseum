@@ -84,9 +84,15 @@ const ProfileReviewCard = ({
           <h1>
             {`Reviews of ${user && user.firstName} ${user && user.lastName}`}{" "}
           </h1>
-          <h3>{`There are ${commentLength && commentLength} reviews of ${
-            user && user.firstName
-          } ${user && user.lastName} `}</h3>
+          <h3>
+            {commentLength > 1
+              ? `There are ${commentLength && commentLength} reviews of ${
+                  user && user.firstName
+                } ${user && user.lastName} `
+              : `There is ${commentLength && commentLength} review of ${
+                  user && user.firstName
+                } ${user && user.lastName} `}
+          </h3>
         </Head>
 
         {comments &&

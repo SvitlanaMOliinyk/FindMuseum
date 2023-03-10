@@ -67,7 +67,13 @@ const MuseumDetails = () => {
               <div className="contact">
                 <div className="contact-item">
                   <MdLocationPin style={{ color: "#3F4E4F" }} />
-                  <a href={location?.map}>View on map</a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={location?.map}
+                  >
+                    View on map
+                  </a>
                 </div>
                 <div className="contact-item">
                   <AiFillPhone style={{ color: "#3F4E4F" }} />
@@ -75,7 +81,9 @@ const MuseumDetails = () => {
                 </div>
                 <div className="contact-item">
                   <FaLink style={{ color: "#3F4E4F" }} />
-                  <a href={website}>Visit Website</a>
+                  <a target="_blank" rel="noopener noreferrer" href={website}>
+                    Visit Website
+                  </a>
                 </div>
               </div>
             </div>

@@ -30,35 +30,41 @@ const Nav = () => {
           </div>
           <ul className={menuIsOpen ? "navbar active" : "navbar"}>
             <li className="navbar-item">
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "activeBar" : "")}
-                onClick={() => {
-                  onClose();
-                  scrollToUp();
-                }}
-              >
-                Home
-              </NavLink>
+              <h3>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => (isActive ? "activeBar" : "")}
+                  onClick={() => {
+                    onClose();
+                    scrollToUp();
+                  }}
+                >
+                  Home
+                </NavLink>
+              </h3>
             </li>
             <li className="navbar-item">
-              <NavLink
-                to="museums"
-                className={({ isActive }) => (isActive ? "activeBar" : "")}
-                onClick={onClose}
-              >
-                Museums
-              </NavLink>
+              <h3>
+                <NavLink
+                  to="museums"
+                  className={({ isActive }) => (isActive ? "activeBar" : "")}
+                  onClick={onClose}
+                >
+                  Museums
+                </NavLink>
+              </h3>
             </li>
 
             <li className="navbar-item">
-              <NavLink
-                to="offers"
-                className={({ isActive }) => (isActive ? "activeBar" : "")}
-                onClick={onClose}
-              >
-                Offers
-              </NavLink>
+              <h3>
+                <NavLink
+                  to="offers"
+                  className={({ isActive }) => (isActive ? "activeBar" : "")}
+                  onClick={onClose}
+                >
+                  Offers
+                </NavLink>
+              </h3>
             </li>
 
             {isLoggedIn ? (
@@ -66,22 +72,30 @@ const Nav = () => {
             ) : (
               <>
                 <li className="navbar-item">
-                  <NavLink
-                    to="/login"
-                    className={({ isActive }) => (isActive ? "activeBar" : "")}
-                    onClick={onClose}
-                  >
-                    Log in
-                  </NavLink>
+                  <h3>
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        isActive ? "activeBar" : ""
+                      }
+                      onClick={onClose}
+                    >
+                      Log in
+                    </NavLink>
+                  </h3>
                 </li>
                 <li className="navbar-item">
-                  <NavLink
-                    to="/register"
-                    className={({ isActive }) => (isActive ? "activeBar" : "")}
-                    onClick={onClose}
-                  >
-                    Register
-                  </NavLink>
+                  <h3>
+                    <NavLink
+                      to="/register"
+                      className={({ isActive }) =>
+                        isActive ? "activeBar" : ""
+                      }
+                      onClick={onClose}
+                    >
+                      Register
+                    </NavLink>
+                  </h3>
                 </li>
               </>
             )}

@@ -34,7 +34,7 @@ const Favorites = () => {
     <div className="favorites_page">
       {favorites.length === 0 && (
         <>
-          <h1>You have Not Chosen any Favorites yet! </h1>
+          <h1>You have not chosen any favorites yet! </h1>
           <img
             src="https://res.cloudinary.com/diyopzdxb/image/upload/v1677845113/cars-images/favorite_t3zede.png"
             alt="not yet"
