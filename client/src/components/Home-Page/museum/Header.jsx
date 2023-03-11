@@ -5,8 +5,8 @@ const Header = () => {
     <div className="headerContainer">
       <div className="headerGoal">
         <span className="headerMessage">
-          Most popular museums in Amsterdam{" "}
-          <span className="reviewers">according to reviewers rating</span>
+          Explore the top rated Amsterdam museums{" "}
+          {/* <span className="reviewers">according to reviewers rating</span> */}
         </span>
       </div>
     </div>
