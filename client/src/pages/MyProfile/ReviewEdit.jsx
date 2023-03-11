@@ -29,6 +29,7 @@ const ReviewEdit = ({ trigger, comment, setTrigger, refresh, setRefresh }) => {
 export default ReviewEdit;
 
 const Div = styled.div`
+  padding-top: 2rem;
   position: fixed;
   top: 3rem;
   width: 100%;
