@@ -1,5 +1,5 @@
 .searching-bar {
-  margin: 30px auto 0;
+  margin: 30px auto;
   width: 100%;
   display: flex;
   flex: 9.5;
@@ -9,7 +9,7 @@
 .search-form {
   width: 90%;
   height: 90%;
-  margin: 0 4rem 0 4rem;
+  margin: auto;
   display: flex;
   font-size: clamp(1.5rem, 2vw, 2.2rem);
   align-items: center;

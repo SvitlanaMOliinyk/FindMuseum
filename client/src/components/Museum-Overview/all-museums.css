@@ -1,5 +1,4 @@
 .all-museums {
-  /* margin-top: 10vh; */
   display: flex;
   flex: 10;
   flex-direction: column;
@@ -11,7 +10,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 1vh auto;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 .selected-filter-counter {
