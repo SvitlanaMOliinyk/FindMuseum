@@ -36,13 +36,13 @@
 }
 
 .profile-settings input {
-  color: #3f4e4f;
-  background-color: #dcd7c9;
+  border: 1px solid #2c3639;
+  padding: 2px 5px;
   margin: 10px 0;
-  height: 30px;
-  border: none;
-  border-bottom: 2px solid #2c3639;
   outline: none;
+  color: #3f4e4f;
+  height: 30px;
+  border-radius: 3px;
 }
 
 .profile-update-btn {

@@ -110,10 +110,6 @@ export default function MyProfile() {
                 setAuthUser({ ...authUser, lastName: e.target.value })
               }
             />
-            <label>Email</label>
-            <input type="email" defaultValue={authUser?.email} disabled />
-            <label>Password</label>
-            <input type="password" placeholder="************" disabled />
             <button className="profile-update-btn" type="submit">
               Update
             </button>
