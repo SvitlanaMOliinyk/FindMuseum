@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import ProfileReviewCard from "./ProfileReviewCard";
 import useFetch from "../../hooks/useFetch";
 import Pagination from "../../components/common/pagination/Pagination";
@@ -32,7 +31,7 @@ const UserComments = () => {
 
   return (
     <>
-      <Container>
+      <div className="user-comments-container">
         <ProfileReviewCard
           comments={currentComments}
           refresh={refresh}
@@ -46,17 +45,9 @@ const UserComments = () => {
           currentButton={currentButton}
           setCurrentButton={setCurrentButton}
         />
-      </Container>
+      </div>
     </>
   );
 };
 
 export default UserComments;
-
-const Container = styled.div`
-  text-align: center;
-  margin-top: 15vh;
-  min-height: 45.4vh;
-  height: 100%;
-  color: black;
-`;

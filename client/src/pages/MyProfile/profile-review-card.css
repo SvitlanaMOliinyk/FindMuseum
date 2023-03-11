@@ -1,0 +1,119 @@
+.profile-review-card-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile-review-card-container h1 {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-review-card-row {
+  height: 50%;
+  margin-bottom: 3rem;
+  width: 35%;
+  background-color: #ffffff;
+  border-radius: 1rem;
+}
+
+.profile-review-card-col {
+  height: 40%;
+}
+
+.comment-container {
+  height: 30%;
+}
+
+.edit-delete {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.edit-delete svg {
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.edit-delete svg:hover {
+  color: black;
+}
+
+.comment-museum {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  color: blue;
+  font-size: 1.5rem;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 5rem;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #5585e0;
+  text-align: center;
+  position: relative;
+}
+
+.avatar span {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.7rem;
+  font-weight: bold;
+}
+
+.date-rate {
+  width: max-content;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.name-date {
+  display: flex;
+  flex-direction: row;
+}
+
+.dot {
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+  background: black;
+  margin: 0px 0.3rem;
+  margin-top: 10px;
+}
+
+.review {
+  font-size: 1.5rem;
+}
+
+.review p {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 100%;
+  overflow-y: scroll;
+}
