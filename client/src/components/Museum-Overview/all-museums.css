@@ -10,7 +10,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 1vh auto;
-  justify-content: flex-start;
+  justify-content: space-evenly;
 }
 
 .selected-filter-counter {
