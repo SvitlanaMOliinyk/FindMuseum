@@ -152,14 +152,9 @@
 .headerContainer {
   margin-top: 20px;
   width: 100%;
-  display: flex;
-  /* flex-wrap: wrap; */
+  /* display: flex; */
+  /* flex-direction: row; */
   height: auto;
-  /* background: linear-gradient(
-    175deg,
-    rgba(63, 78, 79, 1) 0%,
-    rgba(220, 215, 201, 1) 100%
-  ); */
   background: linear-gradient(
     175deg,
     rgba(162, 123, 92, 1) 0%,
@@ -169,7 +164,9 @@
 
 .headerGoal {
   flex-basis: 100%;
+  display: flex;
   /* padding-left: 10em; */
+  justify-content: center;
   padding: 1.5em;
   /* margin-left: 15px; */
   text-align: center;
@@ -180,7 +177,19 @@
   font-size: 30px;
   /* font-family: "Courier New", monospace; */
   color: whitesmoke;
-  line-height: 1;
+  /* line-height: 1; */
+}
+
+.header-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.header-icon {
+  color: whitesmoke;
+  font-size: 30px;
 }
 
 /* .reviewers {
