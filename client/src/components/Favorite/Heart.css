@@ -8,25 +8,18 @@
   width: 25px;
   height: 25px;
   cursor: pointer;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 
 .img-wrapper {
-  position: relative;
+  position: absolute;
   background-color: #fff;
   opacity: 0.5;
   width: 35px;
   height: 35px;
-  left: 89%;
-  top: -82%;
+  right: 0;
+  top: 0;
   border-top-right-radius: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .img-wrapper {
-    top: -79%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

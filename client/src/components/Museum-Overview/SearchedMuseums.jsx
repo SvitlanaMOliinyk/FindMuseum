@@ -20,7 +20,7 @@ export default function SearchedMuseums() {
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [museumsPerPage] = useState(6);
+  const [museumsPerPage] = useState(12);
 
   const indexOfLastMuseum = currentPage * museumsPerPage;
   const indexOfFirstMuseum = indexOfLastMuseum - museumsPerPage;

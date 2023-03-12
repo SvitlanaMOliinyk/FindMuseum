@@ -150,31 +150,52 @@
 
 /* header of famous museums */
 .headerContainer {
+  margin-top: 20px;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-direction: row; */
   height: auto;
-  background-color: #3f4e4f;
+  background: linear-gradient(
+    175deg,
+    rgba(162, 123, 92, 1) 0%,
+    rgba(220, 215, 201, 1) 100%
+  );
 }
 
 .headerGoal {
-  flex-basis: 90%;
-  padding-left: 10em;
-  padding: 2em;
-  margin-left: 15px;
+  flex-basis: 100%;
+  display: flex;
+  /* padding-left: 10em; */
+  justify-content: center;
+  padding: 1.5em;
+  /* margin-left: 15px; */
+  text-align: center;
+  font-style: italic;
 }
 
 .headerMessage {
-  font-size: 25px;
-  font-family: "Courier New", monospace;
-  color: white;
-  line-height: 1;
+  font-size: 30px;
+  /* font-family: "Courier New", monospace; */
+  color: whitesmoke;
+  /* line-height: 1; */
 }
 
-.reviewers {
+.header-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.header-icon {
+  color: whitesmoke;
+  font-size: 30px;
+}
+
+/* .reviewers {
   font-size: 20px;
   color: black;
-}
+} */
 
 @media (prefers-reduced-motion: reduce) {
   *,

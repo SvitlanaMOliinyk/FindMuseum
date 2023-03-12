@@ -19,6 +19,7 @@ a {
   flex-basis: 50%;
   padding-left: 10em;
   padding-top: 3em;
+  padding-bottom: 3em;
 }
 
 .question {

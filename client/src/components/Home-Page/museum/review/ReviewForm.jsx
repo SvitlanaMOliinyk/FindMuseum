@@ -129,7 +129,7 @@ const ReviewForm = ({
             <StarRating formData={formData} setFormData={setFormData} />
           </div>
           <div className="review-form-box">
-            <div
+            <form
               className="review-form-input"
               noValidate
               onSubmit={handleSubmit}
@@ -164,7 +164,7 @@ const ReviewForm = ({
                   "Send"
                 )}
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
