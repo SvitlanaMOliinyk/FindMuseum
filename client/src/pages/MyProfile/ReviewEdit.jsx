@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import ReviewForm from "../../components/Home-Page/museum/review/ReviewForm";
 import PropTypes from "prop-types";
+import "./review-edit.css";
 
 const ReviewEdit = ({ trigger, comment, setTrigger, refresh, setRefresh }) => {
   ReviewEdit.propTypes = {
@@ -12,7 +12,7 @@ const ReviewEdit = ({ trigger, comment, setTrigger, refresh, setRefresh }) => {
     setRefresh: PropTypes.func,
   };
   return trigger ? (
-    <Div>
+    <div className="review-edit-container">
       <ReviewForm
         type="Edit"
         comment={comment}
@@ -20,20 +20,10 @@ const ReviewEdit = ({ trigger, comment, setTrigger, refresh, setRefresh }) => {
         refresh={refresh}
         setRefresh={setRefresh}
       />
-    </Div>
+    </div>
   ) : (
     ""
   );
 };
 
 export default ReviewEdit;
-
-const Div = styled.div`
-  padding-top: 1rem;
-  position: fixed;
-  top: 3rem;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  background: rgba(0, 0, 0, 0.2);
-`;

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import ReviewCardRate from "../../components/Home-Page/museum/review/ReviewCardRate";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -9,6 +8,7 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { logError } from "../../../../server/src/util/logging";
 import { Link } from "react-router-dom";
+import "./profile-review-card.css";
 
 const ProfileReviewCard = ({
   comments,
@@ -72,7 +72,7 @@ const ProfileReviewCard = ({
 
   return (
     <>
-      <Container>
+      <div className="profile-review-card-container">
         <ReviewEdit
           trigger={trigger}
           setTrigger={setTrigger}
@@ -80,7 +80,7 @@ const ProfileReviewCard = ({
           refresh={refresh}
           setRefresh={setRefresh}
         />
-        <Head>
+        <div className="head">
           <h1>
             {`Reviews of ${user && user.firstName} ${user && user.lastName}`}{" "}
           </h1>
@@ -93,7 +93,7 @@ const ProfileReviewCard = ({
                   user && user.firstName
                 } ${user && user.lastName} `}
           </h3>
-        </Head>
+        </div>
 
         {comments &&
           comments.map((comment) => {
@@ -107,169 +107,57 @@ const ProfileReviewCard = ({
             }
 
             return (
-              <Row key={comment._id}>
-                <Col>
-                  <CommentContainer>
-                    <EditDelete>
-                      <CommentMuseum
-                        as={Link}
+              <div className="profile-review-card-row" key={comment._id}>
+                <div className="profile-review-card-col">
+                  <div className="comment-container">
+                    <div className="edit-delete">
+                      <Link
+                        className="comment-museum"
                         to={`/museum/${comment.museumId._id}`}
                       >
                         {comment && comment.museumId.name}
-                      </CommentMuseum>
+                      </Link>
                       <FiEdit onClick={() => handleEdit(comment)} />
                       <RiDeleteBinLine onClick={() => handleDelete(comment)} />
-                    </EditDelete>
-                    <AvatarCont>
-                      <Avatar>
-                        <span>{comment.userId.firstName.charAt(0)}</span>
-                      </Avatar>
-                      <DateRate>
-                        <div className="name-date">
-                          <h4>{`${
-                            comment.userId.firstName
-                          } ${comment.userId.lastName.charAt(0)}`}</h4>
-                          <span className="dot"></span>
-                          <span>{`${month} ${day}`}</span>
+                    </div>
+                    <div className="comment-header-content">
+                      <div className="avatar-container">
+                        <div className="avatar">
+                          {comment.userId.profilePicture ? (
+                            <img
+                              src={comment.userId.profilePicture}
+                              alt=""
+                              style={{ width: "60px", height: "60px" }}
+                            />
+                          ) : (
+                            <div>{comment.userId.firstName.charAt(0)}</div>
+                          )}
                         </div>
-                        <div>
-                          <ReviewCardRate rate={comment && comment.rate} />
+                        <div className="name-rate-container">
+                          <div className="name-date">
+                            <h4>{`${
+                              comment.userId.firstName
+                            } ${comment.userId.lastName.charAt(0)}`}</h4>
+                          </div>
+                          <div>
+                            <ReviewCardRate rate={comment && comment.rate} />
+                          </div>
                         </div>
-                      </DateRate>
-                    </AvatarCont>
-                    <Review>
+                      </div>
+                      <div className="date-container">{`${month} ${day}`}</div>
+                    </div>
+                    <hr />
+                    <div className="review-body">
                       <p>{comment && comment.review}</p>
-                    </Review>
-                  </CommentContainer>
-                </Col>
-              </Row>
+                    </div>
+                  </div>
+                </div>
+              </div>
             );
           })}
-      </Container>
+      </div>
     </>
   );
 };
-
-const CommentMuseum = styled.div`
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-  color: blue;
-  font-size: 1.5rem;
-`;
-
-const EditDelete = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  svg {
-    padding-top: 0.5rem;
-    padding-right: 0.5rem;
-    font-size: 1.5rem;
-    color: gray;
-    &:hover {
-      color: black;
-    }
-  }
-`;
-
-const Head = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-`;
-
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  h1 {
-    margin-top: 1rem;
-    text-align: center;
-  }
-`;
-
-const Row = styled.div`
-  height: 50%;
-  margin-bottom: 3rem;
-  width: 35%;
-  @media (max-width: 700px) {
-    width: 80%;
-  }
-  @media (min-width: 701px) and (max-width: 820px) {
-    width: 60%;
-  }
-  background-color: #ffffff;
-  border-radius: 1rem;
-`;
-
-const Col = styled.div`
-  height: 40%;
-  @media (max-width: 700px) {
-    height: 20%;
-  }
-`;
-
-const CommentContainer = styled.div`
-  height: 30%;
-`;
-const AvatarCont = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 5rem;
-`;
-
-const Avatar = styled.div`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: #5585e0;
-  text-align: center;
-  position: relative;
-  span {
-    font-size: 2.5rem;
-    position: absolute;
-    top: 0.2rem;
-    right: 0.7rem;
-    font-weight: bold;
-  }
-`;
-
-const DateRate = styled.div`
-  width: max-content;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 1.5rem;
-  font-weight: bold;
-  .name-date {
-    display: flex;
-    flex-direction: row;
-  }
-  .dot {
-    border-radius: 50%;
-    height: 5px;
-    width: 5px;
-    background: black;
-    margin: 0px 0.3rem;
-    margin-top: 10px;
-  }
-`;
-
-const Review = styled.div`
-  font-size: 1.5rem;
-  p {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: 100%;
-    overflow-y: scroll;
-  }
-`;
 
 export default ProfileReviewCard;

@@ -115,7 +115,10 @@ export const getAllComments = async (req, res) => {
       path: "comments",
       populate: [
         { path: "museumId", select: { name: 1 } },
-        { path: "userId", select: { firstName: 1, lastName: 1 } },
+        {
+          path: "userId",
+          select: { firstName: 1, lastName: 1, profilePicture: 1 },
+        },
       ],
       // populate: { path: "userId", select: { firstName: 1, lastName: 1 } },
     })

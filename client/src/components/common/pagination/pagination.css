@@ -27,3 +27,9 @@
 .hidden li {
   display: none;
 }
+
+@media (max-width: 450px) {
+  .pagination li a {
+    margin: 0 10px;
+  }
+}

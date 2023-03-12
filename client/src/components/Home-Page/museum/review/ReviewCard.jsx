@@ -66,7 +66,6 @@ const ReviewCard = ({ comments, museumName }) => {
                               <h4>{`${
                                 comment.userId.firstName
                               } ${comment.userId.lastName.charAt(0)}`}</h4>
-                              {/* <span className="dot"></span> */}
                             </div>
                             <div>
                               <ReviewCardRate rate={comment && comment.rate} />
