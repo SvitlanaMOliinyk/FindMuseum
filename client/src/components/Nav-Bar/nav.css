@@ -48,11 +48,14 @@
   width: 10rem;
 }
 
+.navbar-item h3 {
+  display: inline;
+}
+
 .navbar-item a {
   text-decoration: none;
   color: white;
   align-items: center;
-  text-decoration: none;
   padding: 0.5rem;
 }
 
@@ -64,6 +67,12 @@
 .activeBar {
   background-color: var(--active-navlink-color);
   border-radius: 4px;
+}
+
+@media (min-width: 1500px) {
+  .nav {
+    font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+  }
 }
 
 @media (min-width: 900px) and (max-width: 1089px) {
@@ -95,6 +104,7 @@
   .navbar-item {
     opacity: 0;
     margin-left: 0;
+    text-align: center;
   }
 
   .navbar.active {
