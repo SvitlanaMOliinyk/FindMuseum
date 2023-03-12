@@ -111,34 +111,43 @@ const ProfileReviewCard = ({
                 <div className="profile-review-card-col">
                   <div className="comment-container">
                     <div className="edit-delete">
-                      <div
+                      <Link
                         className="comment-museum"
-                        as={Link}
                         to={`/museum/${comment.museumId._id}`}
                       >
                         {comment && comment.museumId.name}
-                      </div>
+                      </Link>
                       <FiEdit onClick={() => handleEdit(comment)} />
                       <RiDeleteBinLine onClick={() => handleDelete(comment)} />
                     </div>
-                    <div className="avatar-container">
-                      <div className="avatar">
-                        <span>{comment.userId.firstName.charAt(0)}</span>
-                      </div>
-                      <div className="date-rate">
-                        <div className="name-date">
-                          <h4>{`${
-                            comment.userId.firstName
-                          } ${comment.userId.lastName.charAt(0)}`}</h4>
-                          <span className="dot"></span>
-                          <span>{`${month} ${day}`}</span>
+                    <div className="comment-header-content">
+                      <div className="avatar-container">
+                        <div className="avatar">
+                          {comment.userId.profilePicture ? (
+                            <img
+                              src={comment.userId.profilePicture}
+                              alt=""
+                              style={{ width: "60px", height: "60px" }}
+                            />
+                          ) : (
+                            <div>{comment.userId.firstName.charAt(0)}</div>
+                          )}
                         </div>
-                        <div>
-                          <ReviewCardRate rate={comment && comment.rate} />
+                        <div className="name-rate-container">
+                          <div className="name-date">
+                            <h4>{`${
+                              comment.userId.firstName
+                            } ${comment.userId.lastName.charAt(0)}`}</h4>
+                          </div>
+                          <div>
+                            <ReviewCardRate rate={comment && comment.rate} />
+                          </div>
                         </div>
                       </div>
+                      <div className="date-container">{`${month} ${day}`}</div>
                     </div>
-                    <div className="review">
+                    <hr />
+                    <div className="review-body">
                       <p>{comment && comment.review}</p>
                     </div>
                   </div>

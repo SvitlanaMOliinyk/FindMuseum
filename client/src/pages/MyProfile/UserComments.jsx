@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ProfileReviewCard from "./ProfileReviewCard";
 import useFetch from "../../hooks/useFetch";
 import Pagination from "../../components/common/pagination/Pagination";
+import "./user-comments.css";
 
 const UserComments = () => {
   const [userComments, setUserComments] = useState([]);
