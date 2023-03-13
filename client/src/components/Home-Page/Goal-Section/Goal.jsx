@@ -18,7 +18,7 @@ const Goal = () => {
 
         <span className="answer">
           {" "}
-          Don’t forget to receive{" "}
+          Don’t forget to get{" "}
           <a href="/offers" className="focus">
             special offers
           </a>
