@@ -57,11 +57,12 @@
 }
 
 .register-input {
+  width: 245px;
   background-color: #dcd7c9;
   border: none;
   height: 28px;
   outline: none;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-family: "Hubballi", cursive;
 }
 
@@ -109,18 +110,24 @@ input:-webkit-autofill:focus {
   .header {
     width: 300px;
   }
+
+  .message-container {
+    text-align: center;
+  }
 }
 
-@media screen and (max-width: 280px) {
+@media screen and (max-width: 320px) {
   .header {
     width: 250px;
   }
 
   .container-input {
     width: 240px;
+    padding: 5px 10px;
   }
 
   .register-input {
-    font-size: 1.1rem;
+    width: 200px;
+    font-size: 1rem;
   }
 }
