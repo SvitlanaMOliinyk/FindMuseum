@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
+import { toast } from "react-toastify";
 import {
   AiFillTwitterCircle,
   AiFillFacebook,
@@ -13,6 +15,22 @@ import logo from "../../assets/img/logo-find-museum.png";
 import { scrollToUp } from "../../hooks/scrollToUp";
 
 const Footer = () => {
+  const { isLoggedIn } = useAuth();
+  const [stateOfLogin, setStateOfLogin] = useState("");
+
+  useEffect(() => {
+    isLoggedIn ? setStateOfLogin("/favorites") : setStateOfLogin("#");
+  }, [isLoggedIn]);
+
+  const handleFavorite = () => {
+    if (!isLoggedIn) {
+      toast.warn("Please, log in to see your favorites!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+    }
+  };
+
   return (
     <footer className="container--footer">
       <div className="container--company-logo">
@@ -74,7 +92,9 @@ const Footer = () => {
               <Link to="/museums">Museums</Link>
             </li>
             <li className="footer-list-item">
-              <Link to="/favorites">Favorites</Link>
+              <Link to={stateOfLogin} onClick={handleFavorite}>
+                Favorites
+              </Link>
             </li>
             <li className="footer-list-item">
               <Link to="/offers">Offers</Link>
