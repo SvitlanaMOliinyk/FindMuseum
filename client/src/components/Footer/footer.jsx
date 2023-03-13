@@ -19,7 +19,7 @@ const Footer = () => {
   const [stateOfLogin, setStateOfLogin] = useState("");
 
   useEffect(() => {
-    isLoggedIn ? setStateOfLogin("/favorites") : setStateOfLogin("#");
+    isLoggedIn ? setStateOfLogin("/favorites") : setStateOfLogin("/login");
   }, [isLoggedIn]);
 
   const handleFavorite = () => {
