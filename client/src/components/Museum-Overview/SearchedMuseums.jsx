@@ -8,7 +8,7 @@ import FilterBar from "./FilterBar";
 import NotFound from "./NotFound";
 import Pagination from "../common/pagination/Pagination";
 import { FaRegWindowClose } from "react-icons/fa";
-import { FaFilter } from "react-icons/fa";
+import { GiSettingsKnobs } from "react-icons/gi";
 
 export default function SearchedMuseums() {
   const { key } = useParams();
@@ -143,7 +143,7 @@ export default function SearchedMuseums() {
       <div className="container--filter-bar-icon">
         <hr className="filter-bar-hr"></hr>
         <div className="filter-bar-icon" onClick={handleClick}>
-          {filterIsOpen ? <FaRegWindowClose /> : <FaFilter />}
+          {filterIsOpen ? <FaRegWindowClose /> : <GiSettingsKnobs />}
         </div>
         <hr className="filter-bar-hr"></hr>
       </div>

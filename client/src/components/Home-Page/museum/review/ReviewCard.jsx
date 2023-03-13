@@ -29,9 +29,16 @@ const ReviewCard = ({ comments, museumName }) => {
         <div className="review-card-section">
           <div className="review-card-head">
             <h1>{`Reviews of ${museumName}`} </h1>
-            <h3>{`There are ${
-              comments && comments.length
-            } reviews of ${museumName} `}</h3>
+            <h3>
+              {" "}
+              {comments && comments.length > 1
+                ? `There are ${
+                    comments && comments.length
+                  } reviews of ${museumName} `
+                : `There is ${
+                    comments && comments.length
+                  } review of ${museumName} `}
+            </h3>
           </div>
           <div className="comment-sections-container">
             {comments &&
