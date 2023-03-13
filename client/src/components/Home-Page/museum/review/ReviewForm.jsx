@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Oval } from "react-loading-icons";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import "./review-form.css";
+import { useNavigate } from "react-router-dom";
 
 const ReviewForm = ({
   type,
@@ -25,6 +26,7 @@ const ReviewForm = ({
     refresh: PropTypes.bool,
     setRefresh: PropTypes.func,
   };
+  const navigate = useNavigate();
   const authUser = JSON.parse(localStorage.getItem("authUser"));
   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
   const [formData, setFormData] = useState({
@@ -71,6 +73,9 @@ const ReviewForm = ({
         position: "top-center",
         autoClose: 2000,
       });
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     }
   }, [error]);
 
