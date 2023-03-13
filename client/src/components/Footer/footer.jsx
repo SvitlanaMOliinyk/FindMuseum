@@ -26,7 +26,7 @@ const Footer = () => {
     if (!isLoggedIn) {
       toast.warn("Please, log in to see your favorites!", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     }
   };
