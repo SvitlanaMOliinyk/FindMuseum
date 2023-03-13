@@ -22,7 +22,13 @@ const Nav = () => {
       <ToastContainer />
       <nav className="nav">
         <div className="logo-navbar-container container-nav">
-          <Link to="/" onClick={onClose}>
+          <Link
+            to="/"
+            onClick={() => {
+              onClose();
+              scrollToUp();
+            }}
+          >
             <img className="logo" src={logo} alt="Logo" />
           </Link>
           <div className="burger-menu-icon" onClick={handleClick}>
