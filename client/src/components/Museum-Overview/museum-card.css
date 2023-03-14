@@ -22,6 +22,10 @@
   position: relative;
 }
 
+.museum-card:hover {
+  cursor: pointer;
+}
+
 .museum-card-body {
   display: flex;
   justify-content: space-between;
