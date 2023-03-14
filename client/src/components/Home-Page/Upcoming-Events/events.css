@@ -51,6 +51,7 @@
 .home-offers-button:hover {
   background-color: #dcd7c9;
   color: #a27b5c;
+  cursor: pointer;
 }
 /*museums events sections*/
 .van-gogh-section,
@@ -78,6 +79,7 @@
 
 .kunstmuseum-section button:hover {
   background-color: #3f4e4f;
+  cursor: pointer;
 }
 
 .section-button {
@@ -95,6 +97,7 @@
 
 .section-button:hover {
   background-color: #3f4e4f;
+  cursor: pointer;
 }
 
 .louwman-section {
@@ -117,6 +120,7 @@
 .louwman-section button:hover {
   background-color: #dcd7c9;
   color: #3f4e4f;
+  cursor: pointer;
 }
 
 .event-sections-text {
