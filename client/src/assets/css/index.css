@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Hubballi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tajawal&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Hubballi", cursive;
+  font-family: "Tajawal";
   background-color: var(--main-bg-color);
 }
 

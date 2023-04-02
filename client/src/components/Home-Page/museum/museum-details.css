@@ -82,6 +82,7 @@
   width: 50%;
   margin: 0 2rem;
   font-size: 1.5rem;
+  text-align: justify;
 }
 
 .museum-description h2 {
@@ -141,7 +142,6 @@
 
 .opening-hours thead th {
   text-align: center;
-  font-family: "Hubballi", cursive;
   padding: 10px;
 }
 
@@ -161,7 +161,6 @@
 }
 
 .opening-hours table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -169,7 +168,6 @@
 .opening-hours td,
 tr {
   text-align: center;
-  font-family: "Hubballi", cursive;
   padding: 10px;
 }
 
@@ -188,7 +186,6 @@ tr {
 
 .museum-fees thead th {
   text-align: center;
-  font-family: "Hubballi", cursive;
   padding: 10px;
 }
 
@@ -208,7 +205,6 @@ tr {
 }
 
 .museum-fees table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -216,7 +212,6 @@ tr {
 .museum-fees td,
 tr {
   text-align: center;
-  font-family: "Hubballi", cursive;
   padding: 10px;
 }
 

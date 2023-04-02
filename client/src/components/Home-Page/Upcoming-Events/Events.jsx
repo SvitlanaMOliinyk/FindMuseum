@@ -31,22 +31,31 @@ const Events = () => {
 
         <div className="event-sections-text">
           <div className="section-para">
+            <h3> The Van Gogh Museum celebrates 50 years</h3>
+            <h4>
+              <i>12 May 2023 - 3 September 2023</i>:
+            </h4>
             <p>
-              The Van Gogh Museum celebrates 50 years of inspiration. Read on
-              for the complete anniversary programme.
+              see the masterpieces that Vincent painted in the final months of
+              his life in Van Gogh in Auvers.
             </p>
-
+            <h4>
+              <i>13 October 2023 - 14 January 2024</i>:
+            </h4>
             <p>
-              During this special year, we will be pulling out all the stops
-              with exhibitions that bring you closer to Van Gogh as an artist
-              and a person.
+              gaze across the water in the paintings that Van Gogh, Seurat,
+              Signac, Bernard and Angrand made on banks of the Seine in Van Gogh
+              along the Seine.
             </p>
+            <h4>
+              <i>Birthday party 2 June 2023</i>:
+            </h4>
             <p>
-              <i>10 February 2023 - 10 April 2023</i>:
-            </p>
-            <p>
-              get to know the family behind Vincent van Gogh in the exhibition
-              Choosing Vincent.
+              it will be exactly 50 years since the museum opened its doors to
+              the public. We are celebrating 50 years of inspiration on
+              Museumplein with a packed programme of activities. Paint like
+              Vincent in the open air, listen to a musical performance or marvel
+              at street theatre.
             </p>
           </div>
           <a
@@ -85,10 +94,10 @@ const Events = () => {
 
         <div className="event-sections-text">
           <div className="section-para">
+            <h3>Escher - Other World</h3>
             <h4>
               <i>18 February 2023 - 10 September 2023</i>
             </h4>
-            <h3>Escher - Other World</h3>
             <p>
               Birds that become fish, water that flows uphill, two hands drawing
               each other: with consummate skill, M.C. Escher would transform a
