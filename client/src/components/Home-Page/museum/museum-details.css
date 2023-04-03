@@ -97,7 +97,7 @@
 
 .museum-information {
   width: 100%;
-  background-color: var(--border-color);
+  background-color: var(--mobile-navbar-color);
   display: flex;
   justify-content: space-between;
   font-size: 1.3rem;
@@ -134,7 +134,7 @@
 }
 
 .opening-hours thead {
-  background-color: #95a5a6;
+  background-color: var(--mobile-navbar-color);
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -178,7 +178,7 @@ tr {
 }
 
 .museum-fees thead {
-  background-color: #95a5a6;
+  background-color: var(--mobile-navbar-color);
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.03em;

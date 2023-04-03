@@ -1,17 +1,16 @@
 .chance-button {
   border-radius: 4px;
-  background-color: #3f4e4f;
+  background-color: var(--active-navlink-color);
   padding: 5px 15px;
   border: none;
   outline: none;
   width: 150px;
   height: 40px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #dcd7c9;
-  font-family: "Hubballi", cursive;
 }
 .chance-button:hover {
-  background-color: #a27b5c;
+  background-color: var(--mobile-navbar-color);
   color: white;
   cursor: pointer;
 }
@@ -60,7 +59,7 @@
   max-height: 40vh;
   display: flex;
   border: 2px solid var(--navbar-color);
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   padding: 1rem;
   gap: 2rem;
@@ -78,7 +77,6 @@
   object-fit: cover;
 }
 .offer-item-name h2 {
-  /* text-align: center; */
   padding-bottom: 0.5rem;
 }
 
@@ -91,7 +89,6 @@
 
 .date-number h2 {
   padding-bottom: 3rem;
-  /* padding-top: 3rem; */
 }
 
 @media (min-width: 551px) and (max-width: 899px) {
@@ -140,7 +137,6 @@
   .offer-price {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     font-size: 1.5rem;
   }
 

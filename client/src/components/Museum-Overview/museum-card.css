@@ -73,7 +73,7 @@
   width: calc(100% + var(--padding));
   left: calc(var(--padding) * -1);
   bottom: -2px;
-  background: #a27b5c;
+  background: var(--button-active-color);
   transform-origin: left;
   transition: transform 500ms ease;
 }
@@ -129,7 +129,7 @@
 
 .museum-card-button {
   border-radius: 4px;
-  background-color: #3f4e4f;
+  background-color: var(--active-navlink-color);
   padding: 5px 15px;
   border: none;
   outline: none;
@@ -142,7 +142,7 @@
 
 .museum-card-button:hover,
 .museum-card-button:focus {
-  background-color: #a27b5c;
+  background-color: var(--button-active-color);
   color: white;
   cursor: pointer;
 }
@@ -155,32 +155,21 @@
 .headerContainer {
   margin-top: 20px;
   width: 100%;
-  /* display: flex; */
-  /* flex-direction: row; */
   height: auto;
-  background: linear-gradient(
-    175deg,
-    rgba(162, 123, 92, 1) 0%,
-    rgba(220, 215, 201, 1) 100%
-  );
+  background: linear-gradient(175deg, #61876e 0%, rgba(220, 215, 201, 1) 100%);
 }
 
 .headerGoal {
   flex-basis: 100%;
   display: flex;
-  /* padding-left: 10em; */
   justify-content: center;
   padding: 1.5em;
-  /* margin-left: 15px; */
   text-align: center;
-  font-style: italic;
 }
 
 .headerMessage {
   font-size: 30px;
-  /* font-family: "Courier New", monospace; */
-  color: whitesmoke;
-  /* line-height: 1; */
+  color: var(--main-bg-color);
 }
 
 .header-icon-container {
@@ -191,14 +180,9 @@
 }
 
 .header-icon {
-  color: whitesmoke;
+  color: var(--main-bg-color);
   font-size: 30px;
 }
-
-/* .reviewers {
-  font-size: 20px;
-  color: black;
-} */
 
 @media (prefers-reduced-motion: reduce) {
   *,
