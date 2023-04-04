@@ -109,7 +109,7 @@ const RegisterForm = () => {
         <div className="header">
           <h1>Create New Account</h1>
           <div className="login-link">
-            <span>or do you already have an account? </span>
+            <span>Do you already have an account? </span>
             <Link to={"/login"}>Log in here.</Link>
           </div>
         </div>

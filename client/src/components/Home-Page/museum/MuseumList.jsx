@@ -9,13 +9,8 @@ const MuseumList = () => {
   const { isLoading, error, museums } = useMuseums();
 
   let content = null;
-  const result = museums.filter((museum) => {
-    if (museum.address.city === "Amsterdam") {
-      return museum;
-    }
-  });
 
-  const amsterdam = result.sort((a, b) => {
+  const result = museums.sort((a, b) => {
     return b.rating - a.rating;
   });
 
@@ -36,8 +31,8 @@ const MuseumList = () => {
       <>
         <Header />
         <div className="all-museums-card">
-          {amsterdam &&
-            amsterdam.slice(0, 4).map((museum) => {
+          {result &&
+            result.slice(0, 6).map((museum) => {
               return <MuseumCard key={museum._id} museum={museum} />;
             })}
         </div>
@@ -45,7 +40,7 @@ const MuseumList = () => {
     );
   }
 
-  return <div>{content}</div>;
+  return <div className="return-content">{content}</div>;
 };
 
 export default MuseumList;

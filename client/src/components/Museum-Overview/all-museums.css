@@ -9,7 +9,7 @@
 .all-museums-card {
   display: flex;
   flex-wrap: wrap;
-  margin: 1vh auto;
+  margin: 1rem auto;
   justify-content: space-evenly;
 }
 

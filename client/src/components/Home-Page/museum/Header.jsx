@@ -10,7 +10,7 @@ const Header = () => {
           <MdTravelExplore className="header-icon" />
         </div>
         <div className="headerMessage">
-          Explore the top rated Amsterdam museums
+          Explore the top-rated Netherlands museums
         </div>
       </div>
     </div>

@@ -29,6 +29,7 @@
   display: flex;
   color: white;
   max-height: 10vh;
+  filter: invert(100%);
 }
 
 .burger-menu-icon {
