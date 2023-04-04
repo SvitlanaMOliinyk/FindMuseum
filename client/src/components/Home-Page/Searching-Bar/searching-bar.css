@@ -24,7 +24,7 @@
 .form-control {
   width: inherit;
   height: 70%;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--active-navlink-color);
   border-radius: 20px;
   background-color: var(--textarea-color);
   text-align: center;
@@ -35,20 +35,20 @@
   margin-top: 5px;
   left: 7%;
   padding: 0.3rem;
-  color: var(--border-color);
+  color: var(--active-navlink-color);
 }
 
 .search-bar-button {
   border-radius: 10px;
   padding: 0.3rem 0.5rem;
-  background-color: #3f4e4f;
+  background-color: var(--active-navlink-color);
   position: absolute;
   color: #dcd7c9;
   right: 7%;
 }
 
 .search-bar-button:hover {
-  background-color: #a27b5c;
+  background-color: var(--mobile-navbar-color);
   color: white;
   cursor: pointer;
 }

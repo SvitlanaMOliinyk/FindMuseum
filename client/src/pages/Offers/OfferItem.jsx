@@ -81,7 +81,7 @@ const OfferItem = ({ offer }) => {
         <h2>Expire Date: {expireDate.toString().slice(0, 10)}</h2>
         <h2>
           There are just{" "}
-          <span style={{ color: "var(--navbar-color)" }}>
+          <span style={{ color: "var(--button-active-color)" }}>
             {numberOfTickets}
           </span>{" "}
           more available!..
@@ -90,7 +90,9 @@ const OfferItem = ({ offer }) => {
       <div className="offer-price">
         <h4>
           Price:{" "}
-          <span style={{ color: "var(--navbar-color)", fontSize: "2rem" }}>
+          <span
+            style={{ color: "var(--button-active-color)", fontSize: "2rem" }}
+          >
             {newPrice}€
           </span>
           &nbsp;

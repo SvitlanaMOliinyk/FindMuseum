@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Hubballi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,15 +7,16 @@
 }
 
 body {
-  font-family: "Hubballi", cursive;
+  font-family: "Lato";
   background-color: var(--main-bg-color);
 }
 
 :root {
   --main-bg-color: #dcd7c9;
   --active-navlink-color: #3f4e4f;
-  --navbar-color: #a27b5c;
-  --mobile-navbar-color: #2c3639;
+  --navbar-color: #3c6255;
+  --mobile-navbar-color: #61876e;
+  --button-active-color: #a6bb8d;
 }
 
 :root {

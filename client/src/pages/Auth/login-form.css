@@ -59,11 +59,10 @@
   height: 40px;
   font-size: 1.2rem;
   color: #dcd7c9;
-  font-family: "Hubballi", cursive;
 }
 
 .submit-button:hover {
-  background-color: #a27b5c;
+  background-color: var(--mobile-navbar-color);
   color: white;
   cursor: pointer;
 }
@@ -74,6 +73,6 @@
 }
 
 .forgot-password:hover {
-  color: #a27b5c;
+  color: var(--mobile-navbar-color);
   cursor: pointer;
 }

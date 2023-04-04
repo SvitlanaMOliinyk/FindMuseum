@@ -101,7 +101,7 @@ const MuseumDetails = () => {
               <thead>
                 <tr>
                   <th>Day</th>
-                  <th>Hour</th>
+                  <th>Hours</th>
                 </tr>
               </thead>
               <tbody>

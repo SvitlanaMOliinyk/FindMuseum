@@ -1,7 +1,7 @@
 .home-offers-section {
   padding: 20px;
   display: flex;
-  background-color: #3f4e4f;
+  background-color: var(--navbar-color);
   justify-content: space-evenly;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .offers-text {
-  font-size: 25px;
+  font-size: 1.8rem;
   margin-top: 50px;
   margin-bottom: 50px;
   justify-content: center;
@@ -38,19 +38,19 @@
 .home-offers-button {
   margin-bottom: 50px;
   border-radius: 4px;
-  background-color: #a27b5c;
+  background-color: var(--main-bg-color);
   padding: 5px 15px;
   border: none;
   outline: none;
   width: 150px;
   height: 40px;
   font-size: 1.2rem;
-  color: #dcd7c9;
+  color: var(--icon-color);
 }
 
 .home-offers-button:hover {
-  background-color: #dcd7c9;
-  color: #a27b5c;
+  background-color: var(--mobile-navbar-color);
+  color: var(--main-bg-color);
   cursor: pointer;
 }
 /*museums events sections*/
@@ -64,28 +64,10 @@
   text-align: justify;
 }
 
-.kunstmuseum-section button {
-  margin-top: 50px;
-  border-radius: 4px;
-  background-color: #a27b5c;
-  padding: 5px 15px;
-  border: none;
-  outline: none;
-  width: 150px;
-  height: 40px;
-  font-size: 1.2rem;
-  color: #dcd7c9;
-}
-
-.kunstmuseum-section button:hover {
-  background-color: #3f4e4f;
-  cursor: pointer;
-}
-
 .section-button {
   margin-top: 50px;
   border-radius: 4px;
-  background-color: #a27b5c;
+  background-color: var(--active-navlink-color);
   padding: 5px 15px;
   border: none;
   outline: none;
@@ -96,8 +78,9 @@
 }
 
 .section-button:hover {
-  background-color: #3f4e4f;
+  background-color: var(--button-active-color);
   cursor: pointer;
+  color: var(--icon-color);
 }
 
 .louwman-section {
@@ -107,19 +90,19 @@
 .louwman-section button {
   margin-top: 50px;
   border-radius: 4px;
-  background-color: #3f4e4f;
+  background-color: var(--main-bg-color);
   padding: 5px 15px;
   border: none;
   outline: none;
   width: 150px;
   height: 40px;
   font-size: 1.2rem;
-  color: #dcd7c9;
+  color: var(--icon-color);
 }
 
 .louwman-section button:hover {
-  background-color: #dcd7c9;
-  color: #3f4e4f;
+  background-color: var(--mobile-navbar-color);
+  color: var(--main-bg-color);
   cursor: pointer;
 }
 
@@ -130,27 +113,19 @@
   align-items: center;
 }
 .section-para {
-  margin-left: 55px;
-  margin-right: 55px;
-  font-size: clamp(1.2rem, 2vw, 2.2rem);
+  margin-left: 2rem;
+  font-size: clamp(1.2rem, 1.8vw, 2rem);
+}
+.section-para h3 {
+  text-align: center;
 }
 
-.sunflowers {
-  width: 60vh;
-  height: 60vh;
-  border-radius: 10px;
-  filter: drop-shadow(4px 4px 2px #3f4e4f);
-}
-.auto {
-  width: 90vh;
-  height: 60vh;
-  border-radius: 10px;
-  filter: drop-shadow(4px 4px 2px #2b2f2f);
-}
+.sunflowers,
+.auto,
 .escher {
-  width: 60vh;
-  height: 60vh;
-  border-radius: 10px;
+  width: 30%;
+  object-fit: cover;
+  border-radius: 4px;
   filter: drop-shadow(4px 4px 2px #2b2f2f);
 }
 
@@ -166,32 +141,22 @@
     flex-direction: column-reverse;
     align-items: center;
   }
-  .image-section-container {
-    max-width: 100%;
-    padding: 0;
-  }
   .event-sections-text {
     padding-top: 1rem;
     align-items: center;
   }
-  .louwman-section .image-section-container {
-    padding-left: 0;
-  }
-
   .home-offers-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-
   .offers-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-
   .offers-text {
     justify-content: center;
     display: flex;
@@ -203,27 +168,14 @@
     justify-content: center;
     align-items: center;
   }
-
   .section-para {
     width: 90%;
+    margin: auto;
   }
-
-  .sunflowers {
-    width: 30vh;
-    height: 30vh;
-    border-radius: 10px;
-    filter: drop-shadow(4px 4px 2px #3f4e4f);
-  }
-  .auto {
-    width: 45vh;
-    height: 30vh;
-    border-radius: 10px;
-    filter: drop-shadow(4px 4px 2px #2b2f2f);
-  }
+  .sunflowers,
+  .auto,
   .escher {
-    width: 30vh;
-    height: 30vh;
-    border-radius: 10px;
-    filter: drop-shadow(4px 4px 2px #2b2f2f);
+    width: 60%;
+    margin: auto;
   }
 }

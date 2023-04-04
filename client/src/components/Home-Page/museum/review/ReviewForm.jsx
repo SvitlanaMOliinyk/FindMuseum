@@ -57,7 +57,7 @@ const ReviewForm = ({
 
   const { isLoading, error, setError, performFetch, cancelFetch } = useFetch(
     // if type of review "write" we will send /comment/create url with POST method below in performFetch"
-    // els type of review "Edit" we will send /comment/edit url with PUT method below in performFetch
+    // else type of review "Edit" we will send /comment/edit url with PUT method below in performFetch
     `/comment/${type == "Write" ? "create" : "edit"}`,
     onSuccess
   );

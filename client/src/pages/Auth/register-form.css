@@ -63,7 +63,6 @@
   height: 28px;
   outline: none;
   font-size: 1.3rem;
-  font-family: "Hubballi", cursive;
 }
 
 input:-webkit-autofill,
@@ -73,7 +72,7 @@ input:-webkit-autofill:focus {
 
 .submit-button {
   border-radius: 4px;
-  background-color: #3f4e4f;
+  background-color: var(--active-navlink-color);
   padding: 5px 15px;
   border: none;
   outline: none;
@@ -84,7 +83,7 @@ input:-webkit-autofill:focus {
 }
 
 .submit-button:hover {
-  background-color: #a27b5c;
+  background-color: var(--mobile-navbar-color);
   color: white;
   cursor: pointer;
 }
