@@ -1,12 +1,30 @@
-`TODO: Add a nice screenshot of the app!`
+![FindMuseum](client/src/assets/img/app-screenshot.png)
 
-# Find Museum (class 40 final project)
+# Find Museum (Class 40 Final Project)
 
 This is the final project for the HackYourFuture curriculum we did as a class using the MERN stack by following the agile methodology with our team and a group of mentors. A quick guide to what we built:
 
-> TODO: Add short description of the app
+1. Our app helps you find museums in the Netherlands by city, category, rating, and price. The user can use the search bar on the Home page and the Museum page, or use filters on the Museum page. Also on the Home page, there are cards with the top-rated Netherlands museums.
 
-`[Click here for the Demo version](TODO: add link)`
+2. Each museum has information about opening hours, prices and location. Users can also read other visitors' comments about a specific museum.
+
+3. Registered users can get a special offer with reduced prices for tickets to some museums.
+
+4. After winning a special offer, the user receives a letter with this offer in his/her e-mail box.
+
+5. If the registered user has forgotten the password, our application allows him/her to reset the password. After clicking "Forgot your password?", the user receives an email with a verification code to create a new password.
+
+6. Registered users can rate visited museums and leave comments with their impressions.
+
+7. The user can edit and delete his/her comments.
+
+8. Also, registered users have the possibility to add museums to their favorites (and remove them from their favorites).
+
+9. On the profile page, registered users can upload their photos and update their names. They also can review their comments and favorites from their profile.
+
+10. Our app has a responsive design.
+
+[Click here for the Demo version of Find Museum](https://c40-team-sunday.herokuapp.com/)
 
 ## 1. Setup
 
