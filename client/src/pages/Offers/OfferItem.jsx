@@ -13,6 +13,10 @@ const OfferItem = ({ offer }) => {
   const navigate = useNavigate();
   const buyer = authUser?._id;
 
+  const refresh = () => {
+    window.location.reload();
+  };
+
   const onSuccess = (jsonResult) => {
     if (jsonResult.result.includes("C")) {
       toast.success("Congratulations! Your offer is in your email-box now.", {
@@ -20,7 +24,7 @@ const OfferItem = ({ offer }) => {
         autoClose: 2000,
       });
       setTimeout(() => {
-        navigate("/offers");
+        refresh();
       }, 2000);
     } else {
       toast.error("You have already got the offer!", {
@@ -28,7 +32,7 @@ const OfferItem = ({ offer }) => {
         autoClose: 2000,
       });
       setTimeout(() => {
-        navigate("/offers");
+        refresh();
       }, 2000);
     }
   };
