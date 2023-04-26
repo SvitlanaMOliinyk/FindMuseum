@@ -4,6 +4,7 @@ import "./profile.css";
 import avatar from "../../../assets/drop/user.png";
 import star from "../../../assets/drop/star.png";
 import edit from "../../../assets/drop/edit.png";
+import envelope from "../../../assets/drop/envelope.png";
 import logout from "../../../assets/drop/log-out.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/authContext";
@@ -118,6 +119,11 @@ const Profile = ({ onClose }) => {
                 img={edit}
                 text={"Comments"}
                 link={`/user/comments/${userId && userId._id}`}
+              />
+              <DropdownItem
+                img={envelope}
+                text={"My Offers"}
+                link={`/myOffers/${userId && userId._id}`}
               />
               <DropdownItem
                 img={logout}

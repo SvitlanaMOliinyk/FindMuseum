@@ -9,7 +9,7 @@ export const getOffers = async (req, res) => {
   try {
     const offers = await Offer.find({
       numberOfTickets: { $gt: 0 },
-      expireDate: { $gte: currentDate },
+      expireDate: { $gte: currentDate.slice(0, 10) },
     })
       .populate({ path: "museumId", model: Museum })
       .exec();
@@ -73,8 +73,55 @@ const sendEmail = async (offerId) => {
       lastBayerEmailName = buyers[buyers.length - 1];
     }
     const { firstName, email } = lastBayerEmailName;
-    sendMail(firstName, email);
+    await sendMail(firstName, email);
   } catch (error) {
     logError(error.message);
+  }
+};
+
+export const getMyOffers = async (req, res) => {
+  const { id } = req.params;
+  const currentDate = new Date().toISOString();
+  try {
+    const myOffers = await Offer.find({
+      buyers: id,
+      expireDate: { $gte: currentDate.slice(0, 10) },
+    })
+      .populate({ path: "museumId", model: Museum })
+      .exec();
+    res.status(200).json({ success: true, result: myOffers });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      msg: "Unable to get offers, please try again later",
+    });
+  }
+};
+
+export const cancelMyOffer = async (req, res) => {
+  const { id } = req.params;
+  const { numberOfTickets, buyer } = req.body;
+  try {
+    await Offer.findOneAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          numberOfTickets: numberOfTickets,
+        },
+        $pull: {
+          buyers: buyer,
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json({
+      success: true,
+      result: "Your offer is canceled!",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      msg: "Unable to cancel offer, please try again later",
+    });
   }
 };

@@ -9,11 +9,13 @@ import Footer from "./components/Footer/footer";
 // import Museums from "./pages/Museums/Museums";
 import MuseumOverview from "./pages/MuseumOverview/MuseumOverview";
 import Offers from "./pages/Offers/Offers";
+import MyOffers from "./pages/Offers/MyOffers";
 import Favorites from "./pages/Museums/Favorites";
 import { AuthProvider } from "./context/authContext";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import { MuseumsProvider } from "./context/museumContext";
 import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
+import PrintOffer from "./pages/Offers/PrintOffer";
 
 // import SearchedOverview from "./pages/MuseumOverview/SearchedOverview";
 import UserComments from "./pages/MyProfile/UserComments";
@@ -31,6 +33,8 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/museums/:key" element={<SearchedOverview />} />
             <Route path="/museums" element={<MuseumOverview />} />
+            <Route path="/myOffers/:id" element={<MyOffers />} />
+            <Route path="/printOffer/:id" element={<PrintOffer />} />
             <Route path="/offers" element={<Offers />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/register" element={<RegisterForm />} />
