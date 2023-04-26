@@ -47,6 +47,7 @@ export const sendMail = async (firstName, email) => {
       </html>`,
     });
     logInfo(info.messageId);
+    return randomCode;
   } catch (error) {
     logError(error.message);
   }
